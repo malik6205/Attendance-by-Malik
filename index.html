@@ -1,352 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <title>B.Pharmacy Attendance | Login</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-    -webkit-tap-highlight-color:transparent;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+:root {
+    --primary: #5b4bb7;
+    --secondary: #8e63ce;
+    --accent: #00b894;
+    --danger: #e74c3c;
+    --dark: #17142b;
+    --white: #ffffff;
+}
 
+body {
+    min-height: 100vh;
     font-family:
+        Inter,
         system-ui,
         -apple-system,
+        BlinkMacSystemFont,
         "Segoe UI",
-        Arial,
         sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     background:
         radial-gradient(
             circle at 10% 10%,
-            rgba(155,135,255,.35),
+            rgba(255,255,255,.18),
             transparent 30%
         ),
         radial-gradient(
             circle at 90% 90%,
-            rgba(255,117,168,.30),
+            rgba(255,255,255,.12),
             transparent 30%
         ),
         linear-gradient(
             135deg,
-            #17152f 0%,
-            #493c78 50%,
-            #8e5478 100%
+            #211b42,
+            #5b4bb7,
+            #9b6fd1
         );
 
-    color:white;
+    color: white;
+    padding: 20px;
 }
 
-/* ---------- LOGIN CONTAINER ---------- */
-
-.login-container{
-    width:100%;
-    max-width:430px;
+.login-container {
+    width: 100%;
+    max-width: 430px;
 }
 
-.login-card{
-    padding:30px 25px;
-
-    border-radius:28px;
+.login-card {
+    width: 100%;
+    padding: 30px 25px;
+    border-radius: 28px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.07)
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.08)
         );
 
-    border:1px solid rgba(255,255,255,.25);
+    border: 1px solid rgba(255,255,255,.25);
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.40);
-
-    text-align:center;
-
-    animation:cardIn .45s ease;
-}
-
-@keyframes cardIn{
-    from{
-        opacity:0;
-        transform:translateY(20px) scale(.98);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-}
-
-/* ---------- LOGO ---------- */
-
-.logo{
-    width:88px;
-    height:88px;
-
-    object-fit:cover;
-
-    border-radius:23px;
-
-    margin-bottom:15px;
-
-    border:2px solid rgba(255,255,255,.35);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.30);
+        0 25px 70px rgba(0,0,0,.35);
+
+    text-align: center;
 }
 
-/* ---------- TITLE ---------- */
+.logo {
+    width: 85px;
+    height: 85px;
 
-.title{
-    font-size:25px;
-    font-weight:800;
+    border-radius: 22px;
 
-    margin-bottom:5px;
-}
+    object-fit: cover;
 
-.subtitle{
-    font-size:12px;
-    opacity:.75;
+    margin-bottom: 15px;
 
-    margin-bottom:25px;
-}
+    border: 3px solid rgba(255,255,255,.35);
 
-/* ---------- FORM ---------- */
-
-.form-group{
-    text-align:left;
-    margin-bottom:15px;
-}
-
-.form-group label{
-    display:block;
-
-    font-size:12px;
-    font-weight:700;
-
-    margin-bottom:6px;
-
-    opacity:.9;
-}
-
-.input-wrapper{
-    position:relative;
-}
-
-.input-icon{
-    position:absolute;
-
-    left:13px;
-    top:50%;
-
-    transform:translateY(-50%);
-
-    font-size:16px;
-
-    opacity:.65;
-}
-
-input{
-    width:100%;
-
-    padding:13px 13px 13px 42px;
-
-    border:none;
-    outline:none;
-
-    border-radius:13px;
-
-    background:#fff;
-
-    color:#111827;
-
-    font-size:14px;
-
-    transition:.2s;
-}
-
-input:focus{
     box-shadow:
-        0 0 0 3px rgba(144,202,249,.35);
+        0 10px 30px rgba(0,0,0,.25);
 }
 
-/* ---------- LOGIN BUTTON ---------- */
+h1 {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
 
-.login-button{
-    width:100%;
+.subtitle {
+    font-size: 13px;
+    opacity: .75;
+    margin-bottom: 25px;
+}
 
-    padding:14px;
+.form-group {
+    text-align: left;
+    margin-bottom: 14px;
+}
 
-    border:none;
+.form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    opacity: .9;
+}
 
-    border-radius:13px;
+.form-group input {
+    width: 100%;
+    padding: 14px;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 13px;
+
+    outline: none;
+
+    background: rgba(255,255,255,.95);
+    color: #111827;
+
+    font-size: 15px;
+
+    transition: .2s;
+}
+
+.form-group input:focus {
+    border-color: white;
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.15);
+}
+
+.login-btn {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 14px;
+
+    border: none;
+    border-radius: 13px;
 
     background:
         linear-gradient(
             135deg,
-            #1976d2,
-            #1565c0
+            #00b894,
+            #00cec9
         );
 
-    color:white;
+    color: white;
 
-    font-size:14px;
+    font-size: 15px;
+    font-weight: 800;
 
-    font-weight:800;
+    cursor: pointer;
 
-    cursor:pointer;
+    transition: .2s;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
 
     box-shadow:
-        0 8px 20px rgba(25,118,210,.30);
-
-    transition:.15s;
+        0 10px 25px rgba(0,0,0,.2);
 }
 
-.login-button:hover{
-    transform:translateY(-1px);
+.login-btn:active {
+    transform: scale(.98);
 }
 
-.login-button:active{
-    transform:scale(.98);
+.register-btn {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 13px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(255,255,255,.3);
+
+    background: rgba(255,255,255,.10);
+
+    color: white;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: .2s;
 }
 
-.login-button:disabled{
-    opacity:.6;
-    cursor:not-allowed;
+.register-btn:hover {
+    background: rgba(255,255,255,.18);
 }
 
-/* ---------- REGISTER BUTTON ---------- */
+.message {
+    min-height: 24px;
 
-.register-button{
-    width:100%;
+    margin-top: 12px;
 
-    margin-top:10px;
+    font-size: 12px;
 
-    padding:13px;
-
-    border-radius:13px;
-
-    background:rgba(255,255,255,.10);
-
-    border:1px solid rgba(255,255,255,.22);
-
-    color:white;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.15s;
+    font-weight: 700;
 }
 
-.register-button:hover{
-    background:rgba(255,255,255,.18);
+.success {
+    color: #69f0ae;
 }
 
-/* ---------- ERROR ---------- */
-
-.message{
-    min-height:20px;
-
-    margin-top:12px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    line-height:1.5;
+.error {
+    color: #ffb3b3;
 }
 
-.message.error{
-    color:#ffb4b4;
+.info-box {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,.08);
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    opacity: .8;
 }
 
-.message.success{
-    color:#8affbd;
+.footer {
+    margin-top: 18px;
+
+    font-size: 11px;
+
+    opacity: .55;
 }
 
-/* ---------- FOOTER ---------- */
+/* Loading */
 
-.footer{
-    margin-top:20px;
+.loading {
+    display: none;
 
-    font-size:10px;
+    width: 18px;
+    height: 18px;
 
-    opacity:.55;
+    margin: 0 auto;
 
-    line-height:1.6;
+    border: 3px solid rgba(255,255,255,.4);
+    border-top-color: white;
+
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
 }
 
-/* ---------- LOADING ---------- */
-
-.loading{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-}
-
-.spinner{
-    width:15px;
-    height:15px;
-
-    border:2px solid rgba(255,255,255,.4);
-
-    border-top-color:white;
-
-    border-radius:50%;
-
-    animation:spin .7s linear infinite;
-}
-
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 
-/* ---------- MOBILE ---------- */
+/* Mobile */
 
-@media(max-width:480px){
+@media(max-width:500px) {
 
-    body{
-        padding:15px;
+    body {
+        padding: 14px;
     }
 
-    .login-card{
-        padding:25px 18px;
-        border-radius:24px;
+    .login-card {
+        padding: 25px 20px;
+        border-radius: 23px;
     }
 
-    .title{
-        font-size:22px;
+    h1 {
+        font-size: 22px;
     }
 
-    .logo{
-        width:78px;
-        height:78px;
-    }
 }
 </style>
-
 </head>
 
 <body>
@@ -355,106 +308,105 @@ input:focus{
 
     <div class="login-card">
 
-        <!-- LOGO -->
+        <!-- Logo -->
         <img
             src="pic/1.jpg"
-            alt="B.Pharmacy"
             class="logo"
-            onerror="this.style.display='none'"
-        >
+            alt="B.Pharmacy">
 
-        <!-- TITLE -->
-        <div class="title">
-            🔐 B.Pharmacy Login
-        </div>
+        <h1>🔐 Welcome Back</h1>
 
         <div class="subtitle">
-            7th Semester Attendance Management System
+            B.Pharmacy Attendance Management System
         </div>
 
 
-        <!-- ENROLLMENT -->
-        <div class="form-group">
+        <!-- Login Form -->
 
-            <label for="enrollment">
-                Enrollment Number
-            </label>
+        <form id="loginForm">
 
-            <div class="input-wrapper">
+            <div class="form-group">
 
-                <span class="input-icon">
-                    🎓
-                </span>
+                <label for="userId">
+                    👤 User ID
+                </label>
 
                 <input
-                    id="enrollment"
                     type="text"
-                    placeholder="Example: AJU/230001"
+                    id="userId"
+                    placeholder="Enter your User ID"
                     autocomplete="username"
-                >
+                    required>
 
             </div>
 
-        </div>
 
+            <div class="form-group">
 
-        <!-- PASSWORD -->
-        <div class="form-group">
-
-            <label for="password">
-                Password
-            </label>
-
-            <div class="input-wrapper">
-
-                <span class="input-icon">
-                    🔑
-                </span>
+                <label for="password">
+                    🔑 Password
+                </label>
 
                 <input
-                    id="password"
                     type="password"
+                    id="password"
                     placeholder="Enter your password"
                     autocomplete="current-password"
-                >
+                    required>
 
             </div>
+
+
+            <button
+                type="submit"
+                class="login-btn"
+                id="loginButton">
+
+                🔓 Login
+
+            </button>
+
+        </form>
+
+
+        <div
+            class="loading"
+            id="loading">
+        </div>
+
+
+        <div
+            class="message"
+            id="message">
+        </div>
+
+
+        <!-- Registration -->
+
+        <button
+            class="register-btn"
+            onclick="goRegister()">
+
+            📝 Create New Account
+
+        </button>
+
+
+        <div class="info-box">
+
+            New users must register first.
+            <br>
+
+            Your account will remain
+            <b>pending</b> until an administrator
+            approves it.
 
         </div>
 
 
-        <!-- LOGIN -->
-        <button
-            id="loginButton"
-            class="login-button"
-            onclick="login()"
-        >
-            🔓 Login
-        </button>
-
-
-        <!-- REGISTER -->
-        <button
-            class="register-button"
-            onclick="goToRegister()"
-        >
-            📝 Create New Account
-        </button>
-
-
-        <!-- MESSAGE -->
-        <div
-            id="message"
-            class="message"
-        ></div>
-
-
-        <!-- FOOTER -->
         <div class="footer">
 
-            B.Pharmacy • 7th Semester<br>
-
-            Attendance Management System
+            B.Pharmacy • 7th Semester
 
         </div>
 
@@ -466,256 +418,79 @@ input:focus{
 <script>
 
 /* =====================================================
-   GOOGLE APPS SCRIPT BACKEND
-===================================================== */
+   GOOGLE APPS SCRIPT API
+   ===================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
 
 
 /* =====================================================
-   CHECK EXISTING LOGIN
-===================================================== */
+   ELEMENTS
+   ===================================================== */
 
-(function checkExistingLogin(){
+const loginForm =
+    document.getElementById("loginForm");
 
-    const user =
-        sessionStorage.getItem("BP_USER");
+const userIdInput =
+    document.getElementById("userId");
 
-    if(user){
+const passwordInput =
+    document.getElementById("password");
 
-        /*
-         User is already logged in.
-         Send directly to dashboard.
-        */
+const message =
+    document.getElementById("message");
 
-        window.location.replace(
-            "dashboard.html"
-        );
+const loginButton =
+    document.getElementById("loginButton");
 
-    }
-
-})();
+const loading =
+    document.getElementById("loading");
 
 
 /* =====================================================
-   LOGIN FUNCTION
-===================================================== */
+   MESSAGE
+   ===================================================== */
 
-async function login(){
+function showMessage(text, type) {
 
-    const enrollment =
-        document
-        .getElementById("enrollment")
-        .value
-        .trim();
+    message.textContent = text;
 
-    const password =
-        document
-        .getElementById("password")
-        .value;
+    message.className =
+        "message " + type;
 
+}
 
-    /* ---------- VALIDATION ---------- */
 
-    if(!enrollment){
+/* =====================================================
+   LOADING
+   ===================================================== */
 
-        showMessage(
-            "Please enter your enrollment number.",
-            "error"
-        );
+function setLoading(status) {
 
-        document
-        .getElementById("enrollment")
-        .focus();
+    if (status) {
 
-        return;
-    }
+        loginButton.disabled = true;
 
+        loginButton.style.opacity = ".6";
 
-    if(!password){
+        loginButton.textContent =
+            "Checking...";
 
-        showMessage(
-            "Please enter your password.",
-            "error"
-        );
+        loading.style.display =
+            "block";
 
-        document
-        .getElementById("password")
-        .focus();
+    } else {
 
-        return;
-    }
+        loginButton.disabled = false;
 
+        loginButton.style.opacity = "1";
 
-    /* ---------- BUTTON ---------- */
+        loginButton.textContent =
+            "🔓 Login";
 
-    const button =
-        document.getElementById(
-            "loginButton"
-        );
-
-    button.disabled = true;
-
-    button.innerHTML = `
-        <span class="loading">
-            <span class="spinner"></span>
-            Checking...
-        </span>
-    `;
-
-
-    showMessage("", "");
-
-
-    try{
-
-        /* ---------- SEND REQUEST ---------- */
-
-        const response =
-            await fetch(
-
-                API_URL,
-
-                {
-
-                    method:"POST",
-
-                    headers:{
-                        "Content-Type":
-                        "text/plain;charset=utf-8"
-                    },
-
-                    body:JSON.stringify({
-
-                        action:"login",
-
-                        enrollment:
-                            enrollment,
-
-                        password:
-                            password
-
-                    })
-
-                }
-
-            );
-
-
-        /* ---------- RESPONSE ---------- */
-
-        const result =
-            await response.json();
-
-
-        console.log(
-            "Login response:",
-            result
-        );
-
-
-        /* ---------- SUCCESS ---------- */
-
-        if(result.success === true){
-
-            /*
-             Store user information
-             in the browser session.
-            */
-
-            const userData =
-                result.user || {
-
-                    enrollment:
-                        enrollment
-
-                };
-
-
-            sessionStorage.setItem(
-                "BP_USER",
-                JSON.stringify(
-                    userData
-                )
-            );
-
-
-            /*
-             Optional token from
-             Google Apps Script.
-            */
-
-            if(result.token){
-
-                sessionStorage.setItem(
-                    "BP_TOKEN",
-                    result.token
-                );
-
-            }
-
-
-            showMessage(
-                "✅ Login successful. Opening dashboard...",
-                "success"
-            );
-
-
-            /*
-             Small delay so the
-             success message is visible.
-            */
-
-            setTimeout(function(){
-
-                window.location.replace(
-                    "dashboard.html"
-                );
-
-            },500);
-
-        }
-
-
-        /* ---------- NOT APPROVED ---------- */
-
-        else{
-
-            showMessage(
-
-                result.message ||
-                "Login failed. Please check your details.",
-
-                "error"
-
-            );
-
-            resetLoginButton();
-
-        }
-
-    }
-
-
-    /* ---------- CONNECTION ERROR ---------- */
-
-    catch(error){
-
-        console.error(
-            "Login error:",
-            error
-        );
-
-        showMessage(
-
-            "❌ Unable to connect to the server. Please check your internet connection.",
-
-            "error"
-
-        );
-
-        resetLoginButton();
+        loading.style.display =
+            "none";
 
     }
 
@@ -723,10 +498,231 @@ async function login(){
 
 
 /* =====================================================
-   REGISTER PAGE
-===================================================== */
+   LOGIN
+   ===================================================== */
 
-function goToRegister(){
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+        const userId =
+            userIdInput.value.trim();
+
+        const password =
+            passwordInput.value.trim();
+
+
+        if (!userId || !password) {
+
+            showMessage(
+                "⚠️ Please enter User ID and Password.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        setLoading(true);
+
+        showMessage(
+            "Checking account...",
+            "success"
+        );
+
+
+        try {
+
+            /*
+             * Send login information
+             * to Google Apps Script.
+             */
+
+            const url =
+                API_URL +
+                "?action=login" +
+                "&userId=" +
+                encodeURIComponent(userId) +
+                "&password=" +
+                encodeURIComponent(password);
+
+
+            const response =
+                await fetch(url, {
+                    method: "GET",
+                    cache: "no-store"
+                });
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Server error"
+                );
+
+            }
+
+
+            const result =
+                await response.json();
+
+
+            console.log(
+                "Login response:",
+                result
+            );
+
+
+            /* ==========================================
+               LOGIN SUCCESS
+               ========================================== */
+
+            if (
+                result.success === true &&
+                result.approved === true
+            ) {
+
+                /*
+                 * Save session information.
+                 *
+                 * Do NOT store the password.
+                 */
+
+                const session = {
+
+                    loggedIn: true,
+
+                    userId:
+                        result.userId ||
+                        userId,
+
+                    name:
+                        result.name ||
+                        "",
+
+                    enrollment:
+                        result.enrollment ||
+                        "",
+
+                    role:
+                        result.role ||
+                        "student",
+
+                    loginTime:
+                        Date.now()
+
+                };
+
+
+                sessionStorage.setItem(
+                    "BP7_SESSION",
+                    JSON.stringify(session)
+                );
+
+
+                /*
+                 * Also store a simple login flag.
+                 */
+
+                sessionStorage.setItem(
+                    "BP7_LOGGED_IN",
+                    "true"
+                );
+
+
+                showMessage(
+                    "✅ Login successful. Opening dashboard...",
+                    "success"
+                );
+
+
+                /*
+                 * Redirect to dashboard.
+                 */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "dashboard.html";
+
+                    },
+                    500
+                );
+
+
+                return;
+            }
+
+
+            /* ==========================================
+               ACCOUNT NOT APPROVED
+               ========================================== */
+
+            if (
+                result.success === true &&
+                result.approved === false
+            ) {
+
+                showMessage(
+                    "⏳ Your account is waiting for admin approval.",
+                    "error"
+                );
+
+                passwordInput.value = "";
+
+                setLoading(false);
+
+                return;
+            }
+
+
+            /* ==========================================
+               INVALID LOGIN
+               ========================================== */
+
+            showMessage(
+                result.message ||
+                "❌ Invalid User ID or Password.",
+                "error"
+            );
+
+
+            passwordInput.value = "";
+
+            setLoading(false);
+
+        }
+
+        catch(error) {
+
+            console.error(
+                "Login error:",
+                error
+            );
+
+
+            showMessage(
+                "❌ Unable to connect to server. Please try again.",
+                "error"
+            );
+
+
+            setLoading(false);
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   REGISTER
+   ===================================================== */
+
+function goRegister() {
 
     window.location.href =
         "register.html";
@@ -735,88 +731,67 @@ function goToRegister(){
 
 
 /* =====================================================
-   SHOW MESSAGE
-===================================================== */
+   PREVENT ACCESS IF ALREADY LOGGED IN
+   ===================================================== */
 
-function showMessage(
-    text,
-    type
-){
+function checkExistingSession() {
 
-    const message =
-        document.getElementById(
-            "message"
+    const logged =
+        sessionStorage.getItem(
+            "BP7_LOGGED_IN"
         );
 
-    message.textContent =
-        text;
+    const session =
+        sessionStorage.getItem(
+            "BP7_SESSION"
+        );
 
-    message.className =
-        "message " +
-        (type || "");
+
+    if (
+        logged === "true" &&
+        session
+    ) {
+
+        try {
+
+            const data =
+                JSON.parse(session);
+
+
+            /*
+             * Only redirect if the session
+             * is valid.
+             */
+
+            if (
+                data.loggedIn === true &&
+                data.userId
+            ) {
+
+                window.location.replace(
+                    "dashboard.html"
+                );
+
+            }
+
+        }
+
+        catch(error) {
+
+            sessionStorage.clear();
+
+        }
+
+    }
 
 }
 
 
 /* =====================================================
-   RESET LOGIN BUTTON
-===================================================== */
+   PAGE START
+   ===================================================== */
 
-function resetLoginButton(){
-
-    const button =
-        document.getElementById(
-            "loginButton"
-        );
-
-    button.disabled = false;
-
-    button.innerHTML =
-        "🔓 Login";
-
-}
-
-
-/* =====================================================
-   ENTER KEY LOGIN
-===================================================== */
-
-document
-.getElementById("password")
-.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            login();
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   ENTER KEY FROM ENROLLMENT
-===================================================== */
-
-document
-.getElementById("enrollment")
-.addEventListener(
-    "keydown",
-    function(event){
-
-        if(event.key === "Enter"){
-
-            document
-            .getElementById("password")
-            .focus();
-
-        }
-
-    }
-);
+checkExistingSession();
 
 </script>
 

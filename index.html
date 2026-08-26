@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -7,6 +8,7 @@
 <title>B.Pharmacy Attendance - Login</title>
 
 <style>
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -16,9 +18,11 @@
 body{
     min-height:100vh;
     font-family:Arial,Helvetica,sans-serif;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     padding:20px;
 
     background:
@@ -32,10 +36,13 @@ body{
 .login-card{
     width:100%;
     max-width:540px;
+
     padding:38px;
+
     border-radius:32px;
 
     background:rgba(255,255,255,.15);
+
     border:1px solid rgba(255,255,255,.3);
 
     backdrop-filter:blur(25px);
@@ -49,9 +56,13 @@ body{
 .logo{
     width:105px;
     height:105px;
+
     object-fit:cover;
+
     border-radius:28px;
+
     border:4px solid rgba(255,255,255,.4);
+
     margin-bottom:22px;
 }
 
@@ -68,19 +79,27 @@ h1{
 label{
     display:block;
     text-align:left;
+
     margin:0 0 7px 5px;
+
     font-weight:bold;
 }
 
 input{
     width:100%;
     height:60px;
+
     border:0;
     outline:none;
+
     border-radius:17px;
+
     padding:0 18px;
+
     font-size:17px;
+
     margin-bottom:18px;
+
     background:#fff;
     color:#222;
 }
@@ -88,12 +107,17 @@ input{
 button{
     width:100%;
     height:60px;
+
     border:0;
     border-radius:17px;
+
     background:linear-gradient(135deg,#00bfa5,#00ced1);
+
     color:white;
+
     font-size:18px;
     font-weight:bold;
+
     cursor:pointer;
 }
 
@@ -103,35 +127,53 @@ button:disabled{
 
 .register{
     display:block;
+
     margin-top:18px;
+
     padding:17px;
+
     border:1px solid #ffffff55;
+
     border-radius:17px;
+
     color:white;
+
     text-decoration:none;
+
     font-weight:bold;
+
     background:#ffffff10;
 }
 
 .info{
     margin-top:20px;
+
     padding:17px;
+
     border-radius:16px;
+
     background:#ffffff10;
+
     font-size:13px;
+
     line-height:1.6;
 }
 
 #apiStatus{
     margin-top:18px;
+
     font-size:13px;
+
     font-weight:bold;
 }
 
 #message{
     min-height:25px;
+
     margin-top:12px;
+
     font-size:14px;
+
     font-weight:bold;
 }
 
@@ -145,7 +187,9 @@ button:disabled{
 
 .loading{
     display:none;
+
     margin-top:10px;
+
     font-size:13px;
 }
 
@@ -163,8 +207,11 @@ button:disabled{
         width:90px;
         height:90px;
     }
+
 }
+
 </style>
+
 </head>
 
 <body>
@@ -184,13 +231,13 @@ B.Pharmacy Attendance Management System
 </div>
 
 <label for="userId">
-👤 User ID
+👤 Enrollment / User ID
 </label>
 
 <input
     id="userId"
     type="text"
-    placeholder="Enter User ID"
+    placeholder="Enter Enrollment Number"
     autocomplete="username"
 >
 
@@ -219,13 +266,9 @@ B.Pharmacy Attendance Management System
 ⏳ Checking account...
 </div>
 
-<div
-    id="message"
-></div>
+<div id="message"></div>
 
-<div
-    id="apiStatus"
->
+<div id="apiStatus">
 Checking API...
 </div>
 
@@ -237,8 +280,12 @@ Checking API...
 </a>
 
 <div class="info">
+
 New users must register first.<br>
-Your account remains <b>Pending</b> until an administrator approves it.
+
+Your account remains <b>Pending</b>
+until an administrator approves it.
+
 </div>
 
 </div>
@@ -247,16 +294,16 @@ Your account remains <b>Pending</b> until an administrator approves it.
 <script>
 
 /* =====================================================
-   YOUR GOOGLE APPS SCRIPT URL
-===================================================== */
+   GOOGLE APPS SCRIPT DEPLOYMENT
+   ===================================================== */
 
 const API_URL =
-"https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
+"https://script.google.com/macros/s/AKfycbysZ2VWKZ9QgqF7STV98GPpeKQl6Axn8t0zWB5qqQls/exec";
 
 
 /* =====================================================
    ELEMENTS
-===================================================== */
+   ===================================================== */
 
 const userId =
 document.getElementById("userId");
@@ -279,80 +326,129 @@ document.getElementById("apiStatus");
 
 /* =====================================================
    MESSAGE
-===================================================== */
+   ===================================================== */
 
 function showMessage(text,type){
 
-    message.textContent=text;
+    message.textContent = text;
 
-    message.className=type || "";
+    message.className = type || "";
 
 }
 
 
 /* =====================================================
    API CHECK
-===================================================== */
+   ===================================================== */
 
 async function checkAPI(){
 
     try{
 
         const response =
-        await fetch(API_URL + "?action=status");
+        await fetch(
+            API_URL,
+            {
+                method:"GET",
+                cache:"no-store"
+            }
+        );
 
         const text =
         await response.text();
 
         console.log(
-            "API STATUS:",
+            "API RESPONSE:",
             text
         );
 
-        apiStatus.textContent =
-        "🟢 B.Pharmacy Attendance API is working";
+        let result;
 
-        apiStatus.style.color="#7dffb2";
+        try{
+
+            result =
+            JSON.parse(text);
+
+        }catch(e){
+
+            result = null;
+
+        }
+
+
+        if(
+            result &&
+            result.success === true
+        ){
+
+            apiStatus.textContent =
+            "🟢 B.Pharmacy Attendance API is working";
+
+            apiStatus.style.color =
+            "#7dffb2";
+
+        }
+
+        else{
+
+            apiStatus.textContent =
+            "🟢 API connected";
+
+            apiStatus.style.color =
+            "#7dffb2";
+
+        }
 
     }
+
     catch(error){
 
-        console.error(error);
+        console.error(
+            "API ERROR:",
+            error
+        );
 
         apiStatus.textContent =
         "🔴 API connection failed";
 
-        apiStatus.style.color="#ffb5b5";
+        apiStatus.style.color =
+        "#ffb5b5";
 
     }
+
 }
 
 
 /* =====================================================
    LOGIN
-===================================================== */
+   ===================================================== */
 
 async function login(){
 
-    const id =
+    const enrollment =
     userId.value.trim();
 
     const pass =
     password.value.trim();
 
 
-    if(!id){
+    /* EMPTY USER */
+
+    if(!enrollment){
 
         showMessage(
-            "❌ Please enter User ID.",
+            "❌ Please enter Enrollment / User ID.",
             "error"
         );
 
         userId.focus();
 
         return;
+
     }
 
+
+    /* EMPTY PASSWORD */
 
     if(!pass){
 
@@ -364,15 +460,19 @@ async function login(){
         password.focus();
 
         return;
+
     }
 
 
-    loginBtn.disabled=true;
+    /* LOADING */
 
-    loginBtn.textContent=
+    loginBtn.disabled = true;
+
+    loginBtn.textContent =
     "⏳ Logging in...";
 
-    loading.style.display="block";
+    loading.style.display =
+    "block";
 
     showMessage("","");
 
@@ -382,33 +482,40 @@ async function login(){
         /*
          IMPORTANT:
 
-         We send login information
-         through URL parameters.
+         Backend expects:
 
-         This avoids CORS problems that
-         commonly occur with Google Apps Script.
+         action=login
+         enrollment=...
+         password=...
         */
 
         const url =
         API_URL +
         "?action=login" +
-        "&userId=" +
-        encodeURIComponent(id) +
+        "&enrollment=" +
+        encodeURIComponent(enrollment) +
         "&password=" +
         encodeURIComponent(pass);
 
 
         console.log(
-            "LOGIN URL:",
-            url
+            "LOGIN REQUEST:",
+            url.replace(
+                /password=[^&]*/,
+                "password=******"
+            )
         );
 
 
         const response =
-        await fetch(url,{
-            method:"GET",
-            redirect:"follow"
-        });
+        await fetch(
+            url,
+            {
+                method:"GET",
+                redirect:"follow",
+                cache:"no-store"
+            }
+        );
 
 
         const text =
@@ -430,46 +537,40 @@ async function login(){
             JSON.parse(text);
 
         }
-        catch(e){
 
-            /*
-             If your Apps Script returns
-             plain text instead of JSON.
-            */
+        catch(error){
 
-            if(
-                text.toLowerCase()
-                .includes("success")
-            ){
+            throw new Error(
+                "Invalid response from Apps Script: " +
+                text
+            );
 
-                result={
-                    success:true,
-                    message:"Login successful"
-                };
-
-            }else{
-
-                result={
-                    success:false,
-                    message:text
-                };
-
-            }
         }
 
 
         /* =============================================
            LOGIN SUCCESS
-        ============================================= */
+           ============================================= */
 
         if(
-            result.success === true ||
-            result.status === "success" ||
-            result.result === "success"
+            result.success === true
         ){
 
+            console.log(
+                "LOGIN SUCCESS:",
+                result
+            );
+
+
             /*
-             Save session
+             CLEAR OLD SESSION
+            */
+
+            sessionStorage.clear();
+
+
+            /*
+             SAVE LOGIN
             */
 
             sessionStorage.setItem(
@@ -477,83 +578,143 @@ async function login(){
                 "true"
             );
 
+
+            /*
+             SAVE TOKEN
+
+             Backend returns:
+             token
+            */
+
+            if(result.token){
+
+                sessionStorage.setItem(
+                    "BP7_SESSION",
+                    result.token
+                );
+
+            }
+
+
+            /*
+             SAVE USER ID
+            */
+
             sessionStorage.setItem(
                 "BP7_USER_ID",
-                id
+                result.user &&
+                result.user.id
+                    ? result.user.id
+                    : enrollment
             );
+
+
+            /*
+             SAVE USER NAME
+            */
 
             sessionStorage.setItem(
                 "BP7_USER_NAME",
-                result.name || id
+                result.user &&
+                result.user.name
+                    ? result.user.name
+                    : enrollment
             );
+
+
+            /*
+             SAVE ENROLLMENT
+            */
+
+            sessionStorage.setItem(
+                "BP7_ENROLLMENT",
+                result.user &&
+                result.user.enrollment
+                    ? result.user.enrollment
+                    : enrollment
+            );
+
+
+            /*
+             SAVE ROLE
+            */
+
+            const role =
+            result.role ||
+            (
+                enrollment.toUpperCase() === "ADMIN"
+                ? "admin"
+                : "student"
+            );
+
 
             sessionStorage.setItem(
                 "BP7_ROLE",
-                result.role || "student"
+                role
             );
 
 
             showMessage(
-                "✅ Login successful!",
+                "✅ Login successful! Redirecting...",
                 "success"
             );
 
 
             /*
              ADMIN
-             */
+            */
 
             if(
-                id.toUpperCase()==="ADMIN" ||
-                result.role==="admin"
+                role.toLowerCase() === "admin"
             ){
 
                 setTimeout(function(){
 
-                    window.location.replace(
-                        "admin.html"
-                    );
+                    window.location.href =
+                    "admin.html";
 
-                },500);
+                },700);
 
             }
 
+
             /*
              STUDENT
-             */
+            */
 
             else{
 
                 setTimeout(function(){
 
-                    window.location.replace(
-                        "dashboard.html"
-                    );
+                    window.location.href =
+                    "dashboard.html";
 
-                },500);
+                },700);
 
             }
 
+
+            return;
+
         }
+
 
         /* =============================================
            LOGIN FAILED
-        ============================================= */
+           ============================================= */
 
-        else{
-
-            showMessage(
-                "❌ " +
-                (
-                    result.message ||
-                    "Invalid User ID or Password."
-                ),
-                "error"
-            );
-
-        }
+        showMessage(
+            "❌ " +
+            (
+                result.message ||
+                "Invalid Enrollment / User ID or Password."
+            ),
+            "error"
+        );
 
     }
+
+
     catch(error){
 
         console.error(
@@ -561,20 +722,25 @@ async function login(){
             error
         );
 
+
         showMessage(
-            "❌ Login connection error. Check your Apps Script deployment.",
+            "❌ " + error.message,
             "error"
         );
 
     }
+
+
     finally{
 
-        loginBtn.disabled=false;
+        loginBtn.disabled =
+        false;
 
-        loginBtn.textContent=
+        loginBtn.textContent =
         "🔓 Login";
 
-        loading.style.display="none";
+        loading.style.display =
+        "none";
 
     }
 
@@ -583,14 +749,16 @@ async function login(){
 
 /* =====================================================
    ENTER KEY
-===================================================== */
+   ===================================================== */
 
 userId.addEventListener(
     "keydown",
     function(e){
 
-        if(e.key==="Enter"){
+        if(e.key === "Enter"){
+
             password.focus();
+
         }
 
     }
@@ -601,8 +769,10 @@ password.addEventListener(
     "keydown",
     function(e){
 
-        if(e.key==="Enter"){
+        if(e.key === "Enter"){
+
             login();
+
         }
 
     }
@@ -611,11 +781,12 @@ password.addEventListener(
 
 /* =====================================================
    START
-===================================================== */
+   ===================================================== */
 
 checkAPI();
 
 </script>
 
 </body>
+
 </html>

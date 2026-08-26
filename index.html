@@ -2,302 +2,177 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>B.Pharmacy Attendance | Login</title>
+<title>B.Pharmacy Attendance — Login</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-:root {
-    --primary: #5b4bb7;
-    --secondary: #8e63ce;
-    --accent: #00b894;
-    --danger: #e74c3c;
-    --dark: #17142b;
-    --white: #ffffff;
-}
-
-body {
-    min-height: 100vh;
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+body{
+    min-height:100vh;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    color:#fff;
     background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,255,255,.18),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(255,255,255,.12),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #211b42,
-            #5b4bb7,
-            #9b6fd1
-        );
-
-    color: white;
-    padding: 20px;
+        radial-gradient(circle at 15% 10%,#ffffff35,transparent 28%),
+        radial-gradient(circle at 85% 90%,#ffb6d535,transparent 30%),
+        linear-gradient(135deg,#211b3d,#514483,#9f6f8f);
 }
 
-.login-container {
-    width: 100%;
-    max-width: 430px;
+.login-container{
+    width:100%;
+    max-width:430px;
 }
 
-.login-card {
-    width: 100%;
-    padding: 30px 25px;
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.20),
-            rgba(255,255,255,.08)
-        );
-
-    border: 1px solid rgba(255,255,255,.25);
-
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.35);
-
-    text-align: center;
+.login-card{
+    padding:28px;
+    border-radius:28px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);
+    backdrop-filter:blur(20px);
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
 }
 
-.logo {
-    width: 85px;
-    height: 85px;
-
-    border-radius: 22px;
-
-    object-fit: cover;
-
-    margin-bottom: 15px;
-
-    border: 3px solid rgba(255,255,255,.35);
-
-    box-shadow:
-        0 10px 30px rgba(0,0,0,.25);
+.logo{
+    width:85px;
+    height:85px;
+    object-fit:cover;
+    border-radius:24px;
+    display:block;
+    margin:0 auto 15px;
+    box-shadow:0 10px 30px #0005;
 }
 
-h1 {
-    font-size: 25px;
-    margin-bottom: 5px;
+h1{
+    text-align:center;
+    font-size:24px;
 }
 
-.subtitle {
-    font-size: 13px;
-    opacity: .75;
-    margin-bottom: 25px;
+.subtitle{
+    text-align:center;
+    font-size:12px;
+    opacity:.8;
+    margin:6px 0 22px;
 }
 
-.form-group {
-    text-align: left;
-    margin-bottom: 14px;
+.mode{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:15px;
 }
 
-.form-group label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 6px;
-    opacity: .9;
+.mode button{
+    border:1px solid #ffffff35;
+    background:#ffffff15;
+    color:#fff;
+    padding:12px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 14px;
-
-    border: 1px solid rgba(255,255,255,.2);
-    border-radius: 13px;
-
-    outline: none;
-
-    background: rgba(255,255,255,.95);
-    color: #111827;
-
-    font-size: 15px;
-
-    transition: .2s;
+.mode button.active{
+    background:#fff;
+    color:#392d61;
 }
 
-.form-group input:focus {
-    border-color: white;
-
-    box-shadow:
-        0 0 0 3px rgba(255,255,255,.15);
+.form{
+    display:none;
 }
 
-.login-btn {
-    width: 100%;
-
-    margin-top: 5px;
-
-    padding: 14px;
-
-    border: none;
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00b894,
-            #00cec9
-        );
-
-    color: white;
-
-    font-size: 15px;
-    font-weight: 800;
-
-    cursor: pointer;
-
-    transition: .2s;
+.form.active{
+    display:block;
 }
 
-.login-btn:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.2);
+label{
+    display:block;
+    font-size:12px;
+    font-weight:700;
+    margin:10px 0 5px;
 }
 
-.login-btn:active {
-    transform: scale(.98);
+input{
+    width:100%;
+    padding:13px;
+    border:0;
+    outline:none;
+    border-radius:12px;
+    background:#fff;
+    color:#111827;
+    font-size:15px;
 }
 
-.register-btn {
-    width: 100%;
-
-    margin-top: 10px;
-
-    padding: 13px;
-
-    border-radius: 13px;
-
-    border: 1px solid rgba(255,255,255,.3);
-
-    background: rgba(255,255,255,.10);
-
-    color: white;
-
-    font-weight: 700;
-
-    cursor: pointer;
-
-    transition: .2s;
+.login-btn{
+    width:100%;
+    margin-top:15px;
+    padding:13px;
+    border:0;
+    border-radius:12px;
+    background:#1976d2;
+    color:#fff;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer;
 }
 
-.register-btn:hover {
-    background: rgba(255,255,255,.18);
+.login-btn:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
 
-.message {
-    min-height: 24px;
-
-    margin-top: 12px;
-
-    font-size: 12px;
-
-    font-weight: 700;
+.register{
+    display:block;
+    text-align:center;
+    margin-top:16px;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
 }
 
-.success {
-    color: #69f0ae;
+.message{
+    min-height:22px;
+    margin-top:12px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
 }
 
-.error {
-    color: #ffb3b3;
+.success{
+    color:#69f0ae;
 }
 
-.info-box {
-    margin-top: 20px;
-
-    padding: 12px;
-
-    border-radius: 12px;
-
-    background: rgba(255,255,255,.08);
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-    opacity: .8;
+.error{
+    color:#ffb4b4;
 }
 
-.footer {
-    margin-top: 18px;
-
-    font-size: 11px;
-
-    opacity: .55;
+.loading{
+    display:none;
+    text-align:center;
+    margin-top:10px;
+    font-size:12px;
 }
 
-/* Loading */
-
-.loading {
-    display: none;
-
-    width: 18px;
-    height: 18px;
-
-    margin: 0 auto;
-
-    border: 3px solid rgba(255,255,255,.4);
-    border-top-color: white;
-
-    border-radius: 50%;
-
-    animation: spin .8s linear infinite;
+.footer{
+    text-align:center;
+    margin-top:18px;
+    font-size:11px;
+    opacity:.65;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
+@media(max-width:450px){
+    .login-card{
+        padding:22px;
     }
-}
-
-/* Mobile */
-
-@media(max-width:500px) {
-
-    body {
-        padding: 14px;
-    }
-
-    .login-card {
-        padding: 25px 20px;
-        border-radius: 23px;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
 }
 </style>
 </head>
@@ -306,112 +181,126 @@ h1 {
 
 <div class="login-container">
 
-    <div class="login-card">
+<div class="login-card">
 
-        <!-- Logo -->
-        <img
-            src="pic/1.jpg"
-            class="logo"
-            alt="B.Pharmacy">
+<img
+    src="pic/1.jpg"
+    class="logo"
+    alt="B.Pharmacy"
+    onerror="this.style.display='none'"
+>
 
-        <h1>🔐 Welcome Back</h1>
+<h1>🔐 Attendance Login</h1>
 
-        <div class="subtitle">
-            B.Pharmacy Attendance Management System
-        </div>
+<div class="subtitle">
+B.Pharmacy • 7th Semester
+</div>
 
+<div class="mode">
 
-        <!-- Login Form -->
+<button
+    id="studentMode"
+    class="active"
+    onclick="selectMode('student')">
+    👨‍🎓 Student
+</button>
 
-        <form id="loginForm">
+<button
+    id="adminMode"
+    onclick="selectMode('admin')">
+    👨‍💼 Admin
+</button>
 
-            <div class="form-group">
-
-                <label for="userId">
-                    👤 User ID
-                </label>
-
-                <input
-                    type="text"
-                    id="userId"
-                    placeholder="Enter your User ID"
-                    autocomplete="username"
-                    required>
-
-            </div>
+</div>
 
 
-            <div class="form-group">
+<!-- ================= STUDENT LOGIN ================= -->
 
-                <label for="password">
-                    🔑 Password
-                </label>
+<div id="studentForm" class="form active">
 
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter your password"
-                    autocomplete="current-password"
-                    required>
+<label>Student ID</label>
 
-            </div>
+<input
+    id="studentId"
+    type="text"
+    placeholder="Enter your ID"
+    autocomplete="username"
+>
 
+<label>Password</label>
 
-            <button
-                type="submit"
-                class="login-btn"
-                id="loginButton">
+<input
+    id="studentPassword"
+    type="password"
+    placeholder="Enter password"
+    autocomplete="current-password"
+>
 
-                🔓 Login
+<button
+    class="login-btn"
+    id="studentLoginBtn"
+    onclick="studentLogin()">
+    🔓 Student Login
+</button>
 
-            </button>
-
-        </form>
-
-
-        <div
-            class="loading"
-            id="loading">
-        </div>
+</div>
 
 
-        <div
-            class="message"
-            id="message">
-        </div>
+<!-- ================= ADMIN LOGIN ================= -->
+
+<div id="adminForm" class="form">
+
+<label>Admin ID</label>
+
+<input
+    id="adminId"
+    type="text"
+    placeholder="Enter admin ID"
+    autocomplete="username"
+>
+
+<label>Admin Password</label>
+
+<input
+    id="adminPassword"
+    type="password"
+    placeholder="Enter admin password"
+    autocomplete="current-password"
+>
+
+<button
+    class="login-btn"
+    id="adminLoginBtn"
+    onclick="adminLogin()">
+    🔐 Admin Login
+</button>
+
+</div>
 
 
-        <!-- Registration -->
+<div
+    id="loading"
+    class="loading">
+    ⏳ Checking login...
+</div>
 
-        <button
-            class="register-btn"
-            onclick="goRegister()">
-
-            📝 Create New Account
-
-        </button>
-
-
-        <div class="info-box">
-
-            New users must register first.
-            <br>
-
-            Your account will remain
-            <b>pending</b> until an administrator
-            approves it.
-
-        </div>
+<div
+    id="message"
+    class="message">
+</div>
 
 
-        <div class="footer">
+<a
+    href="register.html"
+    class="register">
+    📝 New Student? Register here
+</a>
 
-            B.Pharmacy • 7th Semester
+<div class="footer">
+B.Pharmacy Attendance Management System
+</div>
 
-        </div>
-
-    </div>
-
+</div>
 </div>
 
 
@@ -419,379 +308,396 @@ h1 {
 
 /* =====================================================
    GOOGLE APPS SCRIPT API
-   ===================================================== */
+===================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
 
 
 /* =====================================================
-   ELEMENTS
-   ===================================================== */
+   MODE
+===================================================== */
 
-const loginForm =
-    document.getElementById("loginForm");
+function selectMode(mode){
 
-const userIdInput =
-    document.getElementById("userId");
+    clearMessage();
 
-const passwordInput =
-    document.getElementById("password");
+    document
+        .getElementById("studentMode")
+        .classList.toggle("active",mode==="student");
 
-const message =
-    document.getElementById("message");
+    document
+        .getElementById("adminMode")
+        .classList.toggle("active",mode==="admin");
 
-const loginButton =
-    document.getElementById("loginButton");
+    document
+        .getElementById("studentForm")
+        .classList.toggle("active",mode==="student");
 
-const loading =
-    document.getElementById("loading");
-
-
-/* =====================================================
-   MESSAGE
-   ===================================================== */
-
-function showMessage(text, type) {
-
-    message.textContent = text;
-
-    message.className =
-        "message " + type;
-
+    document
+        .getElementById("adminForm")
+        .classList.toggle("active",mode==="admin");
 }
 
 
 /* =====================================================
-   LOADING
-   ===================================================== */
+   STUDENT LOGIN
+===================================================== */
 
-function setLoading(status) {
+async function studentLogin(){
 
-    if (status) {
+    const id =
+        document
+        .getElementById("studentId")
+        .value
+        .trim();
 
-        loginButton.disabled = true;
+    const password =
+        document
+        .getElementById("studentPassword")
+        .value;
 
-        loginButton.style.opacity = ".6";
-
-        loginButton.textContent =
-            "Checking...";
-
-        loading.style.display =
-            "block";
-
-    } else {
-
-        loginButton.disabled = false;
-
-        loginButton.style.opacity = "1";
-
-        loginButton.textContent =
-            "🔓 Login";
-
-        loading.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* =====================================================
-   LOGIN
-   ===================================================== */
-
-loginForm.addEventListener(
-    "submit",
-    async function(event) {
-
-        event.preventDefault();
-
-        const userId =
-            userIdInput.value.trim();
-
-        const password =
-            passwordInput.value.trim();
-
-
-        if (!userId || !password) {
-
-            showMessage(
-                "⚠️ Please enter User ID and Password.",
-                "error"
-            );
-
-            return;
-        }
-
-
-        setLoading(true);
+    if(!id || !password){
 
         showMessage(
-            "Checking account...",
-            "success"
+            "Please enter Student ID and Password.",
+            "error"
         );
 
+        return;
+    }
 
-        try {
+    setLoading(true);
 
-            /*
-             * Send login information
-             * to Google Apps Script.
-             */
+    try{
 
-            const url =
-                API_URL +
-                "?action=login" +
-                "&userId=" +
-                encodeURIComponent(userId) +
-                "&password=" +
-                encodeURIComponent(password);
+        const result =
+            await callAPI({
+                action:"login",
+                id:id,
+                password:password
+            });
 
+        console.log("Student login:",result);
 
-            const response =
-                await fetch(url, {
-                    method: "GET",
-                    cache: "no-store"
-                });
+        if(result.success){
 
+            saveSession(result,"student");
 
-            if (!response.ok) {
-
-                throw new Error(
-                    "Server error"
-                );
-
-            }
-
-
-            const result =
-                await response.json();
-
-
-            console.log(
-                "Login response:",
-                result
+            showMessage(
+                "Login successful. Opening dashboard...",
+                "success"
             );
 
+            setTimeout(()=>{
+                window.location.href="dashboard.html";
+            },500);
 
-            /* ==========================================
-               LOGIN SUCCESS
-               ========================================== */
-
-            if (
-                result.success === true &&
-                result.approved === true
-            ) {
-
-                /*
-                 * Save session information.
-                 *
-                 * Do NOT store the password.
-                 */
-
-                const session = {
-
-                    loggedIn: true,
-
-                    userId:
-                        result.userId ||
-                        userId,
-
-                    name:
-                        result.name ||
-                        "",
-
-                    enrollment:
-                        result.enrollment ||
-                        "",
-
-                    role:
-                        result.role ||
-                        "student",
-
-                    loginTime:
-                        Date.now()
-
-                };
-
-
-                sessionStorage.setItem(
-                    "BP7_SESSION",
-                    JSON.stringify(session)
-                );
-
-
-                /*
-                 * Also store a simple login flag.
-                 */
-
-                sessionStorage.setItem(
-                    "BP7_LOGGED_IN",
-                    "true"
-                );
-
-
-                showMessage(
-                    "✅ Login successful. Opening dashboard...",
-                    "success"
-                );
-
-
-                /*
-                 * Redirect to dashboard.
-                 */
-
-                setTimeout(
-                    function() {
-
-                        window.location.href =
-                            "dashboard.html";
-
-                    },
-                    500
-                );
-
-
-                return;
-            }
-
-
-            /* ==========================================
-               ACCOUNT NOT APPROVED
-               ========================================== */
-
-            if (
-                result.success === true &&
-                result.approved === false
-            ) {
-
-                showMessage(
-                    "⏳ Your account is waiting for admin approval.",
-                    "error"
-                );
-
-                passwordInput.value = "";
-
-                setLoading(false);
-
-                return;
-            }
-
-
-            /* ==========================================
-               INVALID LOGIN
-               ========================================== */
+        }else{
 
             showMessage(
                 result.message ||
-                "❌ Invalid User ID or Password.",
+                "Login failed. Check your ID and password.",
                 "error"
             );
 
-
-            passwordInput.value = "";
-
-            setLoading(false);
-
         }
 
-        catch(error) {
+    }catch(error){
 
-            console.error(
-                "Login error:",
-                error
-            );
+        console.error(error);
 
+        showMessage(
+            "Unable to connect to the server.",
+            "error"
+        );
 
-            showMessage(
-                "❌ Unable to connect to server. Please try again.",
-                "error"
-            );
+    }finally{
 
-
-            setLoading(false);
-
-        }
+        setLoading(false);
 
     }
-);
-
-
-/* =====================================================
-   REGISTER
-   ===================================================== */
-
-function goRegister() {
-
-    window.location.href =
-        "register.html";
-
 }
 
 
 /* =====================================================
-   PREVENT ACCESS IF ALREADY LOGGED IN
-   ===================================================== */
+   ADMIN LOGIN
+===================================================== */
 
-function checkExistingSession() {
+async function adminLogin(){
 
-    const logged =
-        sessionStorage.getItem(
-            "BP7_LOGGED_IN"
+    const id =
+        document
+        .getElementById("adminId")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("adminPassword")
+        .value;
+
+    if(!id || !password){
+
+        showMessage(
+            "Please enter Admin ID and Password.",
+            "error"
         );
 
-    const session =
-        sessionStorage.getItem(
-            "BP7_SESSION"
+        return;
+    }
+
+    setLoading(true);
+
+    try{
+
+        const result =
+            await callAPI({
+                action:"adminLogin",
+                id:id,
+                password:password
+            });
+
+        console.log("Admin login:",result);
+
+        if(result.success){
+
+            saveSession(result,"admin");
+
+            showMessage(
+                "Admin login successful.",
+                "success"
+            );
+
+            setTimeout(()=>{
+                window.location.href="admin.html";
+            },500);
+
+        }else{
+
+            showMessage(
+                result.message ||
+                "Invalid admin credentials.",
+                "error"
+            );
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        showMessage(
+            "Unable to connect to the server.",
+            "error"
         );
 
+    }finally{
 
-    if (
-        logged === "true" &&
-        session
-    ) {
+        setLoading(false);
 
-        try {
-
-            const data =
-                JSON.parse(session);
+    }
+}
 
 
-            /*
-             * Only redirect if the session
-             * is valid.
-             */
+/* =====================================================
+   CALL GOOGLE APPS SCRIPT
+===================================================== */
 
-            if (
-                data.loggedIn === true &&
-                data.userId
-            ) {
+async function callAPI(data){
 
-                window.location.replace(
-                    "dashboard.html"
-                );
+    const response = await fetch(API_URL,{
+        method:"POST",
 
+        headers:{
+            "Content-Type":
+            "text/plain;charset=utf-8"
+        },
+
+        body:JSON.stringify(data)
+
+    });
+
+    if(!response.ok){
+
+        throw new Error(
+            "HTTP error "+response.status
+        );
+
+    }
+
+    const text =
+        await response.text();
+
+    console.log("API response:",text);
+
+    try{
+
+        return JSON.parse(text);
+
+    }catch(e){
+
+        throw new Error(
+            "Invalid JSON response: "+text
+        );
+
+    }
+}
+
+
+/* =====================================================
+   SAVE LOGIN SESSION
+===================================================== */
+
+function saveSession(result,role){
+
+    sessionStorage.setItem(
+        "BP7_LOGGED_IN",
+        "true"
+    );
+
+    sessionStorage.setItem(
+        "BP7_ROLE",
+        role
+    );
+
+    if(result.token){
+
+        sessionStorage.setItem(
+            "BP7_TOKEN",
+            result.token
+        );
+
+    }
+
+    if(result.user){
+
+        sessionStorage.setItem(
+            "BP7_USER",
+            JSON.stringify(result.user)
+        );
+
+    }
+
+    if(result.userId){
+
+        sessionStorage.setItem(
+            "BP7_USER_ID",
+            result.userId
+        );
+
+    }
+
+    if(result.name){
+
+        sessionStorage.setItem(
+            "BP7_USER_NAME",
+            result.name
+        );
+
+    }
+}
+
+
+/* =====================================================
+   UI
+===================================================== */
+
+function showMessage(text,type){
+
+    const box =
+        document.getElementById("message");
+
+    box.textContent=text;
+
+    box.className=
+        "message "+
+        (type==="success"?"success":"error");
+}
+
+
+function clearMessage(){
+
+    const box =
+        document.getElementById("message");
+
+    box.textContent="";
+
+    box.className="message";
+}
+
+
+function setLoading(value){
+
+    document
+        .getElementById("loading")
+        .style.display =
+        value ? "block":"none";
+
+    document
+        .getElementById("studentLoginBtn")
+        .disabled=value;
+
+    document
+        .getElementById("adminLoginBtn")
+        .disabled=value;
+}
+
+
+/* =====================================================
+   ENTER KEY LOGIN
+===================================================== */
+
+document
+    .getElementById("studentPassword")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key==="Enter"){
+                studentLogin();
             }
 
         }
+    );
 
-        catch(error) {
 
-            sessionStorage.clear();
+document
+    .getElementById("adminPassword")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key==="Enter"){
+                adminLogin();
+            }
 
         }
+    );
+
+
+/* =====================================================
+   REMOVE OLD SESSION
+===================================================== */
+
+if(
+    sessionStorage.getItem("BP7_LOGGED_IN")==="true"
+){
+
+    const role =
+        sessionStorage.getItem("BP7_ROLE");
+
+    if(role==="admin"){
+
+        window.location.href="admin.html";
+
+    }else if(role==="student"){
+
+        window.location.href="dashboard.html";
 
     }
 
 }
-
-
-/* =====================================================
-   PAGE START
-   ===================================================== */
-
-checkExistingSession();
 
 </script>
 

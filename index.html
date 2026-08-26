@@ -1,1039 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>B.Pharmacy Attendance - Login</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>B.Pharmacy Attendance | Login</title>
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#5b4bb7;--secondary:#9b6fd1;--green:#00b894;
+  --red:#e74c3c;--blue:#3498db;--orange:#f39c12;
 }
-
 body{
-    min-height:100vh;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
-
-    font-family:Arial,Helvetica,sans-serif;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(255,255,255,.15),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 90% 90%,
-            rgba(255,180,220,.15),
-            transparent 30%
-        ),
-        linear-gradient(
-            135deg,
-            #403579,
-            #6655b5,
-            #8067c9
-        );
-
-    color:white;
+  min-height:100vh;padding:18px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:#fff;display:flex;align-items:center;justify-content:center;
+  background:
+    radial-gradient(circle at 10% 10%,#ffffff25,transparent 28%),
+    radial-gradient(circle at 90% 90%,#ffffff18,transparent 30%),
+    linear-gradient(135deg,#211b42,#5b4bb7,#9b6fd1);
 }
-
 .login-card{
-
-    width:100%;
-    max-width:540px;
-
-    padding:40px;
-
-    border-radius:32px;
-
-    background:rgba(255,255,255,.15);
-
-    border:1px solid rgba(255,255,255,.30);
-
-    backdrop-filter:blur(25px);
-    -webkit-backdrop-filter:blur(25px);
-
-    box-shadow:
-        0 30px 80px rgba(0,0,0,.30);
-
-    text-align:center;
+  width:min(440px,100%);padding:32px;border-radius:26px;
+  background:#ffffff18;border:1px solid #ffffff35;backdrop-filter:blur(20px);
+  box-shadow:0 25px 70px #0005;text-align:center;
 }
-
 .logo{
-
-    width:105px;
-    height:105px;
-
-    object-fit:cover;
-
-    border-radius:28px;
-
-    border:4px solid rgba(255,255,255,.40);
-
-    margin-bottom:20px;
+  width:86px;height:86px;border-radius:22px;object-fit:cover;
+  margin-bottom:16px;border:2px solid #ffffff50;background:#fff;
 }
-
-h1{
-
-    font-size:32px;
-
-    margin-bottom:8px;
+h1{font-size:28px;margin-bottom:7px}
+.subtitle{opacity:.82;font-size:13px;line-height:1.5;margin-bottom:22px}
+.role-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:18px}
+.role-tab{
+  border:1px solid #ffffff30;background:#ffffff0d;color:#fff;border-radius:12px;
+  padding:10px 5px;font-weight:750;cursor:pointer;font-size:12px;
 }
-
-.subtitle{
-
-    opacity:.85;
-
-    margin-bottom:30px;
-
-    line-height:1.5;
-}
-
-label{
-
-    display:block;
-
-    text-align:left;
-
-    margin:0 0 7px 5px;
-
-    font-weight:bold;
-}
-
+.role-tab.active{background:#fff;color:#4a3a9e}
+.field{text-align:left;margin-bottom:13px}
+label{display:block;font-size:12px;font-weight:750;margin:0 0 6px 4px}
 input{
-
-    width:100%;
-
-    height:60px;
-
-    border:0;
-
-    outline:none;
-
-    border-radius:17px;
-
-    padding:0 18px;
-
-    font-size:17px;
-
-    margin-bottom:18px;
-
-    background:white;
-
-    color:#222;
+  width:100%;height:52px;border:0;outline:none;border-radius:13px;
+  padding:0 15px;font-size:15px;background:#fff;color:#111827;
 }
-
-input:focus{
-
-    box-shadow:
-        0 0 0 3px rgba(255,255,255,.25);
+button.login{
+  width:100%;height:54px;border:0;border-radius:14px;
+  background:linear-gradient(135deg,#00bfa5,#00ced1);color:#fff;
+  font-size:16px;font-weight:800;cursor:pointer;margin-top:5px;
 }
-
-button{
-
-    width:100%;
-
-    height:60px;
-
-    border:0;
-
-    border-radius:17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00bfa5,
-            #00ced1
-        );
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    transition:.2s;
-}
-
-button:hover{
-
-    transform:translateY(-1px);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,.20);
-}
-
-button:disabled{
-
-    opacity:.60;
-
-    cursor:not-allowed;
-
-    transform:none;
-}
-
+button:disabled{opacity:.6;cursor:not-allowed}
 .register{
-
-    display:block;
-
-    margin-top:18px;
-
-    padding:17px;
-
-    border:1px solid rgba(255,255,255,.30);
-
-    border-radius:17px;
-
-    color:white;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    background:rgba(255,255,255,.06);
+  display:block;margin-top:13px;padding:13px;border:1px solid #ffffff30;
+  border-radius:13px;color:#fff;text-decoration:none;font-weight:700;font-size:13px;
+  background:#ffffff0d;
 }
-
-.register:hover{
-
-    background:rgba(255,255,255,.12);
-}
-
+.register:hover{background:#ffffff18}
 .info{
-
-    margin-top:20px;
-
-    padding:17px;
-
-    border-radius:16px;
-
-    background:rgba(255,255,255,.08);
-
-    font-size:13px;
-
-    line-height:1.6;
+  margin-top:15px;padding:13px;border-radius:13px;background:#ffffff0b;
+  font-size:11px;line-height:1.6;text-align:left;color:#eee;
 }
-
-#apiStatus{
-
-    margin-top:18px;
-
-    font-size:13px;
-
-    font-weight:bold;
-}
-
-#message{
-
-    min-height:25px;
-
-    margin-top:14px;
-
-    font-size:14px;
-
-    font-weight:bold;
-
-    line-height:1.5;
-}
-
-.success{
-
-    color:#7dffb2;
-}
-
-.error{
-
-    color:#ffb5b5;
-}
-
-.loading{
-
-    display:none;
-
-    margin-top:10px;
-
-    font-size:13px;
-}
-
-@media(max-width:600px){
-
-    .login-card{
-
-        padding:30px 20px;
-    }
-
-    h1{
-
-        font-size:27px;
-    }
-
-    .logo{
-
-        width:90px;
-        height:90px;
-    }
-}
-
+#apiStatus,#message{margin-top:12px;font-size:12px;font-weight:700;line-height:1.5}
+.success{color:#7dffb2}.error{color:#ffb5b5}.loading{display:none;margin-top:9px;font-size:12px}
+.hidden{display:none}
+@media(max-width:500px){.login-card{padding:25px 18px}h1{font-size:24px}}
 </style>
-
 </head>
-
-
 <body>
-
 
 <div class="login-card">
 
+  <img src="pic/1.jpg" class="logo" alt="B.Pharmacy"
+       onerror="this.style.display='none'">
 
-    <!-- LOGO -->
+  <h1>🔐 Welcome Back</h1>
+  <div class="subtitle">
+    B.Pharmacy Attendance Management System
+  </div>
 
-    <img
-        src="pic/1.jpg"
-        class="logo"
-        alt="B.Pharmacy"
-    >
+  <div class="role-tabs">
+    <button class="role-tab active" id="studentTab" onclick="selectRole('student')">🎓 Student</button>
+    <button class="role-tab" id="editorTab" onclick="selectRole('editor')">👨‍🏫 Editor</button>
+    <button class="role-tab" id="adminTab" onclick="selectRole('admin')">🔐 Admin</button>
+  </div>
 
+  <div class="field">
+    <label id="idLabel" for="userId">👤 Enrollment / User ID</label>
+    <input id="userId" type="text" autocomplete="username"
+           placeholder="Enter enrollment number">
+  </div>
 
-    <!-- TITLE -->
+  <div class="field">
+    <label for="password">🔑 Password</label>
+    <input id="password" type="password" autocomplete="current-password"
+           placeholder="Enter password">
+  </div>
 
-    <h1>
-        🔐 Welcome Back
-    </h1>
+  <button class="login" id="loginBtn" type="button" onclick="login()">
+    🔓 Login
+  </button>
 
+  <div id="loading" class="loading">⏳ Checking account...</div>
+  <div id="message"></div>
+  <div id="apiStatus">Checking API...</div>
 
-    <div class="subtitle">
-        B.Pharmacy Attendance Management System
-    </div>
+  <a href="register.html" class="register" id="registerLink">
+    📝 Create New Student Account
+  </a>
 
-
-    <!-- USER ID -->
-
-    <label for="userId">
-        👤 Admin ID / Enrollment Number
-    </label>
-
-
-    <input
-        id="userId"
-        type="text"
-        placeholder="Enter Admin ID or Enrollment"
-        autocomplete="username"
-    >
-
-
-    <!-- PASSWORD -->
-
-    <label for="password">
-        🔑 Password
-    </label>
-
-
-    <input
-        id="password"
-        type="password"
-        placeholder="Enter Password"
-        autocomplete="current-password"
-    >
-
-
-    <!-- LOGIN BUTTON -->
-
-    <button
-        id="loginBtn"
-        type="button"
-        onclick="login()"
-    >
-        🔓 Login
-    </button>
-
-
-    <!-- LOADING -->
-
-    <div
-        id="loading"
-        class="loading"
-    >
-        ⏳ Checking account...
-    </div>
-
-
-    <!-- MESSAGE -->
-
-    <div id="message"></div>
-
-
-    <!-- API STATUS -->
-
-    <div id="apiStatus">
-        Checking API...
-    </div>
-
-
-    <!-- REGISTER -->
-
-    <a
-        href="register.html"
-        class="register"
-    >
-        📝 Create New Student Account
-    </a>
-
-
-    <!-- INFORMATION -->
-
-    <div class="info">
-
-        <b>Students:</b>
-        Register first and wait for admin approval.
-
-        <br><br>
-
-        <b>Administrator:</b>
-        Use the Admin ID and Admin Password.
-
-    </div>
-
+  <div class="info" id="roleInfo">
+    <b>Student:</b> Register first and wait for admin approval.
+  </div>
 
 </div>
 
-
-
 <script>
-
-/* =====================================================
-   GOOGLE APPS SCRIPT API
-   ===================================================== */
-
 const API_URL =
 "https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
 
+let selectedRole = "student";
 
-/* =====================================================
-   ELEMENTS
-   ===================================================== */
+const userIdInput = document.getElementById("userId");
+const passwordInput = document.getElementById("password");
+const loginBtn = document.getElementById("loginBtn");
+const loading = document.getElementById("loading");
+const message = document.getElementById("message");
+const apiStatus = document.getElementById("apiStatus");
+const registerLink = document.getElementById("registerLink");
+const roleInfo = document.getElementById("roleInfo");
 
-const userIdInput =
-    document.getElementById("userId");
+function selectRole(role){
+  selectedRole = role;
 
-const passwordInput =
-    document.getElementById("password");
+  document.querySelectorAll(".role-tab")
+    .forEach(btn => btn.classList.remove("active"));
 
-const loginBtn =
-    document.getElementById("loginBtn");
+  document.getElementById(role + "Tab").classList.add("active");
 
-const message =
-    document.getElementById("message");
+  if(role === "admin"){
+    document.getElementById("idLabel").textContent = "🔐 Admin ID";
+    userIdInput.placeholder = "Enter Admin ID";
+    registerLink.style.display = "none";
+    roleInfo.innerHTML =
+      "<b>Administrator:</b> Full system access including user approval, attendance management and reset controls.";
+  }
+  else if(role === "editor"){
+    document.getElementById("idLabel").textContent = "👨‍🏫 Editor User ID";
+    userIdInput.placeholder = "Enter Editor User ID";
+    registerLink.style.display = "none";
+    roleInfo.innerHTML =
+      "<b>Editor:</b> Can mark, edit and save attendance and generate reports. Cannot approve users, delete attendance or reset the server.";
+  }
+  else{
+    document.getElementById("idLabel").textContent = "👤 Enrollment Number";
+    userIdInput.placeholder = "Enter enrollment number";
+    registerLink.style.display = "block";
+    roleInfo.innerHTML =
+      "<b>Student:</b> Register first and wait for admin approval.";
+  }
 
-const loading =
-    document.getElementById("loading");
+  clearMessage();
+  userIdInput.focus();
+}
 
-const apiStatus =
-    document.getElementById("apiStatus");
-
-
-/* =====================================================
-   MESSAGE
-   ===================================================== */
+function clearMessage(){
+  message.textContent = "";
+  message.className = "";
+}
 
 function showMessage(text,type){
-
-    message.textContent = text;
-
-    message.className = type || "";
-
+  message.textContent = text;
+  message.className = type || "";
 }
-
-
-/* =====================================================
-   CHECK API
-   ===================================================== */
-
-async function checkAPI(){
-
-    try{
-
-        const response =
-            await fetch(
-                API_URL,
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
-
-
-        const text =
-            await response.text();
-
-
-        console.log(
-            "API STATUS:",
-            text
-        );
-
-
-        let result = null;
-
-
-        try{
-
-            result =
-                JSON.parse(text);
-
-        }
-
-        catch(error){
-
-            result = null;
-
-        }
-
-
-        if(
-            response.ok &&
-            result &&
-            result.success === true
-        ){
-
-            apiStatus.textContent =
-                "🟢 B.Pharmacy Attendance API is working";
-
-            apiStatus.style.color =
-                "#7dffb2";
-
-        }
-
-        else if(response.ok){
-
-            apiStatus.textContent =
-                "🟢 API connected";
-
-            apiStatus.style.color =
-                "#7dffb2";
-
-        }
-
-        else{
-
-            throw new Error(
-                "API error"
-            );
-
-        }
-
-    }
-
-    catch(error){
-
-        console.error(
-            "API CHECK ERROR:",
-            error
-        );
-
-
-        apiStatus.textContent =
-            "🔴 API connection failed";
-
-        apiStatus.style.color =
-            "#ffb5b5";
-
-    }
-
-}
-
-
-/* =====================================================
-   LOGIN
-   ===================================================== */
 
 async function login(){
 
-    const id =
-        userIdInput.value.trim();
+  const id = userIdInput.value.trim();
+  const pass = passwordInput.value;
 
-    const pass =
-        passwordInput.value;
+  clearMessage();
 
+  if(!id){
+    showMessage("❌ Please enter your ID.", "error");
+    userIdInput.focus();
+    return;
+  }
 
-    /* -----------------------------------------------
-       VALIDATION
-       ----------------------------------------------- */
+  if(!pass){
+    showMessage("❌ Please enter your password.", "error");
+    passwordInput.focus();
+    return;
+  }
 
-    if(!id){
+  loginBtn.disabled = true;
+  loginBtn.textContent = "⏳ Logging in...";
+  loading.style.display = "block";
 
-        showMessage(
-            "❌ Please enter Admin ID or Enrollment Number.",
-            "error"
-        );
+  try{
 
-        userIdInput.focus();
+    let url;
 
-        return;
-
+    if(selectedRole === "admin"){
+      url =
+        API_URL +
+        "?action=adminLogin" +
+        "&userId=" + encodeURIComponent(id) +
+        "&password=" + encodeURIComponent(pass);
+    }
+    else{
+      /*
+       * Both Student and Editor accounts use the normal
+       * user login. The server returns the actual Role.
+       */
+      url =
+        API_URL +
+        "?action=login" +
+        "&enrollment=" + encodeURIComponent(id) +
+        "&password=" + encodeURIComponent(pass);
     }
 
+    const response = await fetch(url,{
+      method:"GET",
+      cache:"no-store",
+      redirect:"follow"
+    });
 
-    if(!pass){
+    const text = await response.text();
 
-        showMessage(
-            "❌ Please enter password.",
-            "error"
-        );
-
-        passwordInput.focus();
-
-        return;
-
+    let result;
+    try{
+      result = JSON.parse(text);
+    }catch(e){
+      throw new Error("Invalid response from server: " + text);
     }
 
+    console.log("LOGIN RESPONSE:",result);
 
-    /* -----------------------------------------------
-       CLEAR OLD SESSION
-       ----------------------------------------------- */
+    if(result.success !== true){
 
-    sessionStorage.clear();
+      showMessage(
+        "❌ " + (result.message || "Login failed."),
+        "error"
+      );
+      return;
+    }
 
+    if(!result.token){
+      throw new Error("Login succeeded but no session token was returned.");
+    }
 
-    /* -----------------------------------------------
-       LOADING
-       ----------------------------------------------- */
+    const returnedUser = result.user || {};
+    let actualRole =
+      String(
+        result.role ||
+        returnedUser.role ||
+        (selectedRole === "admin" ? "admin" : "student")
+      ).toLowerCase();
 
-    loginBtn.disabled = true;
+    if(actualRole === "administrator") actualRole = "admin";
 
-    loginBtn.textContent =
-        "⏳ Logging in...";
+    /*
+     * Prevent an Editor/Student from being treated as Admin
+     * merely because the frontend tab was selected.
+     */
+    if(selectedRole === "admin" && actualRole !== "admin"){
+      throw new Error("Server did not return an Administrator role.");
+    }
 
-    loading.style.display =
-        "block";
+    if(selectedRole === "editor" && actualRole === "student"){
+      throw new Error("This account is a Student account, not an Editor account.");
+    }
 
-    showMessage(
-        "",
-        ""
+    sessionStorage.setItem("BP7_LOGGED_IN","true");
+    sessionStorage.setItem("BP7_SESSION",result.token);
+
+    sessionStorage.setItem(
+      "BP7_USER_ID",
+      returnedUser.id || returnedUser.userId || id
     );
 
-
-    try{
-
-
-        /* =================================================
-           ADMIN LOGIN
-           
-           Admin credentials:
-           
-           ID       = ADMIN
-           Password = 811307
-           
-           The backend handles these credentials.
-           ================================================= */
-
-        if(
-            id.toUpperCase() === "ADMIN"
-        ){
-
-            const adminUrl =
-                API_URL +
-                "?action=adminLogin" +
-                "&id=" +
-                encodeURIComponent(id) +
-                "&password=" +
-                encodeURIComponent(pass);
-
-
-            console.log(
-                "Sending ADMIN login request"
-            );
-
-
-            const response =
-                await fetch(
-                    adminUrl,
-                    {
-                        method:"GET",
-                        cache:"no-store",
-                        redirect:"follow"
-                    }
-                );
-
-
-            const text =
-                await response.text();
-
-
-            console.log(
-                "ADMIN RESPONSE:",
-                text
-            );
-
-
-            let result;
-
-
-            try{
-
-                result =
-                    JSON.parse(text);
-
-            }
-
-            catch(error){
-
-                throw new Error(
-                    "Invalid response from server: " +
-                    text
-                );
-
-            }
-
-
-            /* -----------------------------------------
-               ADMIN SUCCESS
-               ----------------------------------------- */
-
-            if(
-                result.success === true
-            ){
-
-                const token =
-                    result.token ||
-                    "";
-
-
-                if(!token){
-
-                    throw new Error(
-                        "Admin login succeeded but no session token was returned."
-                    );
-
-                }
-
-
-                sessionStorage.setItem(
-                    "BP7_LOGGED_IN",
-                    "true"
-                );
-
-
-                sessionStorage.setItem(
-                    "BP7_SESSION",
-                    token
-                );
-
-
-                sessionStorage.setItem(
-                    "BP7_USER_ID",
-                    "ADMIN"
-                );
-
-
-                sessionStorage.setItem(
-                    "BP7_USER_NAME",
-                    "Administrator"
-                );
-
-
-                sessionStorage.setItem(
-                    "BP7_ROLE",
-                    "admin"
-                );
-
-
-                sessionStorage.setItem(
-                    "BP7_ENROLLMENT",
-                    "ADMIN"
-                );
-
-
-                showMessage(
-                    "✅ Admin login successful! Opening Admin Panel...",
-                    "success"
-                );
-
-
-                setTimeout(
-                    function(){
-
-                        window.location.href =
-                            "admin.html";
-
-                    },
-                    500
-                );
-
-
-                return;
-
-            }
-
-
-            /* -----------------------------------------
-               ADMIN FAILED
-               ----------------------------------------- */
-
-            showMessage(
-                "❌ " +
-                (
-                    result.message ||
-                    "Invalid Admin ID or password."
-                ),
-                "error"
-            );
-
-
-            return;
-
-        }
-
-
-        /* =================================================
-           STUDENT LOGIN
-           ================================================= */
-
-        const studentUrl =
-            API_URL +
-            "?action=login" +
-            "&enrollment=" +
-            encodeURIComponent(id) +
-            "&password=" +
-            encodeURIComponent(pass);
-
-
-        console.log(
-            "Sending STUDENT login request"
-        );
-
-
-        const response =
-            await fetch(
-                studentUrl,
-                {
-                    method:"GET",
-                    cache:"no-store",
-                    redirect:"follow"
-                }
-            );
-
-
-        const text =
-            await response.text();
-
-
-        console.log(
-            "STUDENT RESPONSE:",
-            text
-        );
-
-
-        let result;
-
-
-        try{
-
-            result =
-                JSON.parse(text);
-
-        }
-
-        catch(error){
-
-            throw new Error(
-                "Invalid response from server: " +
-                text
-            );
-
-        }
-
-
-        /* -----------------------------------------
-           STUDENT SUCCESS
-           ----------------------------------------- */
-
-        if(
-            result.success === true
-        ){
-
-            if(!result.token){
-
-                throw new Error(
-                    "Login succeeded but no session token was returned."
-                );
-
-            }
-
-
-            sessionStorage.setItem(
-                "BP7_LOGGED_IN",
-                "true"
-            );
-
-
-            sessionStorage.setItem(
-                "BP7_SESSION",
-                result.token
-            );
-
-
-            sessionStorage.setItem(
-                "BP7_USER_ID",
-                result.user &&
-                result.user.id
-                    ? result.user.id
-                    : id
-            );
-
-
-            sessionStorage.setItem(
-                "BP7_USER_NAME",
-                result.user &&
-                result.user.name
-                    ? result.user.name
-                    : id
-            );
-
-
-            sessionStorage.setItem(
-                "BP7_ENROLLMENT",
-                result.user &&
-                result.user.enrollment
-                    ? result.user.enrollment
-                    : id
-            );
-
-
-            sessionStorage.setItem(
-                "BP7_ROLE",
-                "student"
-            );
-
-
-            showMessage(
-                "✅ Login successful! Opening Dashboard...",
-                "success"
-            );
-
-
-            setTimeout(
-                function(){
-
-                    window.location.href =
-                        "dashboard.html";
-
-                },
-                500
-            );
-
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------
-           STUDENT FAILED
-           ----------------------------------------- */
-
-        showMessage(
-            "❌ " +
-            (
-                result.message ||
-                "Account not found."
-            ),
-            "error"
-        );
-
-    }
-
-
-    catch(error){
-
-        console.error(
-            "LOGIN ERROR:",
-            error
-        );
-
-
-        showMessage(
-            "❌ " +
-            (
-                error.message ||
-                "Unable to connect to server."
-            ),
-            "error"
-        );
-
-    }
-
-
-    finally{
-
-        loginBtn.disabled =
-            false;
-
-        loginBtn.textContent =
-            "🔓 Login";
-
-        loading.style.display =
-            "none";
-
-    }
-
+    sessionStorage.setItem(
+      "BP7_USER_NAME",
+      returnedUser.name || id
+    );
+
+    sessionStorage.setItem(
+      "BP7_ENROLLMENT",
+      returnedUser.enrollment || (actualRole === "admin" ? "ADMIN" : id)
+    );
+
+    sessionStorage.setItem("BP7_ROLE",actualRole);
+
+    showMessage(
+      "✅ Login successful! Opening " +
+      (actualRole === "admin" ? "Admin Panel..." :
+       actualRole === "editor" ? "Editor Panel..." :
+       "Dashboard..."),
+      "success"
+    );
+
+    setTimeout(function(){
+
+      if(actualRole === "admin"){
+        window.location.href = "admin.html";
+      }
+      else if(actualRole === "editor"){
+        /*
+         * Editor can use the same dashboard/attendance pages,
+         * while server-side permissions control what they can do.
+         */
+        window.location.href = "dashboard.html";
+      }
+      else{
+        window.location.href = "dashboard.html";
+      }
+
+    },500);
+
+  }
+  catch(error){
+
+    console.error("LOGIN ERROR:",error);
+
+    showMessage(
+      "❌ " + (error.message || "Unable to connect to server."),
+      "error"
+    );
+
+  }
+  finally{
+
+    loginBtn.disabled = false;
+    loginBtn.textContent = "🔓 Login";
+    loading.style.display = "none";
+
+  }
 }
 
+async function checkAPI(){
 
-/* =====================================================
-   ENTER KEY SUPPORT
-   ===================================================== */
+  try{
 
-userIdInput.addEventListener(
-    "keydown",
-    function(event){
+    const response = await fetch(API_URL,{
+      method:"GET",
+      cache:"no-store"
+    });
 
-        if(
-            event.key === "Enter"
-        ){
+    const text = await response.text();
 
-            passwordInput.focus();
+    let result;
+    try{
+      result = JSON.parse(text);
+    }catch(e){
+      throw new Error("Invalid API response");
+    }
 
-        }
+    if(result.success === true){
+
+      apiStatus.textContent = "🟢 Server connected";
+      apiStatus.className = "success";
+
+    }else{
+
+      apiStatus.textContent = "🟠 Server responded";
+      apiStatus.className = "success";
 
     }
-);
 
+  }
+  catch(error){
 
-passwordInput.addEventListener(
-    "keydown",
-    function(event){
+    console.error("API CHECK:",error);
 
-        if(
-            event.key === "Enter"
-        ){
+    apiStatus.textContent =
+      "🔴 Unable to connect to Apps Script";
 
-            login();
+    apiStatus.className = "error";
 
-        }
+  }
+}
 
-    }
-);
+userIdInput.addEventListener("keydown",function(event){
+  if(event.key === "Enter") passwordInput.focus();
+});
 
-
-/* =====================================================
-   START API CHECK
-   ===================================================== */
+passwordInput.addEventListener("keydown",function(event){
+  if(event.key === "Enter") login();
+});
 
 checkAPI();
-
 </script>
 
 </body>
-
 </html>

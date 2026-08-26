@@ -1,92 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>B.Pharmacy | Register</title>
+<title>B.Pharmacy | Registration</title>
 
 <style>
-
-/* =====================================================
-   BASIC
-===================================================== */
-
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
-    -webkit-tap-highlight-color:transparent;
+    box-sizing:border-box;
+}
+
+:root{
+    --primary:#5b4bb7;
+    --secondary:#9b6fd1;
+    --success:#00b894;
+    --danger:#e74c3c;
+    --dark:#17142b;
+    --white:#fff;
 }
 
 body{
-
     min-height:100vh;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
     padding:20px;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     font-family:
+        Inter,
         system-ui,
         -apple-system,
+        BlinkMacSystemFont,
         "Segoe UI",
-        Arial,
         sans-serif;
 
     color:white;
 
     background:
-
         radial-gradient(
             circle at 10% 10%,
-            rgba(155,135,255,.35),
+            rgba(255,255,255,.18),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 90% 90%,
-            rgba(255,117,168,.30),
+            rgba(255,255,255,.13),
             transparent 30%
         ),
-
         linear-gradient(
             135deg,
-            #17152f 0%,
-            #493c78 50%,
-            #8e5478 100%
+            #211b42,
+            #5b4bb7,
+            #9b6fd1
         );
-
 }
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
 
 .container{
-
     width:100%;
-
-    max-width:470px;
-
+    max-width:480px;
 }
 
-
-/* =====================================================
-   CARD
-===================================================== */
-
 .card{
-
     padding:28px 24px;
 
     border-radius:28px;
@@ -94,167 +72,74 @@ body{
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.18),
-            rgba(255,255,255,.07)
+            rgba(255,255,255,.20),
+            rgba(255,255,255,.08)
         );
 
     border:
         1px solid rgba(255,255,255,.25);
 
-    backdrop-filter:blur(22px);
-
-    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(25px);
+    -webkit-backdrop-filter:blur(25px);
 
     box-shadow:
-        0 25px 70px rgba(0,0,0,.40);
-
-    animation:cardIn .45s ease;
-
+        0 25px 70px rgba(0,0,0,.35);
 }
-
-
-@keyframes cardIn{
-
-    from{
-
-        opacity:0;
-
-        transform:
-            translateY(20px)
-            scale(.98);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
 
 .header{
-
     text-align:center;
-
     margin-bottom:22px;
-
 }
 
 .logo{
-
-    width:78px;
-
-    height:78px;
-
-    object-fit:cover;
+    width:75px;
+    height:75px;
 
     border-radius:20px;
 
-    margin-bottom:12px;
+    object-fit:cover;
+
+    margin-bottom:10px;
 
     border:
-        2px solid
-        rgba(255,255,255,.35);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.30);
-
+        3px solid rgba(255,255,255,.3);
 }
 
-h1{
-
+.header h1{
     font-size:23px;
-
-    font-weight:800;
-
     margin-bottom:5px;
-
 }
 
-.subtitle{
-
+.header p{
     font-size:12px;
-
     opacity:.75;
-
-    line-height:1.5;
-
 }
-
-
-/* =====================================================
-   FORM
-===================================================== */
 
 .form-group{
-
-    margin-bottom:14px;
-
+    margin-bottom:13px;
 }
 
-label{
-
+.form-group label{
     display:block;
 
     font-size:12px;
 
-    font-weight:700;
+    font-weight:750;
 
     margin-bottom:6px;
-
-    opacity:.9;
-
 }
 
-.input-wrapper{
-
-    position:relative;
-
-}
-
-.input-icon{
-
-    position:absolute;
-
-    left:13px;
-
-    top:50%;
-
-    transform:
-        translateY(-50%);
-
-    font-size:16px;
-
-    opacity:.65;
-
-}
-
-input,
-select{
-
+.form-group input{
     width:100%;
 
-    padding:
-        13px
-        13px
-        13px
-        42px;
+    padding:13px;
 
-    border:none;
-
-    outline:none;
+    border:
+        1px solid rgba(255,255,255,.2);
 
     border-radius:12px;
+
+    outline:none;
 
     background:#fff;
 
@@ -262,521 +147,387 @@ select{
 
     font-size:14px;
 
+    transition:.2s;
 }
 
-select{
-
-    padding-left:42px;
-
-    cursor:pointer;
-
-}
-
-input:focus,
-select:focus{
+.form-group input:focus{
+    border-color:#fff;
 
     box-shadow:
-        0 0 0 3px
-        rgba(144,202,249,.35);
-
+        0 0 0 3px rgba(255,255,255,.15);
 }
 
-
-/* =====================================================
-   PASSWORD INFO
-===================================================== */
-
-.password-info{
-
+.password-note{
     font-size:10px;
-
     opacity:.65;
-
-    margin-top:5px;
-
+    margin-top:4px;
 }
 
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-button{
-
+.register-btn{
     width:100%;
 
-    padding:13px;
+    padding:14px;
+
+    margin-top:4px;
 
     border:none;
 
     border-radius:13px;
 
-    font-size:14px;
+    background:
+        linear-gradient(
+            135deg,
+            #00b894,
+            #00cec9
+        );
+
+    color:white;
+
+    font-size:15px;
 
     font-weight:800;
 
     cursor:pointer;
 
-    transition:.15s;
-
-}
-
-.register-btn{
-
-    margin-top:5px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00a844,
-            #008f3b
-        );
-
-    color:white;
-
-    box-shadow:
-        0 8px 20px
-        rgba(0,168,68,.25);
-
+    transition:.2s;
 }
 
 .register-btn:hover{
+    transform:translateY(-2px);
 
-    transform:
-        translateY(-1px);
-
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.2);
 }
 
 .register-btn:active{
-
-    transform:
-        scale(.98);
-
-}
-
-.register-btn:disabled{
-
-    opacity:.6;
-
-    cursor:not-allowed;
-
+    transform:scale(.98);
 }
 
 .back-btn{
+    width:100%;
+
+    padding:12px;
 
     margin-top:10px;
+
+    border-radius:12px;
+
+    border:
+        1px solid rgba(255,255,255,.3);
 
     background:
         rgba(255,255,255,.10);
 
     color:white;
 
-    border:
-        1px solid
-        rgba(255,255,255,.22);
+    font-weight:700;
 
+    cursor:pointer;
 }
 
-
-/* =====================================================
-   MESSAGE
-===================================================== */
+.back-btn:hover{
+    background:
+        rgba(255,255,255,.18);
+}
 
 .message{
-
-    min-height:20px;
-
-    margin-top:12px;
+    min-height:25px;
 
     text-align:center;
 
+    margin-top:12px;
+
     font-size:12px;
 
-    font-weight:700;
-
-    line-height:1.5;
-
+    font-weight:750;
 }
 
-.message.error{
-
-    color:#ffb4b4;
-
+.success{
+    color:#69f0ae;
 }
 
-.message.success{
-
-    color:#8affbd;
-
+.error{
+    color:#ffb3b3;
 }
-
-
-/* =====================================================
-   APPROVAL NOTICE
-===================================================== */
-
-.notice{
-
-    margin-top:17px;
-
-    padding:12px;
-
-    border-radius:12px;
-
-    background:
-        rgba(255,193,7,.12);
-
-    border:
-        1px solid
-        rgba(255,193,7,.25);
-
-    font-size:11px;
-
-    line-height:1.6;
-
-    color:#ffe69a;
-
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
 
 .loading{
+    display:none;
 
-    display:inline-flex;
+    width:20px;
+    height:20px;
 
-    align-items:center;
-
-    justify-content:center;
-
-    gap:8px;
-
-}
-
-.spinner{
-
-    width:15px;
-
-    height:15px;
+    margin:12px auto 0;
 
     border:
-        2px solid
-        rgba(255,255,255,.4);
+        3px solid rgba(255,255,255,.35);
 
     border-top-color:white;
 
     border-radius:50%;
 
-    animation:
-        spin .7s linear infinite;
-
+    animation:spin .8s linear infinite;
 }
 
 @keyframes spin{
-
     to{
-
         transform:rotate(360deg);
-
     }
-
 }
 
+.approval-info{
+    margin-top:18px;
 
-/* =====================================================
-   MOBILE
-===================================================== */
+    padding:13px;
 
-@media(max-width:480px){
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    font-size:11px;
+
+    line-height:1.6;
+
+    opacity:.85;
+}
+
+.footer{
+    text-align:center;
+
+    margin-top:17px;
+
+    font-size:10px;
+
+    opacity:.55;
+}
+
+@media(max-width:500px){
 
     body{
-
-        padding:14px;
-
+        padding:12px;
     }
 
     .card{
-
         padding:24px 18px;
-
-        border-radius:24px;
-
     }
 
-    h1{
-
+    .header h1{
         font-size:21px;
-
     }
-
-    .logo{
-
-        width:70px;
-
-        height:70px;
-
-    }
-
 }
-
 </style>
-
 </head>
 
-
 <body>
-
 
 <div class="container">
 
 <div class="card">
 
+    <!-- HEADER -->
 
-<!-- =================================================
-     HEADER
-================================================== -->
+    <div class="header">
 
-<div class="header">
+        <img
+            src="pic/1.jpg"
+            class="logo"
+            alt="B.Pharmacy">
 
-    <img
-        src="pic/1.jpg"
-        alt="B.Pharmacy"
-        class="logo"
-        onerror="this.style.display='none'"
-    >
+        <h1>📝 Create Account</h1>
 
-    <h1>
-        📝 Create Account
-    </h1>
+        <p>
+            B.Pharmacy Attendance Management System
+        </p>
 
-    <p class="subtitle">
-        B.Pharmacy – 7th Semester<br>
-        Attendance Management System
-    </p>
+    </div>
 
-</div>
 
+    <!-- REGISTRATION FORM -->
 
-<!-- =================================================
-     REGISTRATION FORM
-================================================== -->
+    <form id="registerForm">
 
-<form
-    id="registerForm"
-    onsubmit="registerUser(event)"
->
 
+        <!-- USER ID -->
 
-<!-- NAME -->
+        <div class="form-group">
 
-<div class="form-group">
+            <label for="userId">
+                👤 User ID
+            </label>
 
-<label for="name">
-    Full Name
-</label>
+            <input
+                type="text"
+                id="userId"
+                placeholder="Create a unique User ID"
+                autocomplete="username"
+                required>
 
-<div class="input-wrapper">
+        </div>
 
-<span class="input-icon">
-    👤
-</span>
 
-<input
-    id="name"
-    type="text"
-    placeholder="Enter your full name"
-    autocomplete="name"
-    required
->
+        <!-- FULL NAME -->
 
-</div>
+        <div class="form-group">
 
-</div>
+            <label for="name">
+                🧑 Full Name
+            </label>
 
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required>
 
-<!-- ENROLLMENT -->
+        </div>
 
-<div class="form-group">
 
-<label for="enrollment">
-    Enrollment Number
-</label>
+        <!-- ENROLLMENT -->
 
-<div class="input-wrapper">
+        <div class="form-group">
 
-<span class="input-icon">
-    🎓
-</span>
+            <label for="enrollment">
+                🎓 Enrollment Number
+            </label>
 
-<input
-    id="enrollment"
-    type="text"
-    placeholder="Example: AJU/230001"
-    autocomplete="off"
-    required
->
+            <input
+                type="text"
+                id="enrollment"
+                placeholder="Example: AJU/230001"
+                required>
 
-</div>
+        </div>
 
-</div>
 
+        <!-- EMAIL -->
 
-<!-- GROUP -->
+        <div class="form-group">
 
-<div class="form-group">
+            <label for="email">
+                📧 Email Address
+            </label>
 
-<label for="group">
-    Group
-</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                autocomplete="email"
+                required>
 
-<div class="input-wrapper">
+        </div>
 
-<span class="input-icon">
-    👥
-</span>
 
-<select
-    id="group"
-    required
->
+        <!-- PASSWORD -->
 
-<option value="">
-    Select your group
-</option>
+        <div class="form-group">
 
-<option value="A">
-    Group A
-</option>
+            <label for="password">
+                🔑 Password
+            </label>
 
-<option value="B">
-    Group B
-</option>
+            <input
+                type="password"
+                id="password"
+                placeholder="Create password"
+                autocomplete="new-password"
+                required>
 
-<option value="C">
-    Group C
-</option>
+            <div class="password-note">
+                Minimum 6 characters recommended.
+            </div>
 
-<option value="D">
-    Group D
-</option>
+        </div>
 
-</select>
 
-</div>
+        <!-- CONFIRM PASSWORD -->
 
-</div>
+        <div class="form-group">
 
+            <label for="confirmPassword">
+                🔐 Confirm Password
+            </label>
 
-<!-- PASSWORD -->
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Re-enter password"
+                autocomplete="new-password"
+                required>
 
-<div class="form-group">
+        </div>
 
-<label for="password">
-    Password
-</label>
 
-<div class="input-wrapper">
+        <!-- REGISTER -->
 
-<span class="input-icon">
-    🔑
-</span>
+        <button
+            type="submit"
+            class="register-btn"
+            id="registerButton">
 
-<input
-    id="password"
-    type="password"
-    placeholder="Create password"
-    autocomplete="new-password"
-    minlength="4"
-    required
->
+            📝 Submit Registration
 
-</div>
+        </button>
 
-<div class="password-info">
-    Minimum 4 characters
-</div>
+    </form>
 
-</div>
 
+    <!-- LOADING -->
 
-<!-- CONFIRM PASSWORD -->
+    <div
+        class="loading"
+        id="loading">
+    </div>
 
-<div class="form-group">
 
-<label for="confirmPassword">
-    Confirm Password
-</label>
+    <!-- MESSAGE -->
 
-<div class="input-wrapper">
+    <div
+        class="message"
+        id="message">
+    </div>
 
-<span class="input-icon">
-    🔐
-</span>
 
-<input
-    id="confirmPassword"
-    type="password"
-    placeholder="Re-enter password"
-    autocomplete="new-password"
-    minlength="4"
-    required
->
+    <!-- BACK -->
 
-</div>
+    <button
+        class="back-btn"
+        onclick="goLogin()">
 
-</div>
+        ← Back to Login
 
+    </button>
 
-<!-- REGISTER -->
 
-<button
-    type="submit"
-    id="registerBtn"
-    class="register-btn"
->
+    <!-- APPROVAL INFO -->
 
-    📝 Submit Registration
+    <div class="approval-info">
 
-</button>
+        🔐 <b>Admin Approval Required</b>
 
+        <br><br>
 
-</form>
+        After registration, your account will be
+        marked as <b>Pending</b>.
 
+        <br>
 
-<!-- MESSAGE -->
+        An administrator must approve your account
+        before you can log in.
 
-<div
-    id="message"
-    class="message"
-></div>
+        <br>
 
+        Once approved, use your User ID and password
+        on the login page.
 
-<!-- APPROVAL NOTICE -->
+    </div>
 
-<div class="notice">
 
-    ⚠️ <b>Admin Approval Required</b><br>
+    <div class="footer">
 
-    After registration, your account will remain
-    <b>Pending</b>. An administrator must approve
-    your account before you can log in.
+        B.Pharmacy • 7th Semester
 
-</div>
-
-
-<!-- BACK -->
-
-<button
-    class="back-btn"
-    onclick="goToLogin()"
->
-
-    ← Back to Login
-
-</button>
-
+    </div>
 
 </div>
 
@@ -787,344 +538,343 @@ button{
 
 /* =====================================================
    GOOGLE APPS SCRIPT URL
-===================================================== */
+   ===================================================== */
 
 const API_URL =
 "https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
 
 
 /* =====================================================
-   REGISTER USER
-===================================================== */
+   ELEMENTS
+   ===================================================== */
 
-async function registerUser(event){
+const form =
+    document.getElementById("registerForm");
 
-    event.preventDefault();
+const message =
+    document.getElementById("message");
 
+const button =
+    document.getElementById("registerButton");
 
-    /* ---------- GET VALUES ---------- */
-
-    const name =
-        document
-        .getElementById("name")
-        .value
-        .trim();
-
-    const enrollment =
-        document
-        .getElementById("enrollment")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const group =
-        document
-        .getElementById("group")
-        .value;
-
-    const password =
-        document
-        .getElementById("password")
-        .value;
-
-    const confirmPassword =
-        document
-        .getElementById("confirmPassword")
-        .value;
-
-
-    /* ---------- VALIDATION ---------- */
-
-    if(name.length < 2){
-
-        showMessage(
-            "Please enter your full name.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(enrollment.length < 5){
-
-        showMessage(
-            "Please enter a valid enrollment number.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(!group){
-
-        showMessage(
-            "Please select your group.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(password.length < 4){
-
-        showMessage(
-            "Password must contain at least 4 characters.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    if(password !== confirmPassword){
-
-        showMessage(
-            "Passwords do not match.",
-            "error"
-        );
-
-        return;
-
-    }
-
-
-    /* ---------- BUTTON ---------- */
-
-    const button =
-        document.getElementById(
-            "registerBtn"
-        );
-
-    button.disabled = true;
-
-    button.innerHTML = `
-
-        <span class="loading">
-
-            <span class="spinner"></span>
-
-            Submitting...
-
-        </span>
-
-    `;
-
-
-    showMessage(
-        "",
-        ""
-    );
-
-
-    try{
-
-
-        /* =============================================
-           SEND REGISTRATION TO GOOGLE APPS SCRIPT
-        ============================================= */
-
-        const response =
-            await fetch(
-
-                API_URL,
-
-                {
-
-                    method:"POST",
-
-                    headers:{
-
-                        "Content-Type":
-                        "text/plain;charset=utf-8"
-
-                    },
-
-                    body:JSON.stringify({
-
-                        action:"register",
-
-                        name:name,
-
-                        enrollment:enrollment,
-
-                        group:group,
-
-                        password:password
-
-                    })
-
-                }
-
-            );
-
-
-        /* ---------- READ RESPONSE ---------- */
-
-        const result =
-            await response.json();
-
-
-        console.log(
-            "Registration response:",
-            result
-        );
-
-
-        /* =============================================
-           SUCCESS
-        ============================================= */
-
-        if(result.success === true){
-
-            showMessage(
-
-                "✅ Registration successful! Your account is waiting for admin approval.",
-
-                "success"
-
-            );
-
-
-            /*
-             Clear form
-            */
-
-            document
-            .getElementById(
-                "registerForm"
-            )
-            .reset();
-
-
-            /*
-             Give user time to
-             read success message.
-            */
-
-            setTimeout(
-
-                function(){
-
-                    window.location.href =
-                        "index.html";
-
-                },
-
-                2500
-
-            );
-
-        }
-
-
-        /* =============================================
-           ERROR
-        ============================================= */
-
-        else{
-
-            showMessage(
-
-                result.message ||
-                "Registration failed. Please try again.",
-
-                "error"
-
-            );
-
-            resetButton();
-
-        }
-
-    }
-
-
-    /* =============================================
-       NETWORK ERROR
-    ============================================= */
-
-    catch(error){
-
-        console.error(
-            "Registration error:",
-            error
-        );
-
-
-        showMessage(
-
-            "❌ Unable to connect to the server. Please check your internet connection.",
-
-            "error"
-
-        );
-
-
-        resetButton();
-
-    }
-
-}
+const loading =
+    document.getElementById("loading");
 
 
 /* =====================================================
    SHOW MESSAGE
-===================================================== */
+   ===================================================== */
 
-function showMessage(
-    text,
-    type
-){
+function showMessage(text,type){
 
-    const message =
-        document.getElementById(
-            "message"
-        );
-
-
-    message.textContent =
-        text;
-
+    message.textContent = text;
 
     message.className =
-        "message " +
-        (type || "");
-
+        "message " + type;
 }
 
 
 /* =====================================================
-   RESET BUTTON
-===================================================== */
+   LOADING
+   ===================================================== */
 
-function resetButton(){
+function setLoading(status){
 
-    const button =
-        document.getElementById(
-            "registerBtn"
+    if(status){
+
+        button.disabled = true;
+
+        button.style.opacity = ".6";
+
+        button.textContent =
+            "Submitting...";
+
+        loading.style.display =
+            "block";
+
+    }else{
+
+        button.disabled = false;
+
+        button.style.opacity = "1";
+
+        button.textContent =
+            "📝 Submit Registration";
+
+        loading.style.display =
+            "none";
+    }
+}
+
+
+/* =====================================================
+   FORM SUBMIT
+   ===================================================== */
+
+form.addEventListener(
+    "submit",
+    async function(event){
+
+        event.preventDefault();
+
+
+        /* ==============================================
+           GET VALUES
+           ============================================== */
+
+        const userId =
+            document
+            .getElementById("userId")
+            .value
+            .trim();
+
+        const name =
+            document
+            .getElementById("name")
+            .value
+            .trim();
+
+        const enrollment =
+            document
+            .getElementById("enrollment")
+            .value
+            .trim();
+
+        const email =
+            document
+            .getElementById("email")
+            .value
+            .trim();
+
+        const password =
+            document
+            .getElementById("password")
+            .value;
+
+        const confirmPassword =
+            document
+            .getElementById("confirmPassword")
+            .value;
+
+
+        /* ==============================================
+           VALIDATION
+           ============================================== */
+
+        if(
+            !userId ||
+            !name ||
+            !enrollment ||
+            !email ||
+            !password ||
+            !confirmPassword
+        ){
+
+            showMessage(
+                "⚠️ Please fill all fields.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* USER ID */
+
+        if(!/^[a-zA-Z0-9._-]{3,30}$/.test(userId)){
+
+            showMessage(
+                "⚠️ User ID must contain 3–30 letters or numbers.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* PASSWORD */
+
+        if(password.length < 6){
+
+            showMessage(
+                "⚠️ Password must contain at least 6 characters.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* CONFIRM PASSWORD */
+
+        if(password !== confirmPassword){
+
+            showMessage(
+                "❌ Passwords do not match.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* EMAIL */
+
+        if(
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        ){
+
+            showMessage(
+                "⚠️ Please enter a valid email.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* ==============================================
+           START
+           ============================================== */
+
+        setLoading(true);
+
+        showMessage(
+            "Sending registration request...",
+            "success"
         );
 
 
-    button.disabled = false;
+        try{
 
-    button.innerHTML =
-        "📝 Submit Registration";
+            /* ==========================================
+               GOOGLE APPS SCRIPT REQUEST
+               ========================================== */
 
-}
+            const url =
+                API_URL +
+
+                "?action=register" +
+
+                "&userId=" +
+                encodeURIComponent(userId) +
+
+                "&name=" +
+                encodeURIComponent(name) +
+
+                "&enrollment=" +
+                encodeURIComponent(enrollment) +
+
+                "&email=" +
+                encodeURIComponent(email) +
+
+                "&password=" +
+                encodeURIComponent(password);
+
+
+            const response =
+                await fetch(
+                    url,
+                    {
+                        method:"GET",
+                        cache:"no-store"
+                    }
+                );
+
+
+            if(!response.ok){
+
+                throw new Error(
+                    "Server error"
+                );
+            }
+
+
+            const result =
+                await response.json();
+
+
+            console.log(
+                "Registration response:",
+                result
+            );
+
+
+            /* ==========================================
+               SUCCESS
+               ========================================== */
+
+            if(result.success === true){
+
+                showMessage(
+                    "✅ Registration submitted successfully. Waiting for admin approval.",
+                    "success"
+                );
+
+
+                form.reset();
+
+
+                /*
+                 * Return to login after 2.5 seconds.
+                 */
+
+                setTimeout(
+                    function(){
+
+                        window.location.href =
+                            "index.html";
+
+                    },
+                    2500
+                );
+
+
+                return;
+            }
+
+
+            /* ==========================================
+               FAILURE
+               ========================================== */
+
+            showMessage(
+                result.message ||
+                "❌ Registration failed.",
+                "error"
+            );
+
+
+            setLoading(false);
+
+        }
+
+        catch(error){
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            showMessage(
+                "❌ Unable to connect to server.",
+                "error"
+            );
+
+
+            setLoading(false);
+        }
+
+    }
+);
 
 
 /* =====================================================
-   BACK TO LOGIN
-===================================================== */
+   GO LOGIN
+   ===================================================== */
 
-function goToLogin(){
+function goLogin(){
 
     window.location.href =
         "index.html";
@@ -1133,21 +883,36 @@ function goToLogin(){
 
 
 /* =====================================================
-   PREVENT OLD LOGIN SESSION
-===================================================== */
+   CHECK IF ALREADY LOGGED IN
+   ===================================================== */
 
 (function(){
 
-    /*
-       Registration page can be opened even
-       when the user is logged in, but we don't
-       automatically redirect here.
-    */
+    const logged =
+        sessionStorage.getItem(
+            "BP7_LOGGED_IN"
+        );
+
+    const session =
+        sessionStorage.getItem(
+            "BP7_SESSION"
+        );
+
+
+    if(
+        logged === "true" &&
+        session
+    ){
+
+        window.location.replace(
+            "dashboard.html"
+        );
+
+    }
 
 })();
 
 </script>
 
 </body>
-
 </html>

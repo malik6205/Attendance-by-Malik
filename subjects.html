@@ -1,1 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
+<title>B.Pharmacy | Subjects</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --primary:#5b4bb7;
+    --secondary:#9b6fd1;
+    --green:#00b894;
+    --red:#e74c3c;
+    --blue:#3498db;
+    --orange:#f39c12;
+}
+
+body{
+    min-height:100vh;
+    padding:14px;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:white;
+
+    background:
+        radial-gradient(circle at 10% 10%,#ffffff25,transparent 28%),
+        radial-gradient(circle at 90% 90%,#ffffff18,transparent 30%),
+        linear-gradient(135deg,#211b42,#5b4bb7,#9b6fd1);
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+/* TOP */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.back{
+    width:43px;
+    height:43px;
+    border:1px solid #ffffff35;
+    border-radius:13px;
+    background:#ffffff18;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.title{
+    flex:1;
+    text-align:center;
+}
+
+.title h1{
+    font-size:20px;
+}
+
+.title p{
+    font-size:11px;
+    opacity:.7;
+}
+
+.logout{
+    padding:9px 12px;
+    border:0;
+    border-radius:10px;
+    background:#e74c3c;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* CARD */
+
+.card{
+    background:#ffffff18;
+    border:1px solid #ffffff30;
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 18px 45px #0004;
+}
+
+.userbar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+}
+
+.userbar strong{
+    font-size:14px;
+}
+
+.spacer{
+    flex:1;
+}
+
+/* FILTER */
+
+.filters{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.field label{
+    display:block;
+    font-size:11px;
+    font-weight:750;
+    margin-bottom:5px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:11px;
+    border:0;
+    border-radius:10px;
+    background:white;
+    color:#111827;
+    outline:none;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    margin-top:10px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:11px 14px;
+    border:0;
+    border-radius:10px;
+    color:white;
+    font-weight:750;
+    cursor:pointer;
+}
+
+.blue{
+    background:#1976d2;
+}
+
+.green{
+    background:#00a844;
+}
+
+.orange{
+    background:#f39c12;
+    color:#111;
+}
+
+/* SUMMARY */
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+}
+
+.stat{
+    padding:13px 7px;
+    text-align:center;
+    border-radius:13px;
+    background:#ffffff15;
+    border:1px solid #ffffff25;
+}
+
+.stat b{
+    display:block;
+    font-size:20px;
+}
+
+.stat small{
+    font-size:9px;
+    opacity:.7;
+}
+
+.safe{
+    color:#69f0ae;
+}
+
+.warn{
+    color:#ffd54f;
+}
+
+/* SUBJECT CARDS */
+
+.subject-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.subject-card{
+    background:white;
+    color:#111827;
+    border-radius:16px;
+    padding:16px;
+    box-shadow:0 10px 25px #0003;
+}
+
+.subject-header{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+}
+
+.subject-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#eef0ff;
+    font-size:20px;
+}
+
+.subject-info{
+    flex:1;
+}
+
+.subject-info h2{
+    font-size:14px;
+    line-height:1.35;
+}
+
+.subject-info p{
+    font-size:10px;
+    color:#777;
+    margin-top:3px;
+}
+
+.progress{
+    height:10px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:14px;
+}
+
+.progress i{
+    display:block;
+    height:100%;
+    width:0;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.greenbar{
+    background:#00b894;
+}
+
+.yellowbar{
+    background:#f1c40f;
+}
+
+.redbar{
+    background:#e74c3c;
+}
+
+.subject-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin-top:12px;
+}
+
+.mini{
+    padding:8px 4px;
+    text-align:center;
+    border-radius:9px;
+    background:#f3f4f6;
+    font-size:9px;
+}
+
+.mini b{
+    display:block;
+    font-size:16px;
+    margin-bottom:2px;
+}
+
+/* EMPTY */
+
+.loading,
+.empty{
+    background:white;
+    color:#555;
+    padding:35px;
+    border-radius:15px;
+    text-align:center;
+}
+
+/* MESSAGE */
+
+.message{
+    min-height:18px;
+    margin-top:9px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .subject-grid{
+        grid-template-columns:1fr;
+    }
+
+    .summary{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:500px){
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .title h1{
+        font-size:17px;
+    }
+
+    .logout{
+        font-size:10px;
+        padding:8px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <button
+            class="back"
+            onclick="goDashboard()">
+            ←
+        </button>
+
+        <div class="title">
+            <h1>📚 Subject Attendance</h1>
+            <p>B.Pharmacy • 7th Semester</p>
+        </div>
+
+        <button
+            class="logout"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <!-- USER -->
+
+    <div class="card">
+
+        <div class="userbar">
+
+            <span>👤 Logged in as</span>
+
+            <strong id="userName">—</strong>
+
+            <span class="spacer"></span>
+
+            <span id="userRole">
+                Student
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- FILTER -->
+
+    <div class="card">
+
+        <div class="filters">
+
+            <div class="field">
+
+                <label>
+                    👤 Student
+                </label>
+
+                <input
+                    id="studentSearch"
+                    placeholder="Enrollment or student name"
+                    oninput="applyFilters()">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    👥 Group
+                </label>
+
+                <select
+                    id="groupFilter"
+                    onchange="applyFilters()">
+
+                    <option value="">
+                        All Groups
+                    </option>
+
+                    <option value="A">
+                        Group A
+                    </option>
+
+                    <option value="B">
+                        Group B
+                    </option>
+
+                    <option value="C">
+                        Group C
+                    </option>
+
+                    <option value="D">
+                        Group D
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+
+            <button
+                class="btn blue"
+                onclick="loadSubjects()">
+                🔄 Refresh
+            </button>
+
+            <button
+                class="btn green"
+                onclick="clearFilters()">
+                ✨ Clear
+            </button>
+
+            <button
+                class="btn orange"
+                onclick="window.print()">
+                🖨️ Print
+            </button>
+
+        </div>
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="card">
+
+        <div class="summary">
+
+            <div class="stat">
+
+                <b id="subjectCount">
+                    0
+                </b>
+
+                <small>
+                    Subjects
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="presentCount"
+                    class="safe">
+                    0
+                </b>
+
+                <small>
+                    Present
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b id="classCount">
+                    0
+                </b>
+
+                <small>
+                    Classes
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="overallPercentage"
+                    class="warn">
+                    0%
+                </b>
+
+                <small>
+                    Overall
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUBJECTS -->
+
+    <div
+        id="subjectGrid"
+        class="subject-grid">
+
+        <div class="loading">
+            ⏳ Loading subject attendance...
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT
+   ===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
+
+
+/* =====================================================
+   LOGIN PROTECTION
+   ===================================================== */
+
+const loggedIn =
+sessionStorage.getItem("BP7_LOGGED_IN");
+
+const session =
+sessionStorage.getItem("BP7_SESSION");
+
+const userId =
+sessionStorage.getItem("BP7_USER_ID");
+
+const storedUserName =
+sessionStorage.getItem("BP7_USER_NAME");
+
+const userRole =
+sessionStorage.getItem("BP7_ROLE");
+
+
+if(
+    loggedIn !== "true" ||
+    !session
+){
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+/* =====================================================
+   USER
+   ===================================================== */
+
+document.getElementById(
+    "userName"
+).textContent =
+storedUserName ||
+userId ||
+"User";
+
+
+document.getElementById(
+    "userRole"
+).textContent =
+String(userRole).toLowerCase() === "admin"
+    ? "🔐 Administrator"
+    : "🎓 Student";
+
+
+/* =====================================================
+   SUBJECT DATA
+   ===================================================== */
+
+let subjectData = [];
+
+let filteredData = [];
+
+
+/* =====================================================
+   LOAD SUBJECT DATA
+   ===================================================== */
+
+async function loadSubjects(){
+
+    const grid =
+        document.getElementById(
+            "subjectGrid"
+        );
+
+
+    grid.innerHTML = `
+        <div class="loading">
+            ⏳ Loading subject attendance...
+        </div>
+    `;
+
+
+    try{
+
+        const url =
+            API_URL +
+
+            "?action=subjectAttendance" +
+
+            "&session=" +
+            encodeURIComponent(session) +
+
+            "&userId=" +
+            encodeURIComponent(userId);
+
+
+        const response =
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server error"
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "Subject API:",
+            result
+        );
+
+
+        if(
+            result.success !== true
+        ){
+
+            throw new Error(
+                result.message ||
+                "Unable to load subject data"
+            );
+
+        }
+
+
+        subjectData =
+            result.records ||
+            result.subjects ||
+            result.data ||
+            [];
+
+
+        subjectData =
+            subjectData.map(
+                item => ({
+
+                    subject:
+                        item.subject ||
+                        item.Subject ||
+                        "",
+
+                    group:
+                        item.group ||
+                        item.Group ||
+                        "",
+
+                    present:
+                        Number(
+                            item.present ||
+                            item.Present ||
+                            0
+                        ),
+
+                    absent:
+                        Number(
+                            item.absent ||
+                            item.Absent ||
+                            0
+                        ),
+
+                    total:
+                        Number(
+                            item.total ||
+                            item.Total ||
+                            0
+                        )
+
+                })
+            );
+
+
+        applyFilters();
+
+
+        showMessage(
+            "✅ Subject attendance loaded.",
+            "success"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        subjectData = [];
+
+        grid.innerHTML = `
+            <div class="empty">
+
+                ❌ Unable to load subject attendance.
+
+                <br><br>
+
+                <small>
+                    Your Google Apps Script must support:
+                    <br>
+                    <b>?action=subjectAttendance</b>
+                </small>
+
+            </div>
+        `;
+
+
+        updateSummary([]);
+
+
+        showMessage(
+            "❌ " +
+            (
+                error.message ||
+                "Unable to load data."
+            ),
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FILTER
+   ===================================================== */
+
+function applyFilters(){
+
+    const search =
+        document.getElementById(
+            "studentSearch"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const group =
+        document.getElementById(
+            "groupFilter"
+        ).value
+        .toLowerCase();
+
+
+    filteredData =
+        subjectData.filter(
+            item => {
+
+                const subject =
+                    String(
+                        item.subject || ""
+                    ).toLowerCase();
+
+
+                const itemGroup =
+                    String(
+                        item.group || ""
+                    ).toLowerCase();
+
+
+                const matchesGroup =
+                    !group ||
+                    itemGroup === group;
+
+
+                const matchesSearch =
+                    !search ||
+                    subject.includes(search);
+
+
+                return (
+                    matchesGroup &&
+                    matchesSearch
+                );
+
+            }
+        );
+
+
+    renderSubjects(
+        filteredData
+    );
+
+
+    updateSummary(
+        filteredData
+    );
+
+}
+
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+
+function renderSubjects(data){
+
+    const grid =
+        document.getElementById(
+            "subjectGrid"
+        );
+
+
+    if(!data.length){
+
+        grid.innerHTML = `
+            <div class="empty">
+
+                📭 No subject attendance found.
+
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    /*
+     * Combine records having the same subject.
+     */
+
+    const combined = {};
+
+
+    data.forEach(
+        item => {
+
+            const name =
+                item.subject ||
+                "Unknown Subject";
+
+
+            if(!combined[name]){
+
+                combined[name] = {
+
+                    subject:name,
+                    present:0,
+                    absent:0,
+                    total:0
+
+                };
+
+            }
+
+
+            combined[name].present +=
+                Number(item.present || 0);
+
+
+            combined[name].absent +=
+                Number(item.absent || 0);
+
+
+            combined[name].total +=
+                Number(item.total || 0);
+
+        }
+    );
+
+
+    const subjects =
+        Object.values(combined);
+
+
+    grid.innerHTML =
+        subjects
+        .map(
+            (item,index) => {
+
+                const percentage =
+                    item.total
+                    ? (
+                        item.present /
+                        item.total *
+                        100
+                    )
+                    : 0;
+
+
+                let barClass =
+                    "greenbar";
+
+
+                if(
+                    percentage < 75
+                ){
+
+                    barClass =
+                        "yellowbar";
+
+                }
+
+
+                if(
+                    percentage < 60
+                ){
+
+                    barClass =
+                        "redbar";
+
+                }
+
+
+                const icon =
+                    [
+                        "📘",
+                        "📕",
+                        "📗",
+                        "📙",
+                        "📒",
+                        "📚"
+                    ][index % 6];
+
+
+                return `
+
+                <div class="subject-card">
+
+                    <div class="subject-header">
+
+                        <div class="subject-icon">
+                            ${icon}
+                        </div>
+
+                        <div class="subject-info">
+
+                            <h2>
+                                ${escapeHTML(
+                                    item.subject
+                                )}
+                            </h2>
+
+                            <p>
+                                B.Pharmacy •
+                                7th Semester
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress">
+
+                        <i
+                            class="${barClass}"
+                            style="width:${Math.min(
+                                percentage,
+                                100
+                            )}%">
+
+                        </i>
+
+                    </div>
+
+
+                    <div class="subject-stats">
+
+                        <div class="mini">
+
+                            <b class="safe">
+                                ${item.present}
+                            </b>
+
+                            Present
+
+                        </div>
+
+
+                        <div class="mini">
+
+                            <b>
+                                ${item.absent}
+                            </b>
+
+                            Absent
+
+                        </div>
+
+
+                        <div class="mini">
+
+                            <b>
+                                ${percentage.toFixed(1)}%
+                            </b>
+
+                            Attendance
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =====================================================
+   SUMMARY
+   ===================================================== */
+
+function updateSummary(data){
+
+    let present = 0;
+    let absent = 0;
+    let total = 0;
+
+
+    const uniqueSubjects =
+        new Set();
+
+
+    data.forEach(
+        item => {
+
+            uniqueSubjects.add(
+                item.subject
+            );
+
+
+            present +=
+                Number(
+                    item.present || 0
+                );
+
+
+            absent +=
+                Number(
+                    item.absent || 0
+                );
+
+
+            total +=
+                Number(
+                    item.total || 0
+                );
+
+        }
+    );
+
+
+    const percentage =
+        total
+        ? present /
+          total *
+          100
+        : 0;
+
+
+    document.getElementById(
+        "subjectCount"
+    ).textContent =
+        uniqueSubjects.size;
+
+
+    document.getElementById(
+        "presentCount"
+    ).textContent =
+        present;
+
+
+    document.getElementById(
+        "classCount"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "overallPercentage"
+    ).textContent =
+        percentage.toFixed(1) +
+        "%";
+
+}
+
+
+/* =====================================================
+   CLEAR FILTER
+   ===================================================== */
+
+function clearFilters(){
+
+    document.getElementById(
+        "studentSearch"
+    ).value = "";
+
+
+    document.getElementById(
+        "groupFilter"
+    ).value = "";
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+function showMessage(
+    text,
+    type
+){
+
+    const box =
+        document.getElementById(
+            "message"
+        );
+
+
+    box.textContent =
+        text;
+
+
+    box.style.color =
+        type === "error"
+        ? "#ffb3b3"
+        : "#69f0ae";
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+function logout(){
+
+    sessionStorage.clear();
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+/* =====================================================
+   SECURITY
+   ===================================================== */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+loadSubjects();
+
+</script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>B.Pharmacy Attendance - Login</title>
 
@@ -17,43 +17,60 @@
 
 body{
     min-height:100vh;
-    font-family:Arial,Helvetica,sans-serif;
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 
     padding:20px;
 
+    font-family:Arial,Helvetica,sans-serif;
+
     background:
-    radial-gradient(circle at 10% 10%,#ffffff22,transparent 30%),
-    radial-gradient(circle at 90% 90%,#ffb6d522,transparent 30%),
-    linear-gradient(135deg,#403579,#6655b5,#8067c9);
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(255,255,255,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            rgba(255,180,220,.15),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #403579,
+            #6655b5,
+            #8067c9
+        );
 
     color:white;
 }
 
 .login-card{
+
     width:100%;
     max-width:540px;
 
-    padding:38px;
+    padding:40px;
 
     border-radius:32px;
 
     background:rgba(255,255,255,.15);
 
-    border:1px solid rgba(255,255,255,.3);
+    border:1px solid rgba(255,255,255,.30);
 
     backdrop-filter:blur(25px);
     -webkit-backdrop-filter:blur(25px);
 
-    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.30);
 
     text-align:center;
 }
 
 .logo{
+
     width:105px;
     height:105px;
 
@@ -61,23 +78,31 @@ body{
 
     border-radius:28px;
 
-    border:4px solid rgba(255,255,255,.4);
+    border:4px solid rgba(255,255,255,.40);
 
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 h1{
+
     font-size:32px;
+
     margin-bottom:8px;
 }
 
 .subtitle{
+
     opacity:.85;
+
     margin-bottom:30px;
+
+    line-height:1.5;
 }
 
 label{
+
     display:block;
+
     text-align:left;
 
     margin:0 0 7px 5px;
@@ -86,10 +111,13 @@ label{
 }
 
 input{
+
     width:100%;
+
     height:60px;
 
     border:0;
+
     outline:none;
 
     border-radius:17px;
@@ -100,39 +128,71 @@ input{
 
     margin-bottom:18px;
 
-    background:#fff;
+    background:white;
+
     color:#222;
 }
 
+input:focus{
+
+    box-shadow:
+        0 0 0 3px rgba(255,255,255,.25);
+}
+
 button{
+
     width:100%;
+
     height:60px;
 
     border:0;
+
     border-radius:17px;
 
-    background:linear-gradient(135deg,#00bfa5,#00ced1);
+    background:
+        linear-gradient(
+            135deg,
+            #00bfa5,
+            #00ced1
+        );
 
     color:white;
 
     font-size:18px;
+
     font-weight:bold;
 
     cursor:pointer;
+
+    transition:.2s;
+}
+
+button:hover{
+
+    transform:translateY(-1px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.20);
 }
 
 button:disabled{
-    opacity:.6;
+
+    opacity:.60;
+
+    cursor:not-allowed;
+
+    transform:none;
 }
 
 .register{
+
     display:block;
 
     margin-top:18px;
 
     padding:17px;
 
-    border:1px solid #ffffff55;
+    border:1px solid rgba(255,255,255,.30);
 
     border-radius:17px;
 
@@ -142,17 +202,23 @@ button:disabled{
 
     font-weight:bold;
 
-    background:#ffffff10;
+    background:rgba(255,255,255,.06);
+}
+
+.register:hover{
+
+    background:rgba(255,255,255,.12);
 }
 
 .info{
+
     margin-top:20px;
 
     padding:17px;
 
     border-radius:16px;
 
-    background:#ffffff10;
+    background:rgba(255,255,255,.08);
 
     font-size:13px;
 
@@ -160,6 +226,7 @@ button:disabled{
 }
 
 #apiStatus{
+
     margin-top:18px;
 
     font-size:13px;
@@ -168,24 +235,30 @@ button:disabled{
 }
 
 #message{
+
     min-height:25px;
 
-    margin-top:12px;
+    margin-top:14px;
 
     font-size:14px;
 
     font-weight:bold;
+
+    line-height:1.5;
 }
 
 .success{
+
     color:#7dffb2;
 }
 
 .error{
+
     color:#ffb5b5;
 }
 
 .loading{
+
     display:none;
 
     margin-top:10px;
@@ -196,105 +269,150 @@ button:disabled{
 @media(max-width:600px){
 
     .login-card{
-        padding:28px 20px;
+
+        padding:30px 20px;
     }
 
     h1{
+
         font-size:27px;
     }
 
     .logo{
+
         width:90px;
         height:90px;
     }
-
 }
 
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="login-card">
 
-<img
-    src="pic/1.jpg"
-    class="logo"
-    alt="B.Pharmacy"
->
 
-<h1>🔐 Welcome Back</h1>
+    <!-- LOGO -->
 
-<div class="subtitle">
-B.Pharmacy Attendance Management System
+    <img
+        src="pic/1.jpg"
+        class="logo"
+        alt="B.Pharmacy"
+    >
+
+
+    <!-- TITLE -->
+
+    <h1>
+        🔐 Welcome Back
+    </h1>
+
+
+    <div class="subtitle">
+        B.Pharmacy Attendance Management System
+    </div>
+
+
+    <!-- USER ID -->
+
+    <label for="userId">
+        👤 Admin ID / Enrollment Number
+    </label>
+
+
+    <input
+        id="userId"
+        type="text"
+        placeholder="Enter Admin ID or Enrollment"
+        autocomplete="username"
+    >
+
+
+    <!-- PASSWORD -->
+
+    <label for="password">
+        🔑 Password
+    </label>
+
+
+    <input
+        id="password"
+        type="password"
+        placeholder="Enter Password"
+        autocomplete="current-password"
+    >
+
+
+    <!-- LOGIN BUTTON -->
+
+    <button
+        id="loginBtn"
+        type="button"
+        onclick="login()"
+    >
+        🔓 Login
+    </button>
+
+
+    <!-- LOADING -->
+
+    <div
+        id="loading"
+        class="loading"
+    >
+        ⏳ Checking account...
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div id="message"></div>
+
+
+    <!-- API STATUS -->
+
+    <div id="apiStatus">
+        Checking API...
+    </div>
+
+
+    <!-- REGISTER -->
+
+    <a
+        href="register.html"
+        class="register"
+    >
+        📝 Create New Student Account
+    </a>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info">
+
+        <b>Students:</b>
+        Register first and wait for admin approval.
+
+        <br><br>
+
+        <b>Administrator:</b>
+        Use the Admin ID and Admin Password.
+
+    </div>
+
+
 </div>
 
-<label for="userId">
-👤 Enrollment / User ID
-</label>
-
-<input
-    id="userId"
-    type="text"
-    placeholder="Enter Enrollment Number"
-    autocomplete="username"
->
-
-<label for="password">
-🔑 Password
-</label>
-
-<input
-    id="password"
-    type="password"
-    placeholder="Enter Password"
-    autocomplete="current-password"
->
-
-<button
-    id="loginBtn"
-    onclick="login()"
->
-🔓 Login
-</button>
-
-<div
-    id="loading"
-    class="loading"
->
-⏳ Checking account...
-</div>
-
-<div id="message"></div>
-
-<div id="apiStatus">
-Checking API...
-</div>
-
-<a
-    href="register.html"
-    class="register"
->
-📝 Create New Account
-</a>
-
-<div class="info">
-
-New users must register first.<br>
-
-Your account remains <b>Pending</b>
-until an administrator approves it.
-
-</div>
-
-</div>
 
 
 <script>
 
 /* =====================================================
-   GOOGLE APPS SCRIPT DEPLOYMENT
+   GOOGLE APPS SCRIPT API
    ===================================================== */
 
 const API_URL =
@@ -305,23 +423,23 @@ const API_URL =
    ELEMENTS
    ===================================================== */
 
-const userId =
-document.getElementById("userId");
+const userIdInput =
+    document.getElementById("userId");
 
-const password =
-document.getElementById("password");
+const passwordInput =
+    document.getElementById("password");
 
 const loginBtn =
-document.getElementById("loginBtn");
+    document.getElementById("loginBtn");
 
 const message =
-document.getElementById("message");
+    document.getElementById("message");
 
 const loading =
-document.getElementById("loading");
+    document.getElementById("loading");
 
 const apiStatus =
-document.getElementById("apiStatus");
+    document.getElementById("apiStatus");
 
 
 /* =====================================================
@@ -338,7 +456,7 @@ function showMessage(text,type){
 
 
 /* =====================================================
-   API CHECK
+   CHECK API
    ===================================================== */
 
 async function checkAPI(){
@@ -346,30 +464,36 @@ async function checkAPI(){
     try{
 
         const response =
-        await fetch(
-            API_URL,
-            {
-                method:"GET",
-                cache:"no-store"
-            }
-        );
+            await fetch(
+                API_URL,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
 
         const text =
-        await response.text();
+            await response.text();
+
 
         console.log(
-            "API RESPONSE:",
+            "API STATUS:",
             text
         );
 
-        let result;
+
+        let result = null;
+
 
         try{
 
             result =
-            JSON.parse(text);
+                JSON.parse(text);
 
-        }catch(e){
+        }
+
+        catch(error){
 
             result = null;
 
@@ -377,25 +501,34 @@ async function checkAPI(){
 
 
         if(
+            response.ok &&
             result &&
             result.success === true
         ){
 
             apiStatus.textContent =
-            "🟢 B.Pharmacy Attendance API is working";
+                "🟢 B.Pharmacy Attendance API is working";
 
             apiStatus.style.color =
-            "#7dffb2";
+                "#7dffb2";
+
+        }
+
+        else if(response.ok){
+
+            apiStatus.textContent =
+                "🟢 API connected";
+
+            apiStatus.style.color =
+                "#7dffb2";
 
         }
 
         else{
 
-            apiStatus.textContent =
-            "🟢 API connected";
-
-            apiStatus.style.color =
-            "#7dffb2";
+            throw new Error(
+                "API error"
+            );
 
         }
 
@@ -404,15 +537,16 @@ async function checkAPI(){
     catch(error){
 
         console.error(
-            "API ERROR:",
+            "API CHECK ERROR:",
             error
         );
 
+
         apiStatus.textContent =
-        "🔴 API connection failed";
+            "🔴 API connection failed";
 
         apiStatus.style.color =
-        "#ffb5b5";
+            "#ffb5b5";
 
     }
 
@@ -425,30 +559,30 @@ async function checkAPI(){
 
 async function login(){
 
-    const enrollment =
-    userId.value.trim();
+    const id =
+        userIdInput.value.trim();
 
     const pass =
-    password.value.trim();
+        passwordInput.value;
 
 
-    /* EMPTY USER */
+    /* -----------------------------------------------
+       VALIDATION
+       ----------------------------------------------- */
 
-    if(!enrollment){
+    if(!id){
 
         showMessage(
-            "❌ Please enter Enrollment / User ID.",
+            "❌ Please enter Admin ID or Enrollment Number.",
             "error"
         );
 
-        userId.focus();
+        userIdInput.focus();
 
         return;
 
     }
 
-
-    /* EMPTY PASSWORD */
 
     if(!pass){
 
@@ -457,73 +591,245 @@ async function login(){
             "error"
         );
 
-        password.focus();
+        passwordInput.focus();
 
         return;
 
     }
 
 
-    /* LOADING */
+    /* -----------------------------------------------
+       CLEAR OLD SESSION
+       ----------------------------------------------- */
+
+    sessionStorage.clear();
+
+
+    /* -----------------------------------------------
+       LOADING
+       ----------------------------------------------- */
 
     loginBtn.disabled = true;
 
     loginBtn.textContent =
-    "⏳ Logging in...";
+        "⏳ Logging in...";
 
     loading.style.display =
-    "block";
+        "block";
 
-    showMessage("","");
+    showMessage(
+        "",
+        ""
+    );
 
 
     try{
 
-        /*
-         IMPORTANT:
 
-         Backend expects:
+        /* =================================================
+           ADMIN LOGIN
+           
+           Admin credentials:
+           
+           ID       = ADMIN
+           Password = 811307
+           
+           The backend handles these credentials.
+           ================================================= */
 
-         action=login
-         enrollment=...
-         password=...
-        */
+        if(
+            id.toUpperCase() === "ADMIN"
+        ){
 
-        const url =
-        API_URL +
-        "?action=login" +
-        "&enrollment=" +
-        encodeURIComponent(enrollment) +
-        "&password=" +
-        encodeURIComponent(pass);
+            const adminUrl =
+                API_URL +
+                "?action=adminLogin" +
+                "&id=" +
+                encodeURIComponent(id) +
+                "&password=" +
+                encodeURIComponent(pass);
+
+
+            console.log(
+                "Sending ADMIN login request"
+            );
+
+
+            const response =
+                await fetch(
+                    adminUrl,
+                    {
+                        method:"GET",
+                        cache:"no-store",
+                        redirect:"follow"
+                    }
+                );
+
+
+            const text =
+                await response.text();
+
+
+            console.log(
+                "ADMIN RESPONSE:",
+                text
+            );
+
+
+            let result;
+
+
+            try{
+
+                result =
+                    JSON.parse(text);
+
+            }
+
+            catch(error){
+
+                throw new Error(
+                    "Invalid response from server: " +
+                    text
+                );
+
+            }
+
+
+            /* -----------------------------------------
+               ADMIN SUCCESS
+               ----------------------------------------- */
+
+            if(
+                result.success === true
+            ){
+
+                const token =
+                    result.token ||
+                    "";
+
+
+                if(!token){
+
+                    throw new Error(
+                        "Admin login succeeded but no session token was returned."
+                    );
+
+                }
+
+
+                sessionStorage.setItem(
+                    "BP7_LOGGED_IN",
+                    "true"
+                );
+
+
+                sessionStorage.setItem(
+                    "BP7_SESSION",
+                    token
+                );
+
+
+                sessionStorage.setItem(
+                    "BP7_USER_ID",
+                    "ADMIN"
+                );
+
+
+                sessionStorage.setItem(
+                    "BP7_USER_NAME",
+                    "Administrator"
+                );
+
+
+                sessionStorage.setItem(
+                    "BP7_ROLE",
+                    "admin"
+                );
+
+
+                sessionStorage.setItem(
+                    "BP7_ENROLLMENT",
+                    "ADMIN"
+                );
+
+
+                showMessage(
+                    "✅ Admin login successful! Opening Admin Panel...",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function(){
+
+                        window.location.href =
+                            "admin.html";
+
+                    },
+                    500
+                );
+
+
+                return;
+
+            }
+
+
+            /* -----------------------------------------
+               ADMIN FAILED
+               ----------------------------------------- */
+
+            showMessage(
+                "❌ " +
+                (
+                    result.message ||
+                    "Invalid Admin ID or password."
+                ),
+                "error"
+            );
+
+
+            return;
+
+        }
+
+
+        /* =================================================
+           STUDENT LOGIN
+           ================================================= */
+
+        const studentUrl =
+            API_URL +
+            "?action=login" +
+            "&enrollment=" +
+            encodeURIComponent(id) +
+            "&password=" +
+            encodeURIComponent(pass);
 
 
         console.log(
-            "LOGIN REQUEST:",
-            url.replace(
-                /password=[^&]*/,
-                "password=******"
-            )
+            "Sending STUDENT login request"
         );
 
 
         const response =
-        await fetch(
-            url,
-            {
-                method:"GET",
-                redirect:"follow",
-                cache:"no-store"
-            }
-        );
+            await fetch(
+                studentUrl,
+                {
+                    method:"GET",
+                    cache:"no-store",
+                    redirect:"follow"
+                }
+            );
 
 
         const text =
-        await response.text();
+            await response.text();
 
 
         console.log(
-            "LOGIN RESPONSE:",
+            "STUDENT RESPONSE:",
             text
         );
 
@@ -534,44 +840,36 @@ async function login(){
         try{
 
             result =
-            JSON.parse(text);
+                JSON.parse(text);
 
         }
 
         catch(error){
 
             throw new Error(
-                "Invalid response from Apps Script: " +
+                "Invalid response from server: " +
                 text
             );
 
         }
 
 
-        /* =============================================
-           LOGIN SUCCESS
-           ============================================= */
+        /* -----------------------------------------
+           STUDENT SUCCESS
+           ----------------------------------------- */
 
         if(
             result.success === true
         ){
 
-            console.log(
-                "LOGIN SUCCESS:",
-                result
-            );
+            if(!result.token){
 
+                throw new Error(
+                    "Login succeeded but no session token was returned."
+                );
 
-            /*
-             CLEAR OLD SESSION
-            */
+            }
 
-            sessionStorage.clear();
-
-
-            /*
-             SAVE LOGIN
-            */
 
             sessionStorage.setItem(
                 "BP7_LOGGED_IN",
@@ -579,119 +877,60 @@ async function login(){
             );
 
 
-            /*
-             SAVE TOKEN
+            sessionStorage.setItem(
+                "BP7_SESSION",
+                result.token
+            );
 
-             Backend returns:
-             token
-            */
-
-            if(result.token){
-
-                sessionStorage.setItem(
-                    "BP7_SESSION",
-                    result.token
-                );
-
-            }
-
-
-            /*
-             SAVE USER ID
-            */
 
             sessionStorage.setItem(
                 "BP7_USER_ID",
                 result.user &&
                 result.user.id
                     ? result.user.id
-                    : enrollment
+                    : id
             );
 
-
-            /*
-             SAVE USER NAME
-            */
 
             sessionStorage.setItem(
                 "BP7_USER_NAME",
                 result.user &&
                 result.user.name
                     ? result.user.name
-                    : enrollment
+                    : id
             );
 
-
-            /*
-             SAVE ENROLLMENT
-            */
 
             sessionStorage.setItem(
                 "BP7_ENROLLMENT",
                 result.user &&
                 result.user.enrollment
                     ? result.user.enrollment
-                    : enrollment
-            );
-
-
-            /*
-             SAVE ROLE
-            */
-
-            const role =
-            result.role ||
-            (
-                enrollment.toUpperCase() === "ADMIN"
-                ? "admin"
-                : "student"
+                    : id
             );
 
 
             sessionStorage.setItem(
                 "BP7_ROLE",
-                role
+                "student"
             );
 
 
             showMessage(
-                "✅ Login successful! Redirecting...",
+                "✅ Login successful! Opening Dashboard...",
                 "success"
             );
 
 
-            /*
-             ADMIN
-            */
-
-            if(
-                role.toLowerCase() === "admin"
-            ){
-
-                setTimeout(function(){
+            setTimeout(
+                function(){
 
                     window.location.href =
-                    "admin.html";
+                        "dashboard.html";
 
-                },700);
-
-            }
-
-
-            /*
-             STUDENT
-            */
-
-            else{
-
-                setTimeout(function(){
-
-                    window.location.href =
-                    "dashboard.html";
-
-                },700);
-
-            }
+                },
+                500
+            );
 
 
             return;
@@ -699,15 +938,15 @@ async function login(){
         }
 
 
-        /* =============================================
-           LOGIN FAILED
-           ============================================= */
+        /* -----------------------------------------
+           STUDENT FAILED
+           ----------------------------------------- */
 
         showMessage(
             "❌ " +
             (
                 result.message ||
-                "Invalid Enrollment / User ID or Password."
+                "Account not found."
             ),
             "error"
         );
@@ -724,7 +963,11 @@ async function login(){
 
 
         showMessage(
-            "❌ " + error.message,
+            "❌ " +
+            (
+                error.message ||
+                "Unable to connect to server."
+            ),
             "error"
         );
 
@@ -734,13 +977,13 @@ async function login(){
     finally{
 
         loginBtn.disabled =
-        false;
+            false;
 
         loginBtn.textContent =
-        "🔓 Login";
+            "🔓 Login";
 
         loading.style.display =
-        "none";
+            "none";
 
     }
 
@@ -748,16 +991,18 @@ async function login(){
 
 
 /* =====================================================
-   ENTER KEY
+   ENTER KEY SUPPORT
    ===================================================== */
 
-userId.addEventListener(
+userIdInput.addEventListener(
     "keydown",
-    function(e){
+    function(event){
 
-        if(e.key === "Enter"){
+        if(
+            event.key === "Enter"
+        ){
 
-            password.focus();
+            passwordInput.focus();
 
         }
 
@@ -765,11 +1010,13 @@ userId.addEventListener(
 );
 
 
-password.addEventListener(
+passwordInput.addEventListener(
     "keydown",
-    function(e){
+    function(event){
 
-        if(e.key === "Enter"){
+        if(
+            event.key === "Enter"
+        ){
 
             login();
 
@@ -780,7 +1027,7 @@ password.addEventListener(
 
 
 /* =====================================================
-   START
+   START API CHECK
    ===================================================== */
 
 checkAPI();

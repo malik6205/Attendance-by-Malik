@@ -1,2151 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1.0"
->
-
-<title>B.Pharmacy | Admin Panel</title>
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>B.Pharmacy | Attendance</title>
 <style>
-
-/* =====================================================
-   RESET
-===================================================== */
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-:root{
-    --primary:#5b4bb7;
-    --secondary:#9b6fd1;
-    --green:#00a844;
-    --red:#e53935;
-    --blue:#1976d2;
-    --orange:#ff9800;
-    --dark:#111827;
-    --white:#ffffff;
-}
-
-
-/* =====================================================
-   BODY
-===================================================== */
-
-body{
-
-    min-height:100vh;
-
-    padding:14px;
-
-    font-family:
-        system-ui,
-        -apple-system,
-        "Segoe UI",
-        sans-serif;
-
-    color:white;
-
-    background:
-
-        radial-gradient(
-            circle at 10% 10%,
-            #ffffff25,
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 90% 90%,
-            #ffffff18,
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #211b42,
-            #5b4bb7,
-            #9b6fd1
-        );
-
-}
-
-
-/* =====================================================
-   CONTAINER
-===================================================== */
-
-.container{
-
-    max-width:1100px;
-
-    margin:auto;
-
-}
-
-
-/* =====================================================
-   TOP BAR
-===================================================== */
-
-.topbar{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    margin-bottom:14px;
-
-}
-
-
-.back{
-
-    width:43px;
-
-    height:43px;
-
-    border:1px solid #ffffff35;
-
-    border-radius:13px;
-
-    background:#ffffff18;
-
-    color:white;
-
-    font-size:20px;
-
-    cursor:pointer;
-
-}
-
-
-.title{
-
-    flex:1;
-
-    text-align:center;
-
-}
-
-
-.title h1{
-
-    font-size:20px;
-
-}
-
-
-.title p{
-
-    font-size:11px;
-
-    opacity:.7;
-
-}
-
-
-.logout{
-
-    padding:9px 12px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:var(--red);
-
-    color:white;
-
-    font-weight:750;
-
-    cursor:pointer;
-
-}
-
-
-/* =====================================================
-   CARDS
-===================================================== */
-
-.card{
-
-    background:#ffffff18;
-
-    border:1px solid #ffffff30;
-
-    backdrop-filter:blur(18px);
-
-    border-radius:20px;
-
-    padding:16px;
-
-    margin-bottom:12px;
-
-    box-shadow:
-        0 18px 45px #0004;
-
-}
-
-
-.userbar{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    font-size:12px;
-
-}
-
-
-.userbar strong{
-
-    font-size:14px;
-
-}
-
-
-.spacer{
-
-    flex:1;
-
-}
-
-
-/* =====================================================
-   ADMIN BADGE
-===================================================== */
-
-.admin-badge{
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:7px 12px;
-
-    border-radius:20px;
-
-    background:#ff9800;
-
-    color:#111;
-
-    font-size:11px;
-
-    font-weight:800;
-
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:8px;
-
-}
-
-
-.stat{
-
-    padding:14px 7px;
-
-    text-align:center;
-
-    border-radius:13px;
-
-    background:#ffffff15;
-
-    border:1px solid #ffffff25;
-
-}
-
-
-.stat b{
-
-    display:block;
-
-    font-size:22px;
-
-}
-
-
-.stat small{
-
-    font-size:9px;
-
-    opacity:.7;
-
-}
-
-
-.green-text{
-
-    color:#69f0ae;
-
-}
-
-
-.orange-text{
-
-    color:#ffd54f;
-
-}
-
-
-.red-text{
-
-    color:#ff8a80;
-
-}
-
-
-/* =====================================================
-   SECTION HEADER
-===================================================== */
-
-.section-header{
-
-    display:flex;
-
-    align-items:center;
-
-    margin-bottom:12px;
-
-}
-
-
-.section-header h2{
-
-    font-size:17px;
-
-}
-
-
-.section-header button{
-
-    margin-left:auto;
-
-}
-
-
-/* =====================================================
-   BUTTONS
-===================================================== */
-
-.actions{
-
-    display:flex;
-
-    gap:8px;
-
-    flex-wrap:wrap;
-
-}
-
-
-.btn{
-
-    padding:10px 13px;
-
-    border:0;
-
-    border-radius:10px;
-
-    color:white;
-
-    font-weight:750;
-
-    cursor:pointer;
-
-}
-
-
-.btn:active{
-
-    transform:scale(.97);
-
-}
-
-
-.blue{
-
-    background:var(--blue);
-
-}
-
-
-.green{
-
-    background:var(--green);
-
-}
-
-
-.red{
-
-    background:var(--red);
-
-}
-
-
-.orange{
-
-    background:var(--orange);
-
-    color:#111;
-
-}
-
-
-.gray{
-
-    background:#ffffff20;
-
-    border:1px solid #ffffff30;
-
-}
-
-
-/* =====================================================
-   SEARCH
-===================================================== */
-
-.search{
-
-    width:100%;
-
-    padding:11px;
-
-    border:0;
-
-    border-radius:10px;
-
-    background:white;
-
-    color:#111827;
-
-    outline:none;
-
-    margin-bottom:10px;
-
-}
-
-
-/* =====================================================
-   USER TABLE
-===================================================== */
-
-.tablebox{
-
-    overflow:auto;
-
-    background:white;
-
-    border-radius:15px;
-
-}
-
-
-table{
-
-    width:100%;
-
-    min-width:750px;
-
-    border-collapse:collapse;
-
-    color:#111827;
-
-}
-
-
-th{
-
-    padding:10px 8px;
-
-    background:#182848;
-
-    color:white;
-
-    font-size:11px;
-
-    text-align:center;
-
-}
-
-
-td{
-
-    padding:9px 7px;
-
-    border-bottom:1px solid #ddd;
-
-    font-size:11px;
-
-    text-align:center;
-
-}
-
-
-tr:hover{
-
-    background:#f4f6ff;
-
-}
-
-
-.user-name{
-
-    text-align:left;
-
-    font-weight:700;
-
-}
-
-
-.status{
-
-    display:inline-block;
-
-    padding:4px 8px;
-
-    border-radius:20px;
-
-    font-size:9px;
-
-    font-weight:800;
-
-}
-
-
-.pending{
-
-    background:#fff3cd;
-
-    color:#856404;
-
-}
-
-
-.approved{
-
-    background:#d4edda;
-
-    color:#155724;
-
-}
-
-
-.rejected{
-
-    background:#f8d7da;
-
-    color:#721c24;
-
-}
-
-
-.action-btn{
-
-    padding:6px 8px;
-
-    border:0;
-
-    border-radius:7px;
-
-    color:white;
-
-    font-size:9px;
-
-    font-weight:750;
-
-    cursor:pointer;
-
-    margin:2px;
-
-}
-
-
-/* =====================================================
-   DANGER ZONE
-===================================================== */
-
-.danger-zone{
-
-    border:
-
-        1px solid
-
-        #ff8a803d;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #e5393515,
-            #00000015
-        );
-
-}
-
-
-.warning{
-
-    padding:12px;
-
-    margin-bottom:12px;
-
-    border-radius:10px;
-
-    background:#e5393520;
-
-    border:1px solid #ff8a8050;
-
-    font-size:11px;
-
-    line-height:1.6;
-
-}
-
-
-.danger-actions{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:10px;
-
-}
-
-
-.danger-button{
-
-    padding:14px;
-
-    border:0;
-
-    border-radius:12px;
-
-    background:#e53935;
-
-    color:white;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-}
-
-
-.danger-button:hover{
-
-    filter:brightness(1.1);
-
-}
-
-
-.danger-button.secondary{
-
-    background:#8e2430;
-
-}
-
-
-/* =====================================================
-   MESSAGE
-===================================================== */
-
-.message{
-
-    min-height:18px;
-
-    margin-top:10px;
-
-    text-align:center;
-
-    font-size:12px;
-
-    font-weight:750;
-
-}
-
-
-/* =====================================================
-   LOADING
-===================================================== */
-
-.loading{
-
-    background:white;
-
-    color:#555;
-
-    padding:30px;
-
-    border-radius:15px;
-
-    text-align:center;
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:700px){
-
-    .stats{
-
-        grid-template-columns:
-            repeat(2,1fr);
-
-    }
-
-
-    .danger-actions{
-
-        grid-template-columns:1fr;
-
-    }
-
-}
-
-
-@media(max-width:500px){
-
-    .title h1{
-
-        font-size:17px;
-
-    }
-
-
-    .logout{
-
-        font-size:10px;
-
-        padding:8px;
-
-    }
-
-}
-
-
-/* =====================================================
-   PRINT
-===================================================== */
-
-@media print{
-
-    body{
-
-        background:white;
-
-        color:black;
-
-    }
-
-    .topbar button,
-    .actions,
-    .danger-zone,
-    .search{
-
-        display:none;
-
-    }
-
-    .card{
-
-        box-shadow:none;
-
-        border:1px solid #ddd;
-
-    }
-
-}
-
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--p:#5b4bb7;--s:#9b6fd1;--g:#00b894;--r:#e74c3c;--b:#3498db;--o:#f39c12}
+body{min-height:100vh;padding:14px;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;background:radial-gradient(circle at 10% 10%,#ffffff25,transparent 28%),radial-gradient(circle at 90% 90%,#ffffff18,transparent 30%),linear-gradient(135deg,#211b42,#5b4bb7,#9b6fd1)}
+.container{max-width:1100px;margin:auto}.topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px}.back{width:43px;height:43px;border:1px solid #ffffff35;border-radius:13px;background:#ffffff18;color:#fff;font-size:20px;cursor:pointer}.title{flex:1;text-align:center}.title h1{font-size:20px}.title p{font-size:11px;opacity:.7}.logout{padding:9px 12px;border:0;border-radius:10px;background:#e74c3c;color:#fff;font-weight:700;cursor:pointer}.card{background:#ffffff18;border:1px solid #ffffff30;backdrop-filter:blur(18px);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:0 18px 45px #0004}.userbar{display:flex;align-items:center;gap:8px;font-size:12px}.userbar strong{font-size:14px}.spacer{flex:1}.role{padding:5px 9px;border-radius:20px;background:#ffffff20;font-size:10px;font-weight:800}.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px}label{display:block;font-size:11px;font-weight:750;margin-bottom:5px}select,input[type=date],input[type=text]{width:100%;padding:12px;border:0;border-radius:11px;background:#fff;color:#111827;outline:none}.search{margin-top:10px}.action-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.btn{padding:11px 14px;border:0;border-radius:10px;color:#fff;font-weight:750;cursor:pointer}.btn:disabled{opacity:.5;cursor:not-allowed}.green{background:#00a844}.red{background:#e53935}.blue{background:#1976d2}.orange{background:#f39c12;color:#111}.purple{background:#7b1fa2}.dark{background:#455a64}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{padding:13px 7px;text-align:center;border-radius:13px;background:#ffffff15;border:1px solid #ffffff25}.stat b{display:block;font-size:21px}.stat small{font-size:10px;opacity:.7}.safe{color:#69f0ae}.danger{color:#ff8a80}.warn{color:#ffd54f}.table-box{overflow:auto;background:#fff;border-radius:15px}table{width:100%;min-width:650px;border-collapse:collapse;color:#111827}th{padding:11px 8px;background:#182848;color:#fff;font-size:12px;position:sticky;top:0}td{padding:9px 8px;border-bottom:1px solid #ddd;text-align:center;font-size:12px}td.name{text-align:left;font-weight:650}tr.present{background:#dcf8e3}.check{width:20px;height:20px;accent-color:#00a844}.status{padding:5px 8px;border-radius:8px;font-size:10px;font-weight:800}.present-status{background:#c8f7d5;color:#087f23}.absent-status{background:#ffd3d0;color:#b71c1c}.message{min-height:20px;text-align:center;font-size:12px;font-weight:700;margin-top:10px}.success{color:#69f0ae}.error{color:#ffb3b3}.loading{padding:25px;text-align:center;color:#555}
+.notice{padding:10px 12px;border-radius:11px;background:#ffffff12;font-size:11px;margin-top:10px;line-height:1.5}
+@media(max-width:650px){.controls{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.action-row .btn{flex:1 1 45%}.logout{font-size:10px;padding:8px}}
 </style>
-
 </head>
-
-
 <body>
-
-
 <div class="container">
-
-
-<!-- =================================================
-     TOP BAR
-================================================= -->
-
 <div class="topbar">
-
-    <button
-        class="back"
-        onclick="goDashboard()">
-
-        ←
-
-    </button>
-
-
-    <div class="title">
-
-        <h1>
-            🔐 Admin Panel
-        </h1>
-
-        <p>
-            B.Pharmacy • 7th Semester
-        </p>
-
-    </div>
-
-
-    <button
-        class="logout"
-        onclick="logout()">
-
-        Logout
-
-    </button>
-
+<button class="back" onclick="goDashboard()">←</button>
+<div class="title"><h1>📋 Attendance</h1><p>B.Pharmacy • Attendance Management System</p></div>
+<button class="logout" onclick="logout()">Logout</button>
 </div>
-
-
-<!-- =================================================
-     ADMIN INFORMATION
-================================================= -->
 
 <div class="card">
-
-    <div class="userbar">
-
-        <span>
-            👤 Logged in as
-        </span>
-
-        <strong id="adminName">
-            —
-        </strong>
-
-        <span class="spacer"></span>
-
-        <span>
-            🔐 ADMIN
-        </span>
-
-    </div>
-
-
-    <div class="admin-badge">
-
-        🛡️ Administrator Access
-
-    </div>
-
+<div class="userbar">
+<span>👤 Logged in as</span><strong id="userName">—</strong>
+<span class="spacer"></span><span id="userRole" class="role">—</span>
 </div>
-
-
-<!-- =================================================
-     STATISTICS
-================================================= -->
+<div id="roleNotice" class="notice"></div>
+</div>
 
 <div class="card">
-
-    <div class="stats">
-
-        <div class="stat">
-
-            <b
-                id="totalUsers">
-                0
-            </b>
-
-            <small>
-                Total Users
-            </small>
-
-        </div>
-
-
-        <div class="stat">
-
-            <b
-                id="pendingUsers"
-                class="orange-text">
-                0
-            </b>
-
-            <small>
-                Pending
-            </small>
-
-        </div>
-
-
-        <div class="stat">
-
-            <b
-                id="approvedUsers"
-                class="green-text">
-                0
-            </b>
-
-            <small>
-                Approved
-            </small>
-
-        </div>
-
-
-        <div class="stat">
-
-            <b
-                id="rejectedUsers"
-                class="red-text">
-                0
-            </b>
-
-            <small>
-                Rejected
-            </small>
-
-        </div>
-
-    </div>
-
+<div class="controls">
+<div><label>📚 Subject</label>
+<select id="subject">
+<option value="">Select Subject</option>
+<option>Instrumental Methods of Analysis</option>
+<option>Novel Drug Delivery System</option>
+<option>Industrial Pharmacy II</option>
+<option>Practice School</option>
+<option>Instrumental Methods of Analysis – Practical</option>
+<option>Practice School / Training</option>
+</select></div>
+<div><label>📅 Attendance Date</label><input type="date" id="attendanceDate"></div>
 </div>
 
+<input id="search" class="search" type="text" placeholder="🔍 Search name or enrollment..." oninput="renderTable()">
 
-<!-- =================================================
-     USER MANAGEMENT
-================================================= -->
+<div class="action-row">
+<button class="btn green" id="allPresentBtn" onclick="markAll(true)">✅ All Present</button>
+<button class="btn red" id="allAbsentBtn" onclick="markAll(false)">❌ All Absent</button>
+<button class="btn orange" id="resetBtn" onclick="resetLocal()">🔄 Reset</button>
+<button class="btn blue" id="saveBtn" onclick="saveAttendance()">💾 Save Attendance</button>
+<button class="btn purple" id="loadBtn" onclick="loadAttendance()">🔄 Load Saved</button>
+</div>
+<div id="message" class="message"></div>
+</div>
 
 <div class="card">
-
-
-    <div class="section-header">
-
-        <h2>
-            👥 User Management
-        </h2>
-
-
-        <button
-            class="btn blue"
-            onclick="loadUsers()">
-
-            🔄 Refresh
-
-        </button>
-
-    </div>
-
-
-    <input
-        id="userSearch"
-        class="search"
-        placeholder="Search name, ID, enrollment..."
-        oninput="renderUsers()">
-
-
-    <div
-        id="usersBox"
-        class="tablebox">
-
-        <div class="loading">
-
-            ⏳ Loading users...
-
-        </div>
-
-    </div>
-
-
-    <div
-        id="userMessage"
-        class="message">
-
-    </div>
-
+<div class="stats">
+<div class="stat"><b id="present" class="safe">0</b><small>Present</small></div>
+<div class="stat"><b id="absent" class="danger">0</b><small>Absent</small></div>
+<div class="stat"><b id="total">0</b><small>Total</small></div>
+<div class="stat"><b id="percentage" class="warn">0%</b><small>Percentage</small></div>
 </div>
-
-
-<!-- =================================================
-     DANGER ZONE
-================================================= -->
-
-<div class="card danger-zone">
-
-
-    <div class="section-header">
-
-        <h2>
-            ⚠️ Database Management
-        </h2>
-
-    </div>
-
-
-    <div class="warning">
-
-        <b>Warning:</b>
-
-        These operations permanently modify
-        your Google Sheets data.
-
-        <br><br>
-
-        Use these buttons only when you are
-        completely sure.
-
-    </div>
-
-
-    <div class="danger-actions">
-
-
-        <button
-            class="danger-button"
-            onclick="resetAttendance()">
-
-            🗑️ Reset Attendance
-
-            <br>
-
-            <small>
-                Delete attendance records
-            </small>
-
-        </button>
-
-
-        <button
-            class="danger-button secondary"
-            onclick="resetEverything()">
-
-            ☢️ Reset All Data
-
-            <br>
-
-            <small>
-                Users + attendance + subjects
-            </small>
-
-        </button>
-
-    </div>
-
-
-    <div
-        id="databaseMessage"
-        class="message">
-
-    </div>
-
 </div>
-
-
-<!-- =================================================
-     NAVIGATION
-================================================= -->
 
 <div class="card">
-
-    <div class="actions">
-
-
-        <button
-            class="btn blue"
-            onclick="goDashboard()">
-
-            📊 Dashboard
-
-        </button>
-
-
-        <button
-            class="btn green"
-            onclick="window.location.href='students.html'">
-
-            👥 Students
-
-        </button>
-
-
-        <button
-            class="btn orange"
-            onclick="window.print()">
-
-            🖨️ Print
-
-        </button>
-
-
-    </div>
-
+<div class="table-box">
+<table>
+<thead><tr><th>S.No.</th><th>Enrollment</th><th>Student Name</th><th>Present</th><th>Status</th></tr></thead>
+<tbody id="attendanceBody"><tr><td colspan="5" class="loading">Loading students...</td></tr></tbody>
+</table>
 </div>
-
-
 </div>
-
+</div>
 
 <script>
+const API_URL="https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
 
-/* =====================================================
-   GOOGLE APPS SCRIPT URL
-===================================================== */
+const loggedIn=sessionStorage.getItem("BP7_LOGGED_IN");
+const session=sessionStorage.getItem("BP7_SESSION");
+const userId=sessionStorage.getItem("BP7_USER_ID")||"";
+const userName=sessionStorage.getItem("BP7_USER_NAME")||userId||"User";
+const userRole=String(sessionStorage.getItem("BP7_ROLE")||"student").toLowerCase();
 
-const API_URL =
-"https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
+if(loggedIn!=="true"||!session){window.location.replace("index.html");}
 
+const canEdit=(userRole==="admin"||userRole==="editor");
 
-/* =====================================================
-   SESSION
-===================================================== */
+document.getElementById("userName").textContent=userName;
+document.getElementById("userRole").textContent=userRole==="admin"?"🔐 Administrator":userRole==="editor"?"👨‍🏫 Editor":"🎓 Student";
 
-const loggedIn =
-sessionStorage.getItem(
-    "BP7_LOGGED_IN"
-);
-
-const session =
-sessionStorage.getItem(
-    "BP7_SESSION"
-);
-
-const userId =
-sessionStorage.getItem(
-    "BP7_USER_ID"
-);
-
-const userName =
-sessionStorage.getItem(
-    "BP7_USER_NAME"
-);
-
-const role =
-sessionStorage.getItem(
-    "BP7_ROLE"
-);
-
-
-/* =====================================================
-   ADMIN PROTECTION
-===================================================== */
-
-if(
-
-    loggedIn !== "true" ||
-
-    !session ||
-
-    String(role).toLowerCase() !== "admin"
-
-){
-
-    alert(
-        "Admin access required."
-    );
-
-    window.location.replace(
-        "index.html"
-    );
-
+if(userRole==="admin"){
+ document.getElementById("roleNotice").innerHTML="<b>Administrator:</b> Full attendance access.";
+}else if(userRole==="editor"){
+ document.getElementById("roleNotice").innerHTML="<b>Editor:</b> You can mark, edit, load and save attendance. Server-side permissions must also allow the Editor role.";
+}else{
+ document.getElementById("roleNotice").innerHTML="<b>Student:</b> Attendance is read-only. You cannot mark or save attendance.";
 }
 
-
-/* =====================================================
-   ADMIN NAME
-===================================================== */
-
-document.getElementById(
-    "adminName"
-).textContent =
-userName ||
-userId ||
-"Administrator";
-
-
-/* =====================================================
-   DATA
-===================================================== */
-
-let users = [];
-
-
-/* =====================================================
-   LOAD USERS
-===================================================== */
-
-async function loadUsers(){
-
-    const box =
-        document.getElementById(
-            "usersBox"
-        );
-
-
-    box.innerHTML = `
-        <div class="loading">
-            ⏳ Loading users...
-        </div>
-    `;
-
-
-    try{
-
-        const url =
-            API_URL +
-
-            "?action=users" +
-
-            "&session=" +
-            encodeURIComponent(session) +
-
-            "&userId=" +
-            encodeURIComponent(userId);
-
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
-
-
-        if(!response.ok){
-
-            throw new Error(
-                "Server error"
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
-
-        console.log(
-            "Admin users:",
-            result
-        );
-
-
-        if(
-            result.success !== true
-        ){
-
-            throw new Error(
-                result.message ||
-                "Unable to load users"
-            );
-
-        }
-
-
-        users =
-            result.users ||
-            result.records ||
-            result.data ||
-            [];
-
-
-        renderUsers();
-
-        updateStatistics();
-
-
-        showUserMessage(
-            "✅ Users loaded.",
-            false
-        );
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-
-        box.innerHTML = `
-            <div class="loading">
-
-                ❌ Unable to load users.
-
-                <br><br>
-
-                <small>
-                    Check your Google Apps Script
-                    <b>?action=users</b>
-                    endpoint.
-                </small>
-
-            </div>
-        `;
-
-
-        showUserMessage(
-            "❌ " +
-            error.message,
-            true
-        );
-
-    }
-
+if(!canEdit){
+ ["allPresentBtn","allAbsentBtn","resetBtn","saveBtn"].forEach(id=>document.getElementById(id).disabled=true);
 }
 
-
-/* =====================================================
-   RENDER USERS
-===================================================== */
-
-function renderUsers(){
-
-    const box =
-        document.getElementById(
-            "usersBox"
-        );
-
-
-    const search =
-        document.getElementById(
-            "userSearch"
-        ).value
-        .toLowerCase()
-        .trim();
-
-
-    const filtered =
-        users.filter(
-            user => {
-
-                const text =
-                    (
-
-                        user.id ||
-                        user.userId ||
-                        ""
-
-                    ) +
-
-                    " " +
-
-                    (
-
-                        user.name ||
-                        user.Name ||
-                        ""
-
-                    ) +
-
-                    " " +
-
-                    (
-
-                        user.enrollment ||
-                        user.enrollmentNo ||
-                        user.Enrollment ||
-                        ""
-
-                    ) +
-
-                    " " +
-
-                    (
-
-                        user.status ||
-                        ""
-
-                    );
-
-
-                return text
-                    .toLowerCase()
-                    .includes(search);
-
-            }
-        );
-
-
-    if(!filtered.length){
-
-        box.innerHTML = `
-            <div class="loading">
-
-                📭 No users found.
-
-            </div>
-        `;
-
-        return;
-
-    }
-
-
-    let html = `
-
-    <table>
-
-        <thead>
-
-            <tr>
-
-                <th>
-                    #
-                </th>
-
-                <th>
-                    ID
-                </th>
-
-                <th>
-                    Name
-                </th>
-
-                <th>
-                    Enrollment
-                </th>
-
-                <th>
-                    Role
-                </th>
-
-                <th>
-                    Status
-                </th>
-
-                <th>
-                    Action
-                </th>
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-    `;
-
-
-    filtered.forEach(
-        (user,index) => {
-
-            const id =
-                user.id ||
-                user.userId ||
-                "";
-
-
-            const name =
-                user.name ||
-                user.Name ||
-                "—";
-
-
-            const enrollment =
-                user.enrollment ||
-                user.enrollmentNo ||
-                user.Enrollment ||
-                "—";
-
-
-            const userRole =
-                user.role ||
-                user.Role ||
-                "student";
-
-
-            const status =
-                String(
-                    user.status ||
-                    user.Status ||
-                    "pending"
-                ).toLowerCase();
-
-
-            let statusClass =
-                "pending";
-
-
-            if(status === "approved"){
-
-                statusClass =
-                    "approved";
-
-            }
-
-
-            if(status === "rejected"){
-
-                statusClass =
-                    "rejected";
-
-            }
-
-
-            let actions = "";
-
-
-            if(status === "pending"){
-
-                actions += `
-
-                    <button
-                        class="action-btn"
-                        style="background:#00a844"
-                        onclick="approveUser('${escapeAttr(id)}')">
-
-                        ✓ Approve
-
-                    </button>
-
-                    <button
-                        class="action-btn"
-                        style="background:#e53935"
-                        onclick="rejectUser('${escapeAttr(id)}')">
-
-                        ✕ Reject
-
-                    </button>
-
-                `;
-
-            }
-
-
-            if(status === "approved"){
-
-                actions += `
-
-                    <button
-                        class="action-btn"
-                        style="background:#e53935"
-                        onclick="rejectUser('${escapeAttr(id)}')">
-
-                        Disable
-
-                    </button>
-
-                `;
-
-            }
-
-
-            if(status === "rejected"){
-
-                actions += `
-
-                    <button
-                        class="action-btn"
-                        style="background:#00a844"
-                        onclick="approveUser('${escapeAttr(id)}')">
-
-                        ✓ Approve
-
-                    </button>
-
-                `;
-
-            }
-
-
-            html += `
-
-            <tr>
-
-                <td>
-                    ${index + 1}
-                </td>
-
-                <td>
-                    ${escapeHTML(id)}
-                </td>
-
-                <td class="user-name">
-                    ${escapeHTML(name)}
-                </td>
-
-                <td>
-                    ${escapeHTML(enrollment)}
-                </td>
-
-                <td>
-                    ${escapeHTML(userRole)}
-                </td>
-
-                <td>
-
-                    <span
-                        class="status ${statusClass}">
-
-                        ${escapeHTML(status)}
-
-                    </span>
-
-                </td>
-
-                <td>
-                    ${actions}
-                </td>
-
-            </tr>
-
-            `;
-
-        }
-    );
-
-
-    html += `
-
-        </tbody>
-
-    </table>
-
-    `;
-
-
-    box.innerHTML = html;
-
+let students=[];
+let attendance={};
+
+function today(){
+ const d=new Date();
+ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
+document.getElementById("attendanceDate").value=today();
+
+function showMessage(text,type="success"){
+ const el=document.getElementById("message");
+ el.textContent=text;el.className="message "+type;
 }
 
-
-/* =====================================================
-   APPROVE USER
-===================================================== */
-
-async function approveUser(id){
-
-    if(!id)
-        return;
-
-
-    if(
-        !confirm(
-            "Approve this user?"
-        )
-    )
-        return;
-
-
-    await changeUserStatus(
-        id,
-        "approved"
-    );
-
+async function api(params){
+ const query=Object.keys(params).map(k=>encodeURIComponent(k)+"="+encodeURIComponent(params[k]??"")).join("&");
+ const response=await fetch(API_URL+"?"+query,{method:"GET",cache:"no-store",redirect:"follow"});
+ const text=await response.text();
+ let result;
+ try{result=JSON.parse(text)}catch(e){throw new Error("Invalid server response: "+text)}
+ if(result.success!==true)throw new Error(result.message||"Request failed");
+ return result;
 }
 
-
-/* =====================================================
-   REJECT USER
-===================================================== */
-
-async function rejectUser(id){
-
-    if(!id)
-        return;
-
-
-    if(
-        !confirm(
-            "Reject/disable this user?"
-        )
-    )
-        return;
-
-
-    await changeUserStatus(
-        id,
-        "rejected"
-    );
-
+async function loadStudents(){
+ const body=document.getElementById("attendanceBody");
+ body.innerHTML='<tr><td colspan="5" class="loading">Loading students...</td></tr>';
+ try{
+  const result=await api({action:"students",session:session,token:session,userId:userId});
+  students=result.students||result.data||[];
+  renderTable();updateStats();
+ }catch(e){
+  body.innerHTML='<tr><td colspan="5" class="loading">❌ '+escapeHTML(e.message)+'</td></tr>';
+ }
 }
 
-
-/* =====================================================
-   CHANGE USER STATUS
-===================================================== */
-
-async function changeUserStatus(
-    id,
-    status
-){
-
-    showUserMessage(
-        "⏳ Updating user...",
-        false
-    );
-
-
-    try{
-
-        const url =
-            API_URL +
-
-            "?action=updateUserStatus" +
-
-            "&session=" +
-            encodeURIComponent(session) +
-
-            "&adminId=" +
-            encodeURIComponent(userId) +
-
-            "&id=" +
-            encodeURIComponent(id) +
-
-            "&status=" +
-            encodeURIComponent(status);
-
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if(
-            result.success !== true
-        ){
-
-            throw new Error(
-                result.message ||
-                "Operation failed"
-            );
-
-        }
-
-
-        showUserMessage(
-            status === "approved"
-                ? "✅ User approved."
-                : "❌ User rejected.",
-            false
-        );
-
-
-        await loadUsers();
-
-    }
-
-    catch(error){
-
-        showUserMessage(
-            "❌ " +
-            error.message,
-            true
-        );
-
-    }
-
+function renderTable(){
+ const body=document.getElementById("attendanceBody");
+ const search=document.getElementById("search").value.toLowerCase().trim();
+ const filtered=students.filter(s=>{
+  const n=String(s.name||"").toLowerCase(),e=String(s.enrollment||"").toLowerCase();
+  return !search||n.includes(search)||e.includes(search);
+ });
+ if(!filtered.length){body.innerHTML='<tr><td colspan="5" class="loading">No students found.</td></tr>';return;}
+ body.innerHTML=filtered.map((student,index)=>{
+  const enrollment=student.enrollment||"";
+  const present=attendance[enrollment]===true;
+  return `<tr class="${present?"present":""}">
+   <td>${index+1}</td>
+   <td>${escapeHTML(enrollment)}</td>
+   <td class="name">${escapeHTML(student.name||"Unknown")}</td>
+   <td><input class="check" type="checkbox" ${present?"checked":""} ${canEdit?"":"disabled"} onchange="changeAttendance('${escapeJS(enrollment)}',this.checked)"></td>
+   <td><span class="status ${present?"present-status":"absent-status"}">${present?"PRESENT":"ABSENT"}</span></td>
+  </tr>`;
+ }).join("");
 }
 
-
-/* =====================================================
-   RESET ATTENDANCE
-===================================================== */
-
-async function resetAttendance(){
-
-    const first =
-        confirm(
-            "⚠️ WARNING!\n\n" +
-            "This will delete ALL attendance records.\n\n" +
-            "Continue?"
-        );
-
-
-    if(!first)
-        return;
-
-
-    const second =
-        prompt(
-            "Type RESET ATTENDANCE to confirm:"
-        );
-
-
-    if(
-        second !==
-        "RESET ATTENDANCE"
-    ){
-
-        alert(
-            "Reset cancelled."
-        );
-
-        return;
-
-    }
-
-
-    await adminAction(
-        "resetAttendance",
-        "Attendance data reset successfully."
-    );
-
+function changeAttendance(enrollment,status){
+ if(!canEdit)return;
+ attendance[enrollment]=status;
+ renderTable();updateStats();
 }
 
-
-/* =====================================================
-   RESET EVERYTHING
-===================================================== */
-
-async function resetEverything(){
-
-    const first =
-        confirm(
-            "☢️ DANGER!\n\n" +
-
-            "This may delete users, " +
-            "attendance and subject records.\n\n" +
-
-            "Are you absolutely sure?"
-        );
-
-
-    if(!first)
-        return;
-
-
-    const second =
-        prompt(
-            "Type RESET ALL DATA to confirm:"
-        );
-
-
-    if(
-        second !==
-        "RESET ALL DATA"
-    ){
-
-        alert(
-            "Reset cancelled."
-        );
-
-        return;
-
-    }
-
-
-    await adminAction(
-        "resetAll",
-        "All spreadsheet data has been reset."
-    );
-
+function markAll(status){
+ if(!canEdit){showMessage("❌ Editor or Admin permission required.","error");return;}
+ students.forEach(s=>attendance[s.enrollment]=status);
+ renderTable();updateStats();
+ showMessage(status?"✅ All students marked Present.":"❌ All students marked Absent.");
 }
 
-
-/* =====================================================
-   ADMIN ACTION
-===================================================== */
-
-async function adminAction(
-    action,
-    successMessage
-){
-
-    const box =
-        document.getElementById(
-            "databaseMessage"
-        );
-
-
-    box.textContent =
-        "⏳ Processing...";
-
-
-    try{
-
-        const url =
-            API_URL +
-
-            "?action=" +
-            encodeURIComponent(action) +
-
-            "&session=" +
-            encodeURIComponent(session) +
-
-            "&adminId=" +
-            encodeURIComponent(userId);
-
-
-        const response =
-            await fetch(
-                url,
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
-
-
-        const result =
-            await response.json();
-
-
-        if(
-            result.success !== true
-        ){
-
-            throw new Error(
-                result.message ||
-                "Admin operation failed"
-            );
-
-        }
-
-
-        box.style.color =
-            "#69f0ae";
-
-
-        box.textContent =
-            "✅ " +
-            successMessage;
-
-
-        await loadUsers();
-
-    }
-
-    catch(error){
-
-        box.style.color =
-            "#ff8a80";
-
-
-        box.textContent =
-            "❌ " +
-            error.message;
-
-    }
-
+function resetLocal(){
+ if(!canEdit)return;
+ attendance={};renderTable();updateStats();showMessage("🔄 Attendance reset locally. Click Save to apply.");
 }
 
-
-/* =====================================================
-   STATISTICS
-===================================================== */
-
-function updateStatistics(){
-
-    let pending = 0;
-
-    let approved = 0;
-
-    let rejected = 0;
-
-
-    users.forEach(
-        user => {
-
-            const status =
-                String(
-                    user.status ||
-                    user.Status ||
-                    "pending"
-                ).toLowerCase();
-
-
-            if(
-                status === "pending"
-            )
-                pending++;
-
-
-            else if(
-                status === "approved"
-            )
-                approved++;
-
-
-            else if(
-                status === "rejected"
-            )
-                rejected++;
-
-        }
-    );
-
-
-    document.getElementById(
-        "totalUsers"
-    ).textContent =
-        users.length;
-
-
-    document.getElementById(
-        "pendingUsers"
-    ).textContent =
-        pending;
-
-
-    document.getElementById(
-        "approvedUsers"
-    ).textContent =
-        approved;
-
-
-    document.getElementById(
-        "rejectedUsers"
-    ).textContent =
-        rejected;
-
+function updateStats(){
+ const total=students.length;
+ let present=0;
+ students.forEach(s=>{if(attendance[s.enrollment]===true)present++;});
+ const absent=total-present;
+ document.getElementById("present").textContent=present;
+ document.getElementById("absent").textContent=absent;
+ document.getElementById("total").textContent=total;
+ document.getElementById("percentage").textContent=(total?(present/total*100):0).toFixed(1)+"%";
 }
 
+async function saveAttendance(){
+ if(!canEdit){showMessage("❌ Only Admin or Editor can save attendance.","error");return;}
+ const subject=document.getElementById("subject").value;
+ const date=document.getElementById("attendanceDate").value;
+ if(!subject){showMessage("⚠️ Please select a subject.","error");return;}
+ if(!date){showMessage("⚠️ Please select a date.","error");return;}
+ if(!students.length){showMessage("⚠️ No students available.","error");return;}
 
-/* =====================================================
-   MESSAGE
-===================================================== */
+ const records=students.map(s=>({
+  enrollment:s.enrollment,
+  name:s.name,
+  status:attendance[s.enrollment]===true?"Present":"Absent"
+ }));
 
-function showUserMessage(
-    message,
-    error
-){
-
-    const box =
-        document.getElementById(
-            "userMessage"
-        );
-
-
-    box.textContent =
-        message;
-
-
-    box.style.color =
-        error
-        ? "#ff8a80"
-        : "#69f0ae";
-
+ showMessage("Saving attendance...");
+ try{
+  const result=await api({
+   action:"saveAttendance",
+   session:session,
+   token:session,
+   userId:userId,
+   subject:subject,
+   date:date,
+   records:JSON.stringify(records)
+  });
+  showMessage("✅ "+(result.message||"Attendance saved successfully."));
+ }catch(e){
+  showMessage("❌ "+e.message,"error");
+ }
 }
 
-
-/* =====================================================
-   DASHBOARD
-===================================================== */
-
-function goDashboard(){
-
-    window.location.href =
-        "dashboard.html";
-
+async function loadAttendance(){
+ const subject=document.getElementById("subject").value;
+ const date=document.getElementById("attendanceDate").value;
+ if(!subject){showMessage("⚠️ Select a subject first.","error");return;}
+ if(!date){showMessage("⚠️ Select a date first.","error");return;}
+ showMessage("Loading saved attendance...");
+ try{
+  const result=await api({
+   action:"getAttendance",
+   session:session,
+   token:session,
+   userId:userId,
+   subject:subject,
+   date:date
+  });
+  attendance={};
+  const saved=result.attendance||result.records||result.data||{};
+  if(Array.isArray(saved)){
+   saved.forEach(r=>attendance[r.enrollment]=String(r.status).toLowerCase()==="present");
+  }else{
+   Object.keys(saved).forEach(k=>attendance[k]=saved[k]===true||String(saved[k]).toLowerCase()==="present");
+  }
+  renderTable();updateStats();showMessage("✅ Saved attendance loaded.");
+ }catch(e){
+  showMessage("❌ "+e.message,"error");
+ }
 }
 
+function goDashboard(){window.location.href="dashboard.html";}
 
-/* =====================================================
-   LOGOUT
-===================================================== */
-
-function logout(){
-
-    sessionStorage.clear();
-
-    window.location.replace(
-        "index.html"
-    );
-
+async function logout(){
+ try{await api({action:"logout",session:session,token:session,userId:userId});}catch(e){}
+ ["BP7_LOGGED_IN","BP7_SESSION","BP7_USER_ID","BP7_USER_NAME","BP7_ENROLLMENT","BP7_ROLE"].forEach(k=>sessionStorage.removeItem(k));
+ window.location.replace("index.html");
 }
 
-
-/* =====================================================
-   HTML SECURITY
-===================================================== */
-
-function escapeHTML(value){
-
-    return String(
-        value || ""
-    )
-
-    .replaceAll(
-        "&",
-        "&amp;"
-    )
-
-    .replaceAll(
-        "<",
-        "&lt;"
-    )
-
-    .replaceAll(
-        ">",
-        "&gt;"
-    )
-
-    .replaceAll(
-        '"',
-        "&quot;"
-    )
-
-    .replaceAll(
-        "'",
-        "&#039;"
-    );
-
+function escapeHTML(v){
+ return String(v).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
 }
+function escapeJS(v){return String(v).replaceAll("\\","\\\\").replaceAll("'","\\'").replaceAll("\n","\\n").replaceAll("\r","\\r");}
 
-
-function escapeAttr(value){
-
-    return String(
-        value || ""
-    )
-    .replaceAll(
-        "\\",
-        "\\\\"
-    )
-    .replaceAll(
-        "'",
-        "\\'"
-    );
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
-
-loadUsers();
-
+loadStudents();
 </script>
-
 </body>
 </html>

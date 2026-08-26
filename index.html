@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>B.Pharmacy Attendance – Login</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+
+      font-family: Arial, sans-serif;
+      color: white;
+
+      background:
+        radial-gradient(circle at 15% 10%, #f9d8ff55, transparent 30%),
+        radial-gradient(circle at 85% 90%, #ffd6e855, transparent 30%),
+        linear-gradient(135deg, #29234a, #4b3f72, #9f6f8f);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 430px;
+
+      padding: 25px;
+
+      text-align: center;
+
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(20px);
+
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 25px;
+
+      box-shadow: 0 25px 70px rgba(0,0,0,0.4);
+    }
+
+    .logo {
+      width: 90px;
+      height: 90px;
+
+      object-fit: cover;
+
+      border-radius: 22px;
+
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    .users {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .user {
+      padding: 14px;
+
+      border-radius: 15px;
+
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+
+      color: white;
+
+      cursor: pointer;
+
+      text-align: left;
+
+      font-weight: bold;
+    }
+
+    .user small {
+      display: block;
+      margin-top: 4px;
+
+      opacity: 0.7;
+      font-weight: normal;
+    }
+
+    .user.selected {
+      background: rgba(255,255,255,0.3);
+      border-color: white;
+    }
+
+    #password {
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+      border-radius: 12px;
+
+      text-align: center;
+
+      font-size: 17px;
+      letter-spacing: 3px;
+
+      outline: none;
+    }
+
+    .login-btn {
+      width: 100%;
+
+      margin-top: 12px;
+
+      padding: 14px;
+
+      border: none;
+      border-radius: 12px;
+
+      background: #1976d2;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      cursor: pointer;
+    }
+
+    .login-btn:active {
+      transform: scale(0.97);
+    }
+
+    #message {
+      min-height: 20px;
+
+      margin-top: 10px;
+
+      color: #ffd0d0;
+
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    @media(max-width:600px) {
+      .users {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+
+    <!-- Put your image inside pic/1.jpg -->
+    <img
+      src="pic/1.jpg"
+      class="logo"
+      alt="B.Pharmacy"
+    >
+
+    <h1>🔐 Attendance Login</h1>
+
+    <div class="subtitle">
+      B.Pharmacy – 7th Semester
+    </div>
+
+    <div class="users">
+
+      <button
+        class="user selected"
+        data-user="Ma Lik"
+        onclick="selectUser(this)"
+      >
+        ❤️ Ma Lik
+        <small>Personal Account</small>
+      </button>
+
+      <button
+        class="user"
+        data-user="Baijnath"
+        onclick="selectUser(this)"
+      >
+        👤 Baijnath
+        <small>Student Account</small>
+      </button>
+
+      <button
+        class="user"
+        data-user="Isha Sharma"
+        onclick="selectUser(this)"
+      >
+        👩 Isha Sharma
+        <small>Student Account</small>
+      </button>
+
+      <button
+        class="user"
+        data-user="Gaurav"
+        onclick="selectUser(this)"
+      >
+        👨 Gaurav
+        <small>Student Account</small>
+      </button>
+
+    </div>
+
+    <input
+      id="password"
+      type="password"
+      inputmode="numeric"
+      maxlength="7"
+      placeholder="Enter password"
+      onkeydown="if(event.key==='Enter') login()"
+    >
+
+    <button
+      class="login-btn"
+      onclick="login()"
+    >
+      🔓 Login
+    </button>
+
+    <div id="message"></div>
+
+  </div>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT API
+   ===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbxOEHkTw_t7L9uxWWxxdpGx8NoPY90k4epi14nwOtU-GZSR0czKm5nJrLkq1tx8ifrt/exec";
+
+
+/* =====================================================
+   SELECTED USER
+   ===================================================== */
+
+let selectedUser = "Ma Lik";
+
+
+/* =====================================================
+   SELECT USER
+   ===================================================== */
+
+function selectUser(button) {
+
+  document
+    .querySelectorAll(".user")
+    .forEach(btn => btn.classList.remove("selected"));
+
+  button.classList.add("selected");
+
+  selectedUser = button.dataset.user;
+
+  document.getElementById("password").value = "";
+
+  document.getElementById("message").textContent = "";
+
+  document.getElementById("password").focus();
+}
+
+
+/* =====================================================
+   LOGIN
+   ===================================================== */
+
+async function login() {
+
+  const password =
+    document.getElementById("password").value.trim();
+
+  const message =
+    document.getElementById("message");
+
+
+  if (!password) {
+
+    message.textContent =
+      "❌ Please enter your password.";
+
+    return;
+  }
+
+
+  message.textContent = "Checking login...";
+
+
+  try {
+
+    const url =
+      API_URL +
+      "?action=login" +
+      "&user=" +
+      encodeURIComponent(selectedUser) +
+      "&password=" +
+      encodeURIComponent(password);
+
+
+    const response =
+      await fetch(url);
+
+
+    const result =
+      await response.json();
+
+
+    if (result.success) {
+
+      sessionStorage.setItem(
+        "BP7_loggedUser",
+        selectedUser
+      );
+
+
+      /*
+        After successful login,
+        open home page.
+      */
+
+      window.location.href = "home.html";
+
+    } else {
+
+      message.textContent =
+        "❌ Wrong password. Access denied.";
+
+      document.getElementById("password").value = "";
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+    message.textContent =
+      "❌ Unable to connect to Google Sheets.";
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>

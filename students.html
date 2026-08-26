@@ -6,288 +6,328 @@
 <title>B.Pharmacy | Students</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 :root{
---primary:#5b4bb7;
---secondary:#9b6fd1;
---green:#00b894;
---red:#e74c3c;
---blue:#3498db;
---orange:#f39c12;
+    --primary:#5b4bb7;
+    --secondary:#9b6fd1;
+    --green:#00b894;
+    --red:#e74c3c;
+    --blue:#3498db;
+    --orange:#f39c12;
 }
 
 body{
-min-height:100vh;
-padding:14px;
-font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
-color:white;
-background:
-radial-gradient(circle at 10% 10%,#ffffff25,transparent 28%),
-radial-gradient(circle at 90% 90%,#ffffff18,transparent 30%),
-linear-gradient(135deg,#211b42,#5b4bb7,#9b6fd1);
+    min-height:100vh;
+    padding:14px;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:white;
+
+    background:
+        radial-gradient(circle at 10% 10%,#ffffff25,transparent 28%),
+        radial-gradient(circle at 90% 90%,#ffffff18,transparent 30%),
+        linear-gradient(135deg,#211b42,#5b4bb7,#9b6fd1);
 }
 
 .container{
-max-width:1100px;
-margin:auto;
+    max-width:1100px;
+    margin:auto;
 }
 
 .topbar{
-display:flex;
-align-items:center;
-gap:10px;
-margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
 }
 
 .back{
-width:43px;
-height:43px;
-border:1px solid #ffffff35;
-border-radius:13px;
-background:#ffffff18;
-color:white;
-font-size:20px;
-cursor:pointer;
+    width:43px;
+    height:43px;
+    border:1px solid #ffffff35;
+    border-radius:13px;
+    background:#ffffff18;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
 }
 
 .title{
-flex:1;
-text-align:center;
+    flex:1;
+    text-align:center;
 }
 
-.title h1{font-size:20px}
-.title p{font-size:11px;opacity:.7}
+.title h1{
+    font-size:20px;
+}
+
+.title p{
+    font-size:11px;
+    opacity:.7;
+}
 
 .logout{
-padding:9px 12px;
-border:0;
-border-radius:10px;
-background:#e74c3c;
-color:white;
-font-weight:700;
-cursor:pointer;
+    padding:9px 12px;
+    border:0;
+    border-radius:10px;
+    background:#e74c3c;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
 }
 
 .card{
-background:#ffffff18;
-border:1px solid #ffffff30;
-backdrop-filter:blur(18px);
-border-radius:20px;
-padding:16px;
-margin-bottom:12px;
-box-shadow:0 18px 45px #0004;
+    background:#ffffff18;
+    border:1px solid #ffffff30;
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 18px 45px #0004;
 }
 
 .userbar{
-display:flex;
-align-items:center;
-gap:8px;
-font-size:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
 }
 
-.userbar strong{font-size:14px}
-.spacer{flex:1}
+.userbar strong{
+    font-size:14px;
+}
+
+.spacer{
+    flex:1;
+}
 
 .search{
-width:100%;
-padding:13px;
-border:0;
-border-radius:12px;
-background:white;
-color:#111827;
-outline:none;
-font-size:14px;
+    width:100%;
+    padding:13px;
+    border:0;
+    border-radius:12px;
+    background:white;
+    color:#111827;
+    outline:none;
+    font-size:14px;
 }
 
 .filter-row{
-display:flex;
-gap:8px;
-margin-top:10px;
+    display:flex;
+    gap:8px;
+    margin-top:10px;
 }
 
 .filter-row select{
-flex:1;
-padding:11px;
-border:0;
-border-radius:10px;
-background:white;
-color:#111827;
+    flex:1;
+    padding:11px;
+    border:0;
+    border-radius:10px;
+    background:white;
+    color:#111827;
 }
 
 .refresh{
-padding:11px 15px;
-border:0;
-border-radius:10px;
-background:#1976d2;
-color:white;
-font-weight:750;
-cursor:pointer;
+    padding:11px 15px;
+    border:0;
+    border-radius:10px;
+    background:#1976d2;
+    color:white;
+    font-weight:750;
+    cursor:pointer;
 }
 
 .stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:8px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
 }
 
 .stat{
-padding:13px 7px;
-text-align:center;
-border-radius:13px;
-background:#ffffff15;
-border:1px solid #ffffff25;
+    padding:13px 7px;
+    text-align:center;
+    border-radius:13px;
+    background:#ffffff15;
+    border:1px solid #ffffff25;
 }
 
 .stat b{
-display:block;
-font-size:21px;
+    display:block;
+    font-size:21px;
 }
 
 .stat small{
-font-size:10px;
-opacity:.7;
+    font-size:10px;
+    opacity:.7;
 }
 
-.safe{color:#69f0ae}
-.danger{color:#ff8a80}
-.warn{color:#ffd54f}
+.safe{
+    color:#69f0ae;
+}
+
+.danger{
+    color:#ff8a80;
+}
+
+.warn{
+    color:#ffd54f;
+}
 
 .student-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
 .student-card{
-background:white;
-color:#111827;
-border-radius:16px;
-padding:15px;
-box-shadow:0 10px 25px #0002;
+    background:white;
+    color:#111827;
+    border-radius:16px;
+    padding:15px;
+    box-shadow:0 10px 25px #0002;
 }
 
 .student-head{
-display:flex;
-align-items:center;
-gap:11px;
+    display:flex;
+    align-items:center;
+    gap:11px;
 }
 
 .avatar{
-width:46px;
-height:46px;
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
-background:linear-gradient(135deg,#5b4bb7,#9b6fd1);
-color:white;
-font-weight:800;
-font-size:18px;
+    width:46px;
+    height:46px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#5b4bb7,#9b6fd1);
+    color:white;
+    font-weight:800;
+    font-size:18px;
 }
 
 .student-info{
-flex:1;
-min-width:0;
+    flex:1;
+    min-width:0;
 }
 
 .student-info h2{
-font-size:14px;
-white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
+    font-size:14px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
 .enrollment{
-font-size:11px;
-color:#666;
-margin-top:3px;
+    font-size:11px;
+    color:#666;
+    margin-top:3px;
 }
 
 .group{
-display:inline-block;
-margin-top:7px;
-padding:4px 7px;
-border-radius:7px;
-background:#eef0ff;
-color:#5b4bb7;
-font-size:9px;
-font-weight:800;
+    display:inline-block;
+    margin-top:7px;
+    padding:4px 7px;
+    border-radius:7px;
+    background:#eef0ff;
+    color:#5b4bb7;
+    font-size:9px;
+    font-weight:800;
 }
 
 .attendance-box{
-margin-top:13px;
-padding-top:12px;
-border-top:1px solid #eee;
+    margin-top:13px;
+    padding-top:12px;
+    border-top:1px solid #eee;
 }
 
 .attendance-grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:6px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
 }
 
 .mini{
-text-align:center;
-padding:8px 4px;
-border-radius:9px;
-background:#f3f6ff;
+    text-align:center;
+    padding:8px 4px;
+    border-radius:9px;
+    background:#f3f6ff;
 }
 
 .mini b{
-display:block;
-font-size:16px;
+    display:block;
+    font-size:16px;
 }
 
 .mini small{
-font-size:9px;
-color:#666;
+    font-size:9px;
+    color:#666;
 }
 
 .progress{
-height:8px;
-background:#e5e5e5;
-border-radius:20px;
-overflow:hidden;
-margin-top:10px;
+    height:8px;
+    background:#e5e5e5;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:10px;
 }
 
 .progress i{
-display:block;
-height:100%;
-background:#2575fc;
-border-radius:20px;
+    display:block;
+    height:100%;
+    background:#2575fc;
+    border-radius:20px;
 }
 
 .no-data{
-padding:30px;
-text-align:center;
-font-size:13px;
-opacity:.75;
+    padding:30px;
+    text-align:center;
+    font-size:13px;
+    opacity:.75;
 }
 
 .loading{
-text-align:center;
-padding:30px;
+    text-align:center;
+    padding:30px;
 }
 
 .message{
-text-align:center;
-font-size:12px;
-font-weight:700;
-min-height:20px;
-margin-top:10px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+    min-height:20px;
+    margin-top:10px;
 }
 
 @media(max-width:700px){
-.student-grid{grid-template-columns:1fr}
-.stats{grid-template-columns:repeat(2,1fr)}
+
+    .student-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
 @media(max-width:450px){
-.filter-row{flex-direction:column}
-.title h1{font-size:17px}
-.logout{font-size:10px;padding:8px}
+
+    .filter-row{
+        flex-direction:column;
+    }
+
+    .title h1{
+        font-size:17px;
+    }
+
+    .logout{
+        font-size:10px;
+        padding:8px;
+    }
 }
 </style>
 </head>
@@ -296,110 +336,199 @@ margin-top:10px;
 
 <div class="container">
 
-<div class="topbar">
+    <!-- TOP BAR -->
 
-<button class="back" onclick="goDashboard()">←</button>
+    <div class="topbar">
 
-<div class="title">
-<h1>👨‍🎓 Students</h1>
-<p>B.Pharmacy • 7th Semester</p>
-</div>
+        <button
+            class="back"
+            onclick="goDashboard()">
+            ←
+        </button>
 
-<button class="logout" onclick="logout()">Logout</button>
+        <div class="title">
 
-</div>
+            <h1>👨‍🎓 Students</h1>
 
+            <p>
+                B.Pharmacy • 7th Semester
+            </p>
 
-<div class="card">
+        </div>
 
-<div class="userbar">
+        <button
+            class="logout"
+            onclick="logout()">
+            Logout
+        </button>
 
-<span>👤 Logged in as</span>
-
-<strong id="userName">—</strong>
-
-<span class="spacer"></span>
-
-<span id="userRole">Student</span>
-
-</div>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <!-- USER -->
 
-<input
-id="search"
-class="search"
-type="text"
-placeholder="🔍 Search by name or enrollment number..."
-oninput="renderStudents()"
->
+    <div class="card">
 
-<div class="filter-row">
+        <div class="userbar">
 
-<select id="groupFilter" onchange="renderStudents()">
+            <span>👤 Logged in as</span>
 
-<option value="">All Groups</option>
-<option value="A">Group A</option>
-<option value="B">Group B</option>
-<option value="C">Group C</option>
-<option value="D">Group D</option>
+            <strong id="userName">
+                —
+            </strong>
 
-</select>
+            <span class="spacer"></span>
 
-<button class="refresh" onclick="loadStudents()">
-🔄 Refresh
-</button>
+            <span id="userRole">
+                Student
+            </span>
 
-</div>
+        </div>
 
-<div id="message" class="message"></div>
-
-</div>
+    </div>
 
 
-<div class="card">
+    <!-- SEARCH -->
 
-<div class="stats">
+    <div class="card">
 
-<div class="stat">
-<b id="totalStudents" class="safe">0</b>
-<small>Students</small>
-</div>
-
-<div class="stat">
-<b id="totalClasses">0</b>
-<small>Classes</small>
-</div>
-
-<div class="stat">
-<b id="totalPresent" class="safe">0</b>
-<small>Present Marks</small>
-</div>
-
-<div class="stat">
-<b id="overallPercentage" class="warn">0%</b>
-<small>Overall %</small>
-</div>
-
-</div>
-
-</div>
+        <input
+            id="search"
+            class="search"
+            type="text"
+            placeholder="🔍 Search by name or enrollment number..."
+            oninput="renderStudents()">
 
 
-<div class="card">
+        <div class="filter-row">
 
-<div id="studentGrid" class="student-grid">
+            <select
+                id="groupFilter"
+                onchange="renderStudents()">
 
-<div class="loading">
-⏳ Loading students...
-</div>
+                <option value="">
+                    All Groups
+                </option>
 
-</div>
+                <option value="A">
+                    Group A
+                </option>
 
-</div>
+                <option value="B">
+                    Group B
+                </option>
+
+                <option value="C">
+                    Group C
+                </option>
+
+                <option value="D">
+                    Group D
+                </option>
+
+            </select>
+
+
+            <button
+                class="refresh"
+                onclick="loadStudents()">
+                🔄 Refresh
+            </button>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="card">
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <b
+                    id="totalStudents"
+                    class="safe">
+                    0
+                </b>
+
+                <small>
+                    Students
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b id="totalClasses">
+                    0
+                </b>
+
+                <small>
+                    Classes
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="totalPresent"
+                    class="safe">
+                    0
+                </b>
+
+                <small>
+                    Present Marks
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="overallPercentage"
+                    class="warn">
+                    0%
+                </b>
+
+                <small>
+                    Overall %
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- STUDENT LIST -->
+
+    <div class="card">
+
+        <div
+            id="studentGrid"
+            class="student-grid">
+
+            <div class="loading">
+                Loading students...
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
@@ -407,7 +536,7 @@ oninput="renderStudents()"
 <script>
 
 /* =====================================================
-   API
+   GOOGLE APPS SCRIPT
    ===================================================== */
 
 const API_URL =
@@ -415,13 +544,13 @@ const API_URL =
 
 
 /* =====================================================
-   SESSION
+   LOGIN PROTECTION
    ===================================================== */
 
 const loggedIn =
 sessionStorage.getItem("BP7_LOGGED_IN");
 
-const token =
+const session =
 sessionStorage.getItem("BP7_SESSION");
 
 const userId =
@@ -435,11 +564,13 @@ sessionStorage.getItem("BP7_ROLE");
 
 
 if(
-loggedIn !== "true" ||
-!token
+    loggedIn !== "true" ||
+    !session
 ){
 
-window.location.replace("index.html");
+    window.location.replace(
+        "index.html"
+    );
 
 }
 
@@ -448,13 +579,18 @@ window.location.replace("index.html");
    USER DISPLAY
    ===================================================== */
 
-document.getElementById("userName").textContent =
+document.getElementById(
+    "userName"
+).textContent =
 userName || userId || "User";
 
-document.getElementById("userRole").textContent =
+
+document.getElementById(
+    "userRole"
+).textContent =
 String(userRole).toLowerCase() === "admin"
-? "🔐 Administrator"
-: "🎓 Student";
+    ? "🔐 Administrator"
+    : "🎓 Student";
 
 
 /* =====================================================
@@ -464,235 +600,198 @@ String(userRole).toLowerCase() === "admin"
 let students = [];
 
 
+/*
+ * Expected student object:
+ *
+ * {
+ *   id:"M001",
+ *   name:"Rahul Kumar",
+ *   enrollment:"AJU/230001",
+ *   group:"A",
+ *   present:18,
+ *   absent:5,
+ *   total:23,
+ *   percentage:78.26
+ * }
+ */
+
+
 /* =====================================================
    LOAD STUDENTS
    ===================================================== */
 
 async function loadStudents(){
 
-const grid =
-document.getElementById("studentGrid");
+    const grid =
+        document.getElementById(
+            "studentGrid"
+        );
 
-grid.innerHTML = `
-<div class="loading">
-⏳ Loading students...
-</div>
-`;
 
+    grid.innerHTML = `
+        <div class="loading">
+            ⏳ Loading students...
+        </div>
+    `;
 
-try{
 
-/*
- IMPORTANT FIX:
+    try{
 
- Apps Script action:
- getStudents
+        const url =
+            API_URL +
 
- Apps Script parameter:
- token
+            "?action=getStudents" +
+            "&token=" +
+            encodeURIComponent(session);
 
- NOT:
- students
- session
-*/
 
-const url =
-API_URL +
-"?action=getStudents" +
-"&token=" +
-encodeURIComponent(token);
+        const response =
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
 
 
-console.log(
-"Loading students:",
-url
-);
+        if(!response.ok){
 
+            throw new Error(
+                "Server error"
+            );
 
-const response =
-await fetch(
-url,
-{
-method:"GET",
-cache:"no-store"
-}
-);
+        }
 
 
-const text =
-await response.text();
+        const result =
+            await response.json();
 
 
-console.log(
-"Student API response:",
-text
-);
+        console.log(
+            "Student API:",
+            result
+        );
 
 
-let result;
+        if(
+            result.success !== true
+        ){
 
-try{
+            throw new Error(
+                result.message ||
+                "Unable to load students"
+            );
 
-result =
-JSON.parse(text);
+        }
 
-}
 
-catch(error){
+        students =
+            result.students ||
+            result.data ||
+            [];
 
-throw new Error(
-"Invalid API response: " + text
-);
 
-}
+        /*
+         * Make field names compatible
+         * with different Sheet headers.
+         */
 
+        students =
+            students.map(
+                student => ({
 
-if(
-result.success !== true
-){
+                    id:
+                        student.id ||
+                        student.ID ||
+                        "",
 
-throw new Error(
-result.message ||
-"Unable to load students"
-);
+                    name:
+                        student.name ||
+                        student.Name ||
+                        "",
 
-}
+                    enrollment:
+                        student.enrollment ||
+                        student.Enrollment ||
+                        student.enrollmentNo ||
+                        "",
 
+                    group:
+                        student.group ||
+                        student.Group ||
+                        "",
 
-/* ==========================================
-   ACCEPT DIFFERENT RESPONSE FORMATS
-   ========================================== */
-
-students =
-result.students ||
-result.data ||
-[];
-
-
-/* ==========================================
-   NORMALIZE STUDENT DATA
-   ========================================== */
-
-students =
-students.map(
-student => ({
-
-id:
-String(
-student.id ||
-student.ID ||
-student.enrollment ||
-student.Enrollment ||
-""
-).trim(),
-
-name:
-String(
-student.name ||
-student.Name ||
-""
-).trim(),
-
-enrollment:
-String(
-student.enrollment ||
-student.Enrollment ||
-student.id ||
-student.ID ||
-""
-).trim(),
-
-group:
-String(
-student.group ||
-student.Group ||
-""
-).trim(),
-
-present:
-Number(
-student.present ||
-student.Present ||
-0
-),
-
-absent:
-Number(
-student.absent ||
-student.Absent ||
-0
-),
-
-total:
-Number(
-student.total ||
-student.Total ||
-0
-),
-
-percentage:
-Number(
-student.percentage ||
-student.Percentage ||
-0
-)
-
-})
-);
-
-
-/* ==========================================
-   RENDER
-   ========================================== */
-
-renderStudents();
-
-updateOverallStats();
-
-
-showMessage(
-"✅ " + students.length +
-" students loaded successfully.",
-"success"
-);
-
-}
-
-catch(error){
-
-console.error(
-"STUDENT LOAD ERROR:",
-error
-);
-
-
-students = [];
-
-
-grid.innerHTML = `
-<div class="no-data">
-
-❌ Unable to load student list.
-
-<br><br>
-
-<b>${escapeHTML(error.message)}</b>
-
-<br><br>
-
-Make sure the Apps Script is deployed
-with the latest version.
-
-</div>
-`;
-
-
-showMessage(
-"❌ " + error.message,
-"error"
-);
-
-}
+                    present:
+                        Number(
+                            student.present ||
+                            student.Present ||
+                            0
+                        ),
+
+                    absent:
+                        Number(
+                            student.absent ||
+                            student.Absent ||
+                            0
+                        ),
+
+                    total:
+                        Number(
+                            student.total ||
+                            student.Total ||
+                            0
+                        ),
+
+                    percentage:
+                        Number(
+                            student.percentage ||
+                            student.Percentage ||
+                            0
+                        )
+
+                })
+            );
+
+
+        renderStudents();
+
+        updateOverallStats();
+
+
+        showMessage(
+            "✅ Student list updated.",
+            "success"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        grid.innerHTML = `
+            <div class="no-data">
+                ❌ Unable to load student data.
+                <br><br>
+                <b>${escapeHTML(
+                    error.message ||
+                    "Unknown API error"
+                )}</b>
+            </div>
+        `;
+
+
+        showMessage(
+            "❌ " +
+            (
+                error.message ||
+                "Unable to load students."
+            ),
+            "error"
+        );
+
+    }
 
 }
 
@@ -703,259 +802,315 @@ showMessage(
 
 function renderStudents(){
 
-const grid =
-document.getElementById("studentGrid");
+    const grid =
+        document.getElementById(
+            "studentGrid"
+        );
 
-const search =
-document.getElementById("search")
-.value
-.toLowerCase()
-.trim();
 
-const selectedGroup =
-document.getElementById("groupFilter")
-.value;
+    const search =
+        document.getElementById(
+            "search"
+        )
+        .value
+        .toLowerCase()
+        .trim();
 
 
-const filtered =
-students.filter(
-student => {
+    const group =
+        document.getElementById(
+            "groupFilter"
+        ).value;
 
-const name =
-String(
-student.name || ""
-).toLowerCase();
 
-const enrollment =
-String(
-student.enrollment || ""
-).toLowerCase();
+    const filtered =
+        students.filter(
+            student => {
 
-const group =
-String(
-student.group || ""
-).toUpperCase();
+                const name =
+                    String(
+                        student.name || ""
+                    ).toLowerCase();
 
 
-const matchesSearch =
-!search ||
-name.includes(search) ||
-enrollment.includes(search);
+                const enrollment =
+                    String(
+                        student.enrollment || ""
+                    ).toLowerCase();
 
 
-const matchesGroup =
-!selectedGroup ||
-group === selectedGroup;
+                const matchesSearch =
+                    !search ||
+                    name.includes(search) ||
+                    enrollment.includes(search);
 
 
-return (
-matchesSearch &&
-matchesGroup
-);
+                const matchesGroup =
+                    !group ||
+                    String(
+                        student.group
+                    ).toUpperCase() ===
+                    group;
 
-}
-);
 
+                return (
+                    matchesSearch &&
+                    matchesGroup
+                );
 
-if(!filtered.length){
+            }
+        );
 
-grid.innerHTML = `
-<div class="no-data">
 
-🔍 No students found.
+    if(!filtered.length){
 
-</div>
-`;
+        grid.innerHTML = `
+            <div class="no-data">
+                🔍 No students found.
+            </div>
+        `;
 
-return;
+        return;
 
-}
+    }
 
 
-grid.innerHTML =
-filtered
-.map(
-student => {
+    grid.innerHTML =
+        filtered
+        .map(
+            (student,index) => {
 
-const present =
-Number(student.present || 0);
+                const present =
+                    Number(
+                        student.present || 0
+                    );
 
-const absent =
-Number(student.absent || 0);
 
-let total =
-Number(student.total || 0);
+                const absent =
+                    Number(
+                        student.absent || 0
+                    );
 
 
-if(
-total === 0 &&
-(present + absent) > 0
-){
+                let total =
+                    Number(
+                        student.total || 0
+                    );
 
-total =
-present + absent;
 
-}
+                /*
+                 * If total is not supplied,
+                 * calculate it.
+                 */
 
+                if(
+                    total === 0 &&
+                    (present + absent) > 0
+                ){
 
-let percentage =
-Number(
-student.percentage || 0
-);
+                    total =
+                        present + absent;
 
+                }
 
-if(
-!percentage &&
-total > 0
-){
 
-percentage =
-present / total * 100;
+                let percentage =
+                    Number(
+                        student.percentage || 0
+                    );
 
-}
 
+                if(
+                    !percentage &&
+                    total > 0
+                ){
 
-percentage =
-Math.max(
-0,
-Math.min(
-100,
-percentage
-)
-);
+                    percentage =
+                        present /
+                        total *
+                        100;
 
+                }
 
-const name =
-student.name ||
-"Unknown Student";
 
+                percentage =
+                    Math.max(
+                        0,
+                        Math.min(
+                            100,
+                            percentage
+                        )
+                    );
 
-const enrollment =
-student.enrollment ||
-"No enrollment";
 
+                const name =
+                    student.name ||
+                    "Unknown Student";
 
-const group =
-student.group
-? "Group " + student.group
-: "Student";
 
+                const enrollment =
+                    student.enrollment ||
+                    "No enrollment";
 
-const initial =
-name
-.trim()
-.charAt(0)
-.toUpperCase();
 
+                const group =
+                    student.group
+                    ? "Group " +
+                      student.group
+                    : "Student";
 
-let percentageClass =
-"safe";
 
+                const initial =
+                    name
+                    .trim()
+                    .charAt(0)
+                    .toUpperCase();
 
-if(percentage < 75){
 
-percentageClass =
-"danger";
+                let percentageClass =
+                    "safe";
 
-}
 
-else if(percentage < 80){
+                if(
+                    percentage < 75
+                ){
 
-percentageClass =
-"warn";
+                    percentageClass =
+                        "danger";
 
-}
+                }
+                else if(
+                    percentage < 80
+                ){
 
+                    percentageClass =
+                        "warn";
 
-return `
+                }
 
-<div class="student-card">
 
-<div class="student-head">
+                return `
 
-<div class="avatar">
-${escapeHTML(initial)}
-</div>
+                <div
+                    class="student-card">
 
-<div class="student-info">
+                    <div
+                        class="student-head">
 
-<h2>
-${escapeHTML(name)}
-</h2>
+                        <div
+                            class="avatar">
 
-<div class="enrollment">
-${escapeHTML(enrollment)}
-</div>
+                            ${escapeHTML(initial)}
 
-<span class="group">
-${escapeHTML(group)}
-</span>
+                        </div>
 
-</div>
 
-</div>
+                        <div
+                            class="student-info">
 
+                            <h2>
+                                ${escapeHTML(name)}
+                            </h2>
 
-<div class="attendance-box">
+                            <div
+                                class="enrollment">
 
-<div class="attendance-grid">
+                                ${escapeHTML(
+                                    enrollment
+                                )}
 
-<div class="mini">
+                            </div>
 
-<b class="safe">
-${present}
-</b>
+                            <span
+                                class="group">
 
-<small>
-Present
-</small>
+                                ${escapeHTML(
+                                    group
+                                )}
 
-</div>
+                            </span>
 
+                        </div>
 
-<div class="mini">
+                    </div>
 
-<b class="danger">
-${absent}
-</b>
 
-<small>
-Absent
-</small>
+                    <div
+                        class="attendance-box">
 
-</div>
+                        <div
+                            class="attendance-grid">
 
+                            <div class="mini">
 
-<div class="mini">
+                                <b
+                                    class="safe">
 
-<b class="${percentageClass}">
-${percentage.toFixed(1)}%
-</b>
+                                    ${present}
 
-<small>
-Attendance
-</small>
+                                </b>
 
-</div>
+                                <small>
+                                    Present
+                                </small>
 
-</div>
+                            </div>
 
 
-<div class="progress">
+                            <div class="mini">
 
-<i style="width:${percentage}%"></i>
+                                <b
+                                    class="danger">
 
-</div>
+                                    ${absent}
 
-</div>
+                                </b>
 
-</div>
+                                <small>
+                                    Absent
+                                </small>
 
-`;
+                            </div>
 
-}
-)
-.join("");
+
+                            <div class="mini">
+
+                                <b
+                                    class="${percentageClass}">
+
+                                    ${percentage.toFixed(1)}%
+
+                                </b>
+
+                                <small>
+                                    Attendance
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="progress">
+
+                            <i
+                                style="
+                                    width:${percentage}%
+                                ">
+                            </i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }
+        )
+        .join("");
 
 }
 
@@ -966,85 +1121,92 @@ Attendance
 
 function updateOverallStats(){
 
-const totalStudents =
-students.length;
-
-let classes = 0;
-
-let present = 0;
-
-let totalMarks = 0;
+    const totalStudents =
+        students.length;
 
 
-students.forEach(
-student => {
+    let classes = 0;
 
-const p =
-Number(
-student.present || 0
-);
+    let present = 0;
 
-const a =
-Number(
-student.absent || 0
-);
+    let totalMarks = 0;
 
 
-present += p;
+    students.forEach(
+        student => {
+
+            const p =
+                Number(
+                    student.present || 0
+                );
 
 
-totalMarks +=
-Number(
-student.total ||
-(p + a) ||
-0
-);
-
-}
-);
+            const a =
+                Number(
+                    student.absent || 0
+                );
 
 
-if(totalStudents){
+            present += p;
 
-classes =
-Math.round(
-totalMarks /
-totalStudents
-);
+            totalMarks +=
+                Number(
+                    student.total ||
+                    (p + a) ||
+                    0
+                );
 
-}
-
-
-const percentage =
-totalMarks
-? present /
-totalMarks *
-100
-: 0;
+        }
+    );
 
 
-document.getElementById(
-"totalStudents"
-).textContent =
-totalStudents;
+    /*
+     * Estimate classes from
+     * attendance records.
+     */
+
+    if(totalStudents){
+
+        classes =
+            Math.round(
+                totalMarks /
+                totalStudents
+            );
+
+    }
 
 
-document.getElementById(
-"totalClasses"
-).textContent =
-classes;
+    const percentage =
+        totalMarks
+        ? present /
+          totalMarks *
+          100
+        : 0;
 
 
-document.getElementById(
-"totalPresent"
-).textContent =
-present;
+    document.getElementById(
+        "totalStudents"
+    ).textContent =
+        totalStudents;
 
 
-document.getElementById(
-"overallPercentage"
-).textContent =
-percentage.toFixed(1) + "%";
+    document.getElementById(
+        "totalClasses"
+    ).textContent =
+        classes;
+
+
+    document.getElementById(
+        "totalPresent"
+    ).textContent =
+        present;
+
+
+    document.getElementById(
+        "overallPercentage"
+    ).textContent =
+        percentage.toFixed(1) +
+        "%";
 
 }
 
@@ -1054,24 +1216,24 @@ percentage.toFixed(1) + "%";
    ===================================================== */
 
 function showMessage(
-text,
-type
+    text,
+    type
 ){
 
-const message =
-document.getElementById(
-"message"
-);
+    const message =
+        document.getElementById(
+            "message"
+        );
 
 
-message.textContent =
-text;
+    message.textContent =
+        text;
 
 
-message.style.color =
-type === "error"
-? "#ffb3b3"
-: "#69f0ae";
+    message.style.color =
+        type === "error"
+        ? "#ffb3b3"
+        : "#69f0ae";
 
 }
 
@@ -1082,8 +1244,8 @@ type === "error"
 
 function goDashboard(){
 
-window.location.href =
-"dashboard.html";
+    window.location.href =
+        "dashboard.html";
 
 }
 
@@ -1094,27 +1256,27 @@ window.location.href =
 
 function logout(){
 
-sessionStorage.clear();
+    sessionStorage.clear();
 
-window.location.replace(
-"index.html"
-);
+    window.location.replace(
+        "index.html"
+    );
 
 }
 
 
 /* =====================================================
-   HTML ESCAPE
+   SECURITY / HTML ESCAPE
    ===================================================== */
 
 function escapeHTML(value){
 
-return String(value)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
 
 }
 

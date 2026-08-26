@@ -1,1 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
+<title>B.Pharmacy | Attendance History</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+:root{
+    --primary:#5b4bb7;
+    --secondary:#9b6fd1;
+    --green:#00b894;
+    --red:#e74c3c;
+    --blue:#3498db;
+    --orange:#f39c12;
+}
+
+body{
+    min-height:100vh;
+    padding:14px;
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+    color:white;
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            #ffffff25,
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 90%,
+            #ffffff18,
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #211b42,
+            #5b4bb7,
+            #9b6fd1
+        );
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+}
+
+/* ================= TOP BAR ================= */
+
+.topbar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+}
+
+.back{
+    width:43px;
+    height:43px;
+    border:1px solid #ffffff35;
+    border-radius:13px;
+    background:#ffffff18;
+    color:white;
+    font-size:20px;
+    cursor:pointer;
+}
+
+.title{
+    flex:1;
+    text-align:center;
+}
+
+.title h1{
+    font-size:20px;
+}
+
+.title p{
+    font-size:11px;
+    opacity:.7;
+}
+
+.logout{
+    padding:9px 12px;
+    border:0;
+    border-radius:10px;
+    background:#e74c3c;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+
+/* ================= CARD ================= */
+
+.card{
+    background:#ffffff18;
+    border:1px solid #ffffff30;
+    backdrop-filter:blur(18px);
+    border-radius:20px;
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 18px 45px #0004;
+}
+
+.userbar{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+}
+
+.userbar strong{
+    font-size:14px;
+}
+
+.spacer{
+    flex:1;
+}
+
+/* ================= FILTERS ================= */
+
+.filters{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:9px;
+}
+
+.field label{
+    display:block;
+    font-size:11px;
+    font-weight:750;
+    margin-bottom:5px;
+}
+
+.field input,
+.field select{
+    width:100%;
+    padding:11px;
+    border:0;
+    border-radius:10px;
+    background:white;
+    color:#111827;
+    outline:none;
+}
+
+.search{
+    margin-top:10px;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:10px;
+}
+
+.btn{
+    padding:11px 14px;
+    border:0;
+    border-radius:10px;
+    color:white;
+    font-weight:750;
+    cursor:pointer;
+}
+
+.blue{
+    background:#1976d2;
+}
+
+.green{
+    background:#00a844;
+}
+
+.red{
+    background:#e53935;
+}
+
+.orange{
+    background:#f39c12;
+    color:#111;
+}
+
+/* ================= STATISTICS ================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+}
+
+.stat{
+    padding:12px 6px;
+    text-align:center;
+    border-radius:13px;
+    background:#ffffff15;
+    border:1px solid #ffffff25;
+}
+
+.stat b{
+    display:block;
+    font-size:20px;
+}
+
+.stat small{
+    font-size:9px;
+    opacity:.7;
+}
+
+.safe{
+    color:#69f0ae;
+}
+
+.danger{
+    color:#ff8a80;
+}
+
+.warn{
+    color:#ffd54f;
+}
+
+/* ================= TABLE ================= */
+
+.table-box{
+    overflow:auto;
+    background:white;
+    border-radius:15px;
+}
+
+table{
+    width:100%;
+    min-width:850px;
+    border-collapse:collapse;
+    color:#111827;
+}
+
+th{
+    background:#182848;
+    color:white;
+    padding:11px 8px;
+    font-size:11px;
+    position:sticky;
+    top:0;
+    z-index:2;
+}
+
+td{
+    padding:9px 8px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+    font-size:11px;
+}
+
+td.subject{
+    text-align:left;
+    font-weight:650;
+}
+
+.badge{
+    display:inline-block;
+    padding:5px 8px;
+    border-radius:8px;
+    font-size:9px;
+    font-weight:800;
+}
+
+.present-badge{
+    background:#c8f7d5;
+    color:#087f23;
+}
+
+.absent-badge{
+    background:#ffd3d0;
+    color:#b71c1c;
+}
+
+.percentage{
+    font-weight:800;
+}
+
+.high{
+    color:#008f4c;
+}
+
+.medium{
+    color:#c88700;
+}
+
+.low{
+    color:#d63031;
+}
+
+/* ================= MESSAGE ================= */
+
+.message{
+    min-height:20px;
+    margin-top:9px;
+    text-align:center;
+    font-size:12px;
+    font-weight:700;
+}
+
+.loading{
+    padding:30px;
+    text-align:center;
+}
+
+.no-data{
+    padding:35px;
+    text-align:center;
+    color:#555;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:800px){
+
+    .filters{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+@media(max-width:550px){
+
+    .filters{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .action-row{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .title h1{
+        font-size:17px;
+    }
+
+    .logout{
+        font-size:10px;
+        padding:8px;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <!-- ================= TOP BAR ================= -->
+
+    <div class="topbar">
+
+        <button
+            class="back"
+            onclick="goDashboard()">
+            ←
+        </button>
+
+        <div class="title">
+
+            <h1>📅 Attendance History</h1>
+
+            <p>
+                B.Pharmacy • 7th Semester
+            </p>
+
+        </div>
+
+        <button
+            class="logout"
+            onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <!-- ================= USER ================= -->
+
+    <div class="card">
+
+        <div class="userbar">
+
+            <span>
+                👤 Logged in as
+            </span>
+
+            <strong id="userName">
+                —
+            </strong>
+
+            <span class="spacer"></span>
+
+            <span id="userRole">
+                Student
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FILTER ================= -->
+
+    <div class="card">
+
+        <div class="filters">
+
+            <div class="field">
+
+                <label>
+                    📅 Date
+                </label>
+
+                <input
+                    type="date"
+                    id="dateFilter"
+                    onchange="applyFilters()">
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    📚 Subject
+                </label>
+
+                <select
+                    id="subjectFilter"
+                    onchange="applyFilters()">
+
+                    <option value="">
+                        All Subjects
+                    </option>
+
+                    <option>
+                        Instrumental Methods of Analysis
+                    </option>
+
+                    <option>
+                        Novel Drug Delivery System
+                    </option>
+
+                    <option>
+                        Industrial Pharmacy II
+                    </option>
+
+                    <option>
+                        Practice School
+                    </option>
+
+                    <option>
+                        Instrumental Methods of Analysis – Practical
+                    </option>
+
+                    <option>
+                        Practice School / Training
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    👥 Group
+                </label>
+
+                <select
+                    id="groupFilter"
+                    onchange="applyFilters()">
+
+                    <option value="">
+                        All Groups
+                    </option>
+
+                    <option value="A">
+                        Group A
+                    </option>
+
+                    <option value="B">
+                        Group B
+                    </option>
+
+                    <option value="C">
+                        Group C
+                    </option>
+
+                    <option value="D">
+                        Group D
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <input
+            class="field search"
+            id="search"
+            type="text"
+            placeholder="🔍 Search subject, date, enrollment or student..."
+            oninput="applyFilters()">
+
+
+        <div class="actions">
+
+            <button
+                class="btn blue"
+                onclick="loadHistory()">
+                🔄 Refresh
+            </button>
+
+            <button
+                class="btn green"
+                onclick="clearFilters()">
+                ✨ Clear Filters
+            </button>
+
+            <button
+                class="btn orange"
+                onclick="window.print()">
+                🖨️ Print
+            </button>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+    </div>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <div class="card">
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <b id="records">
+                    0
+                </b>
+
+                <small>
+                    Records
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="present"
+                    class="safe">
+                    0
+                </b>
+
+                <small>
+                    Present
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="absent"
+                    class="danger">
+                    0
+                </b>
+
+                <small>
+                    Absent
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b id="total">
+                    0
+                </b>
+
+                <small>
+                    Total
+                </small>
+
+            </div>
+
+
+            <div class="stat">
+
+                <b
+                    id="percentage"
+                    class="warn">
+                    0%
+                </b>
+
+                <small>
+                    Percentage
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= HISTORY TABLE ================= -->
+
+    <div class="card">
+
+        <div class="table-box">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            S.No.
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Subject
+                        </th>
+
+                        <th>
+                            Group
+                        </th>
+
+                        <th>
+                            Enrollment
+                        </th>
+
+                        <th>
+                            Student Name
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody
+                    id="historyBody">
+
+                    <tr>
+
+                        <td
+                            colspan="7"
+                            class="loading">
+
+                            Loading attendance history...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   GOOGLE APPS SCRIPT URL
+   ===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycby2wlNgfHgpJjKhYpEx6sEPJsy5NhN2MwdAEF3h6v1l3RsOONTkL42wdGonfXWv9DogEg/exec";
+
+
+/* =====================================================
+   LOGIN PROTECTION
+   ===================================================== */
+
+const loggedIn =
+sessionStorage.getItem("BP7_LOGGED_IN");
+
+const session =
+sessionStorage.getItem("BP7_SESSION");
+
+const userId =
+sessionStorage.getItem("BP7_USER_ID");
+
+const userName =
+sessionStorage.getItem("BP7_USER_NAME");
+
+const userRole =
+sessionStorage.getItem("BP7_ROLE");
+
+
+if(
+    loggedIn !== "true" ||
+    !session
+){
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+/* =====================================================
+   USER INFORMATION
+   ===================================================== */
+
+document.getElementById(
+    "userName"
+).textContent =
+userName || userId || "User";
+
+
+document.getElementById(
+    "userRole"
+).textContent =
+String(userRole).toLowerCase() === "admin"
+    ? "🔐 Administrator"
+    : "🎓 Student";
+
+
+/* =====================================================
+   DATA
+   ===================================================== */
+
+let historyData = [];
+
+let filteredData = [];
+
+
+/* =====================================================
+   LOAD HISTORY
+   ===================================================== */
+
+async function loadHistory(){
+
+    const body =
+        document.getElementById(
+            "historyBody"
+        );
+
+
+    body.innerHTML = `
+        <tr>
+            <td
+                colspan="7"
+                class="loading">
+
+                ⏳ Loading attendance history...
+
+            </td>
+        </tr>
+    `;
+
+
+    try{
+
+        const url =
+            API_URL +
+
+            "?action=attendanceHistory" +
+
+            "&session=" +
+            encodeURIComponent(session) +
+
+            "&userId=" +
+            encodeURIComponent(userId);
+
+
+        const response =
+            await fetch(
+                url,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                "Server error"
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "History API:",
+            result
+        );
+
+
+        if(
+            result.success !== true
+        ){
+
+            throw new Error(
+                result.message ||
+                "Unable to load history"
+            );
+
+        }
+
+
+        historyData =
+            result.records ||
+            result.history ||
+            result.data ||
+            [];
+
+
+        historyData =
+            historyData.map(
+                record => ({
+
+                    date:
+                        record.date ||
+                        record.Date ||
+                        "",
+
+                    subject:
+                        record.subject ||
+                        record.Subject ||
+                        "",
+
+                    group:
+                        record.group ||
+                        record.Group ||
+                        "",
+
+                    enrollment:
+                        record.enrollment ||
+                        record.Enrollment ||
+                        "",
+
+                    name:
+                        record.name ||
+                        record.Name ||
+                        "",
+
+                    status:
+                        record.status ||
+                        record.Status ||
+                        ""
+
+                })
+            );
+
+
+        applyFilters();
+
+
+        showMessage(
+            "✅ Attendance history loaded.",
+            "success"
+        );
+
+    }
+
+    catch(error){
+
+        console.error(error);
+
+        historyData = [];
+
+        document.getElementById(
+            "historyBody"
+        ).innerHTML = `
+            <tr>
+                <td
+                    colspan="7"
+                    class="no-data">
+
+                    ❌ Unable to load attendance history.
+
+                    <br><br>
+
+                    Check your Google Apps Script
+                    <br>
+                    <small>
+                        Action required:
+                        attendanceHistory
+                    </small>
+
+                </td>
+            </tr>
+        `;
+
+
+        updateStats([]);
+
+
+        showMessage(
+            "❌ " +
+            (
+                error.message ||
+                "Unable to load history."
+            ),
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   FILTER
+   ===================================================== */
+
+function applyFilters(){
+
+    const date =
+        document.getElementById(
+            "dateFilter"
+        ).value;
+
+
+    const subject =
+        document.getElementById(
+            "subjectFilter"
+        ).value
+        .toLowerCase();
+
+
+    const group =
+        document.getElementById(
+            "groupFilter"
+        ).value
+        .toLowerCase();
+
+
+    const search =
+        document.getElementById(
+            "search"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    filteredData =
+        historyData.filter(
+            record => {
+
+                const recordDate =
+                    String(
+                        record.date || ""
+                    );
+
+
+                const recordSubject =
+                    String(
+                        record.subject || ""
+                    ).toLowerCase();
+
+
+                const recordGroup =
+                    String(
+                        record.group || ""
+                    ).toLowerCase();
+
+
+                const enrollment =
+                    String(
+                        record.enrollment || ""
+                    ).toLowerCase();
+
+
+                const name =
+                    String(
+                        record.name || ""
+                    ).toLowerCase();
+
+
+                const status =
+                    String(
+                        record.status || ""
+                    ).toLowerCase();
+
+
+                const matchesDate =
+                    !date ||
+                    recordDate === date;
+
+
+                const matchesSubject =
+                    !subject ||
+                    recordSubject === subject;
+
+
+                const matchesGroup =
+                    !group ||
+                    recordGroup === group;
+
+
+                const matchesSearch =
+                    !search ||
+                    recordDate
+                        .toLowerCase()
+                        .includes(search) ||
+
+                    recordSubject
+                        .includes(search) ||
+
+                    recordGroup
+                        .includes(search) ||
+
+                    enrollment
+                        .includes(search) ||
+
+                    name
+                        .includes(search) ||
+
+                    status
+                        .includes(search);
+
+
+                return (
+                    matchesDate &&
+                    matchesSubject &&
+                    matchesGroup &&
+                    matchesSearch
+                );
+
+            }
+        );
+
+
+    /*
+     * Newest date first.
+     */
+
+    filteredData.sort(
+        (a,b) =>
+            String(b.date)
+            .localeCompare(
+                String(a.date)
+            )
+    );
+
+
+    renderHistory(
+        filteredData
+    );
+
+    updateStats(
+        filteredData
+    );
+
+}
+
+
+/* =====================================================
+   RENDER HISTORY
+   ===================================================== */
+
+function renderHistory(records){
+
+    const body =
+        document.getElementById(
+            "historyBody"
+        );
+
+
+    if(!records.length){
+
+        body.innerHTML = `
+            <tr>
+                <td
+                    colspan="7"
+                    class="no-data">
+
+                    📭 No attendance records found.
+
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    body.innerHTML =
+        records
+        .map(
+            (record,index) => {
+
+                const isPresent =
+                    String(
+                        record.status
+                    ).toLowerCase()
+                    === "present";
+
+
+                return `
+
+                <tr>
+
+                    <td>
+                        ${index + 1}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            record.date
+                        )}
+                    </td>
+
+                    <td class="subject">
+                        ${escapeHTML(
+                            record.subject
+                        )}
+                    </td>
+
+                    <td>
+                        ${
+                            record.group
+                            ? "Group " +
+                              escapeHTML(
+                                  record.group
+                              )
+                            : "—"
+                        }
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            record.enrollment
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(
+                            record.name
+                        )}
+                    </td>
+
+                    <td>
+
+                        <span
+                            class="badge
+                            ${
+                                isPresent
+                                ? "present-badge"
+                                : "absent-badge"
+                            }">
+
+                            ${
+                                isPresent
+                                ? "PRESENT"
+                                : "ABSENT"
+                            }
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =====================================================
+   STATISTICS
+   ===================================================== */
+
+function updateStats(records){
+
+    const recordsCount =
+        records.length;
+
+
+    let present = 0;
+
+    let absent = 0;
+
+
+    records.forEach(
+        record => {
+
+            if(
+                String(
+                    record.status
+                ).toLowerCase()
+                === "present"
+            ){
+
+                present++;
+
+            }else{
+
+                absent++;
+
+            }
+
+        }
+    );
+
+
+    const total =
+        present + absent;
+
+
+    const percentage =
+        total
+        ? present /
+          total *
+          100
+        : 0;
+
+
+    document.getElementById(
+        "records"
+    ).textContent =
+        recordsCount;
+
+
+    document.getElementById(
+        "present"
+    ).textContent =
+        present;
+
+
+    document.getElementById(
+        "absent"
+    ).textContent =
+        absent;
+
+
+    document.getElementById(
+        "total"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "percentage"
+    ).textContent =
+        percentage.toFixed(1) +
+        "%";
+
+}
+
+
+/* =====================================================
+   CLEAR FILTERS
+   ===================================================== */
+
+function clearFilters(){
+
+    document.getElementById(
+        "dateFilter"
+    ).value = "";
+
+
+    document.getElementById(
+        "subjectFilter"
+    ).value = "";
+
+
+    document.getElementById(
+        "groupFilter"
+    ).value = "";
+
+
+    document.getElementById(
+        "search"
+    ).value = "";
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================================
+   MESSAGE
+   ===================================================== */
+
+function showMessage(
+    text,
+    type
+){
+
+    const box =
+        document.getElementById(
+            "message"
+        );
+
+
+    box.textContent =
+        text;
+
+
+    box.style.color =
+        type === "error"
+        ? "#ffb3b3"
+        : "#69f0ae";
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+   ===================================================== */
+
+function goDashboard(){
+
+    window.location.href =
+        "dashboard.html";
+
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+function logout(){
+
+    sessionStorage.clear();
+
+    window.location.replace(
+        "index.html"
+    );
+
+}
+
+
+/* =====================================================
+   HTML SECURITY
+   ===================================================== */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+loadHistory();
+
+</script>
+
+</body>
+</html>
